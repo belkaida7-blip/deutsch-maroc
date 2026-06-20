@@ -836,7 +836,6 @@ footer .footer-links a:hover { color: var(--gold); }
         <span class="level-tag" style="background:#FFCC00;color:#1a1a1a">A1 — مبتدئ</span>
         <h3>Anfänger</h3>
         <p>التعارف · الأرقام · الألوان · الأسرة · الجمل الأولى</p>
-        <a href="a1.html" onclick="event.stopPropagation()" style="display:inline-block;margin-top:10px;background:#FFCC00;color:#1a1a1a;padding:6px 14px;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none">📚 150 درس كامل ←</a>
       </div>
       <div class="level-card" style="--lc:#e6a000" onclick="showLevelLessons('A2')">
         <span class="level-tag" style="background:#e6a000">A2 — أساسي</span>
@@ -2071,6 +2070,9 @@ function submitContact() {
     alert('يرجى ملء جميع الحقول المطلوبة (الاسم، البريد الإلكتروني، الرسالة)');
     return;
   }
+  const subject = encodeURIComponent('رسالة من ' + name + ' عبر دويتش مغرب');
+  const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+  window.location.href = `mailto:contact@deutsch-maroc.com?subject=${subject}&body=${body}`;
   document.getElementById('contact-form').style.display = 'none';
   document.getElementById('contact-success').style.display = 'block';
 }
