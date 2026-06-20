@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar-MA" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="تعلم الألمانية مجاناً - دروس شاملة بالصوت والنص للمغاربة. استعد لامتحانات اللغة الألمانية من مستوى A1 إلى B2">
 <meta name="keywords" content="تعلم الألمانية, دروس ألمانية للمغاربة, امتحان اللغة الألمانية, Deutsch lernen Marokko, A1 A2 B1 B2">
+<meta name="robots" content="index, follow">
+<meta name="author" content="دويتش مغرب">
+<meta property="og:title" content="دويتش مغرب | تعلم الألمانية من الصفر">
+<meta property="og:description" content="تعلم الألمانية مجاناً - دروس شاملة بالصوت والنص للمغاربة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇩🇪</text></svg>">
 <title>دويتش مغرب | تعلم الألمانية من الصفر</title>
 
 <!-- Google Fonts -->
@@ -13,27 +19,27 @@
 <style>
 :root {
   --black: #1a1a1a;
-  - - or : # FFCC00 ;
-  - - rouge : #CC0000 ;
-  - - blanc : #FFFFFF ;​​
-  - - b g : #F7F6F2;
-  - - texte : # 1a1a1a ;
-  -- muet : # 666 ;​​
-  - - bord : # e0ddd5 ;​​
-  - - carte : #FFFFFF ;​
-  - - succès : # 22a86b ;​​​
-  -- danger : # e0332b ;​​​
-  -- rayon : 14px ;​​​​
-  - - ombre : 0 4px 24px rgba ( 0,0,0,0.09 ) ;
+  --gold: #FFCC00;
+  --red: #CC0000;
+  --white: #FFFFFF;
+  --bg: #F7F6F2;
+  --text: #1a1a1a;
+  --muted: #666;
+  --border: #e0ddd5;
+  --card: #FFFFFF;
+  --success: #22a86b;
+  --danger: #e0332b;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.09);
 }
 
-* { box - sizing : border -box; margin: 0; padding : 0 ; }  
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-corps {​​​ 
-  police - famille : ' Cairo ' , sans - serif ;
-  arrière - plan : var ( -- bg ) ;​
-  couleur : var (--texte ) ;
-  ligne - hauteur : 1,7 ;​​​​​​
+body {
+  font-family: 'Cairo', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
   direction: rtl;
 }
 
@@ -536,10 +542,31 @@ footer .footer-links a:hover { color: var(--gold); }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
-  .nav-links { display: none; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; right: 0; left: 0; background: var(--black); padding: 12px; gap: 4px; border-bottom: 3px solid var(--gold); z-index: 99; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex !important; }
   .hero h1 { font-size: 1.8rem; }
   .vocab-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-links { flex-wrap: wrap; gap: 12px; }
 }
+@media (min-width: 601px) {
+  .hamburger { display: none !important; }
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--gold); border-radius: 2px;
+  transition: all .3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDVQBNZK5X"></script>
@@ -553,16 +580,19 @@ footer .footer-links a:hover { color: var(--gold); }
 <body>
 
 <!-- NAVIGATION -->
-<nav>
+<nav style="position:relative">
   <div class="nav-inner">
     <div class="logo">🇩🇪 دويتش <span>مغرب</span></div>
-    <div class="nav-links">
-      <button class="active" onclick="showPage('home')">🏠 الرئيسية</button>
-      <button onclick="showPage('lessons')">📚 الدروس</button>
-      <button onclick="showPage('quiz')">✏️ الامتحانات</button>
-      <button onclick="showPage('ai')">🤖 المساعد الذكي</button>
-      <button onclick="showPage('about')">ℹ️ عن الموقع</button>
+    <div class="nav-links" id="nav-links">
+      <button class="active" onclick="showPage('home');closeNav()">🏠 الرئيسية</button>
+      <button onclick="showPage('lessons');closeNav()">📚 الدروس</button>
+      <button onclick="showPage('quiz');closeNav()">✏️ الامتحانات</button>
+      <button onclick="showPage('ai');closeNav()">🤖 المساعد الذكي</button>
+      <button onclick="showPage('about');closeNav()">ℹ️ عن الموقع</button>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -588,10 +618,9 @@ footer .footer-links a:hover { color: var(--gold); }
   </div>
 
   <div class="container">
-    <!-- AD BANNER TOP -->
-    <div class="ad-banner">
+    <!-- AD BANNER TOP - سيُفعّل بعد قبول AdSense -->
+    <div class="ad-banner" style="display:none">
       <div class="ad-banner-label">إعلان</div>
-      <!-- Google AdSense: data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" -->
       <div style="height:90px; display:flex; align-items:center; justify-content:center; color:#ccc; font-size:0.9rem;">
         مساحة إعلانية 728×90
       </div>
@@ -641,8 +670,8 @@ footer .footer-links a:hover { color: var(--gold); }
       </div>
     </div>
 
-    <!-- AD BANNER MIDDLE -->
-    <div class="ad-banner">
+    <!-- AD BANNER MIDDLE - سيُفعّل بعد قبول AdSense -->
+    <div class="ad-banner" style="display:none">
       <div class="ad-banner-label">إعلان</div>
       <div style="height:250px; display:flex; align-items:center; justify-content:center; color:#ccc;">
         مساحة إعلانية 300×250
@@ -728,7 +757,7 @@ footer .footer-links a:hover { color: var(--gold); }
       <h2>✏️ الامتحانات</h2>
       <p>اختبر معلوماتك وجهّز نفسك للامتحان الرسمي</p>
     </div>
-    <div class="ad-banner" style="margin-bottom:32px">
+    <div class="ad-banner" style="margin-bottom:32px;display:none">
       <div class="ad-banner-label">إعلان</div>
       <div style="height:90px;display:flex;align-items:center;justify-content:center;color:#ccc;">مساحة إعلانية</div>
     </div>
@@ -895,9 +924,138 @@ footer .footer-links a:hover { color: var(--gold); }
       </div>
     </div>
 
-    <div class="ad-banner" style="margin-top:32px">
+    <div class="ad-banner" style="margin-top:32px;display:none">
       <div class="ad-banner-label">إعلان</div>
       <div style="height:250px;display:flex;align-items:center;justify-content:center;color:#ccc;">مساحة إعلانية 300×250</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PRIVACY PAGE ========== -->
+<div id="page-privacy" class="page">
+  <div class="container" style="max-width:800px">
+    <div class="section-title">
+      <h2>🔒 سياسة الخصوصية</h2>
+      <p>آخر تحديث: يناير 2025</p>
+    </div>
+    <div style="background:white;border-radius:var(--radius);padding:40px;box-shadow:var(--shadow);line-height:2">
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">1. مقدمة</h3>
+      <p style="color:var(--muted);margin-bottom:24px">
+        يلتزم موقع <strong>دويتش مغرب</strong> بحماية خصوصية زوّاره ومستخدميه. توضح هذه السياسة طبيعة المعلومات التي نجمعها وكيفية استخدامها وحمايتها.
+      </p>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">2. المعلومات التي نجمعها</h3>
+      <p style="color:var(--muted);margin-bottom:8px">قد نجمع الأنواع التالية من المعلومات:</p>
+      <ul style="color:var(--muted);margin-bottom:24px;padding-right:20px">
+        <li style="margin-bottom:8px"><strong>بيانات الاستخدام:</strong> معلومات عن كيفية تفاعلك مع الموقع (الصفحات المزارة، مدة الجلسة، الدروس المشاهدة).</li>
+        <li style="margin-bottom:8px"><strong>بيانات الجهاز:</strong> نوع المتصفح، نظام التشغيل، عنوان IP بشكل مجهول.</li>
+        <li style="margin-bottom:8px"><strong>التخزين المحلي:</strong> نستخدم localStorage لحفظ تقدمك في الدروس على جهازك فقط دون إرسالها لخوادمنا.</li>
+      </ul>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">3. الإعلانات (Google AdSense)</h3>
+      <p style="color:var(--muted);margin-bottom:24px">
+        نستخدم <strong>Google AdSense</strong> لعرض الإعلانات على الموقع. قد يستخدم Google ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة لهذا الموقع ومواقع أخرى. يمكنك إلغاء الاشتراك في الإعلانات المخصصة من خلال
+        <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--gold)">إعدادات إعلانات Google</a>.
+      </p>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">4. ملفات تعريف الارتباط (Cookies)</h3>
+      <p style="color:var(--muted);margin-bottom:24px">
+        يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربتك. تُستخدم هذه الملفات من قِبَل شركاء الإعلانات (Google) لتقديم إعلانات ذات صلة. باستمرار استخدامك للموقع، فإنك توافق على استخدام هذه الملفات وفق هذه السياسة.
+      </p>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">5. المساعد الذكي (Claude AI)</h3>
+      <p style="color:var(--muted);margin-bottom:24px">
+        يستخدم الموقع خدمة <strong>Claude AI</strong> من Anthropic لتشغيل المساعد الذكي. الأسئلة التي تطرحها تُرسل إلى خوادم Anthropic لمعالجتها وتوليد الإجابات. لا نحتفظ بسجل دائم لمحادثاتك. راجع
+        <a href="https://www.anthropic.com/privacy" target="_blank" style="color:var(--gold)">سياسة خصوصية Anthropic</a> للمزيد.
+      </p>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">6. حقوقك</h3>
+      <ul style="color:var(--muted);margin-bottom:24px;padding-right:20px">
+        <li style="margin-bottom:8px">الحق في معرفة البيانات التي نجمعها عنك.</li>
+        <li style="margin-bottom:8px">الحق في طلب حذف بياناتك.</li>
+        <li style="margin-bottom:8px">الحق في إلغاء الاشتراك في الإعلانات المخصصة.</li>
+      </ul>
+
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:12px;color:var(--black)">7. التواصل معنا</h3>
+      <p style="color:var(--muted);margin-bottom:0">
+        إذا كان لديك أي استفسار حول سياسة الخصوصية، يمكنك التواصل معنا عبر
+        <a href="#" onclick="showPage('contact')" style="color:var(--gold)">صفحة اتصل بنا</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CONTACT PAGE ========== -->
+<div id="page-contact" class="page">
+  <div class="container" style="max-width:700px">
+    <div class="section-title">
+      <h2>📬 اتصل بنا</h2>
+      <p>نسعد بتلقي اقتراحاتك وملاحظاتك</p>
+    </div>
+    <div style="background:white;border-radius:var(--radius);padding:40px;box-shadow:var(--shadow)">
+
+      <div style="display:grid;gap:20px;margin-bottom:36px">
+        <div style="display:flex;align-items:center;gap:16px;padding:20px;background:#f7f6f2;border-radius:12px">
+          <div style="font-size:2rem;width:48px;text-align:center">📧</div>
+          <div>
+            <div style="font-weight:700;margin-bottom:4px">البريد الإلكتروني</div>
+            <a href="mailto:contact@deutsch-maroc.com" style="color:var(--gold);text-decoration:none">contact@deutsch-maroc.com</a>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:20px;background:#f7f6f2;border-radius:12px">
+          <div style="font-size:2rem;width:48px;text-align:center">⏰</div>
+          <div>
+            <div style="font-weight:700;margin-bottom:4px">وقت الرد</div>
+            <div style="color:var(--muted);font-size:0.9rem">نرد خلال 24-48 ساعة في أيام العمل</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-weight:800;font-size:1.1rem;margin-bottom:20px">أرسل لنا رسالة</h3>
+      <div id="contact-form">
+        <div style="margin-bottom:16px">
+          <label style="display:block;font-weight:600;margin-bottom:6px">الاسم</label>
+          <input id="contact-name" type="text" placeholder="اسمك الكريم"
+            style="width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;direction:rtl"
+            onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <div style="margin-bottom:16px">
+          <label style="display:block;font-weight:600;margin-bottom:6px">البريد الإلكتروني</label>
+          <input id="contact-email" type="email" placeholder="example@email.com"
+            style="width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;direction:ltr;text-align:left"
+            onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <div style="margin-bottom:16px">
+          <label style="display:block;font-weight:600;margin-bottom:6px">الموضوع</label>
+          <select id="contact-subject"
+            style="width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;background:white;direction:rtl"
+            onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'">
+            <option value="">اختر الموضوع</option>
+            <option value="suggestion">اقتراح أو فكرة</option>
+            <option value="bug">الإبلاغ عن خطأ</option>
+            <option value="content">طلب إضافة محتوى</option>
+            <option value="privacy">استفسار عن الخصوصية</option>
+            <option value="other">أخرى</option>
+          </select>
+        </div>
+        <div style="margin-bottom:24px">
+          <label style="display:block;font-weight:600;margin-bottom:6px">الرسالة</label>
+          <textarea id="contact-message" placeholder="اكتب رسالتك هنا..." rows="5"
+            style="width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:12px;font-family:'Cairo',sans-serif;font-size:0.95rem;outline:none;resize:vertical;direction:rtl"
+            onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        </div>
+        <button onclick="submitContact()" class="cta-btn" style="width:100%;padding:14px">
+          إرسال الرسالة ✉️
+        </button>
+      </div>
+      <div id="contact-success" style="display:none;text-align:center;padding:32px">
+        <div style="font-size:4rem;margin-bottom:16px">✅</div>
+        <h3 style="font-weight:900;font-size:1.4rem;margin-bottom:8px">تم إرسال رسالتك!</h3>
+        <p style="color:var(--muted)">شكراً على تواصلك معنا. سنرد عليك في أقرب وقت ممكن.</p>
+        <button onclick="document.getElementById('contact-success').style.display='none';document.getElementById('contact-form').style.display='block'" 
+          class="btn-secondary" style="margin-top:20px">إرسال رسالة أخرى</button>
+      </div>
     </div>
   </div>
 </div>
@@ -906,9 +1064,9 @@ footer .footer-links a:hover { color: var(--gold); }
 <footer>
   <p>دويتش مغرب 🇩🇪 🇲🇦 — تعلم الألمانية للمغاربة</p>
   <div class="footer-links">
-    <a href="#" onclick="showPage('about')">عن الموقع</a>
-    <a href="#">سياسة الخصوصية</a>
-    <a href="#">اتصل بنا</a>
+    <a href="#" onclick="showPage('about');return false;">عن الموقع</a>
+    <a href="#" onclick="showPage('privacy');return false;">سياسة الخصوصية</a>
+    <a href="#" onclick="showPage('contact');return false;">اتصل بنا</a>
   </div>
   <p style="margin-top:12px;font-size:0.75rem;color:#555">© 2025 دويتش مغرب — جميع الحقوق محفوظة</p>
 </footer>
@@ -1194,13 +1352,44 @@ let currentLevel = '';
 let currentQuizLevel = '';
 let quizQ = 0, quizScore = 0, quizAnswered = false;
 
+function toggleNav() {
+  const nav = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function closeNav() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
+  const pageEl = document.getElementById('page-' + page);
+  if(!pageEl) return;
+  pageEl.classList.add('active');
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   const idx = {'home':0,'lessons':1,'quiz':2,'ai':3,'about':4}[page];
-  if(idx !== undefined) document.querySelectorAll('.nav-links button')[idx].classList.add('active');
+  const btns = document.querySelectorAll('.nav-links button');
+  if(idx !== undefined && btns[idx]) btns[idx].classList.add('active');
   window.scrollTo(0, 0);
+  closeNav();
+  // Update page title for SEO
+  const titles = {
+    home: 'دويتش مغرب | تعلم الألمانية من الصفر',
+    lessons: 'الدروس | دويتش مغرب',
+    quiz: 'الامتحانات | دويتش مغرب',
+    ai: 'المساعد الذكي | دويتش مغرب',
+    about: 'عن الموقع | دويتش مغرب',
+    privacy: 'سياسة الخصوصية | دويتش مغرب',
+    contact: 'اتصل بنا | دويتش مغرب'
+  };
+  if(titles[page]) document.title = titles[page];
+  // Update URL without reload
+  const paths = {home:'', lessons:'lessons', quiz:'quiz', ai:'ai', about:'about', privacy:'privacy', contact:'contact'};
+  const path = paths[page] !== undefined ? paths[page] : page;
+  history.pushState({page}, '', path ? '#' + path : location.pathname.replace(/#.*$/, ''));
   if(page === 'ai') initDailyTip();
 }
 
@@ -1228,7 +1417,7 @@ function showLevelLessons(level) {
   const list = document.getElementById('lesson-list');
   list.innerHTML = '';
   lessons.forEach((l, i) => {
-    const done = localStorage.getItem('done_' + l.id);
+    const done = (() => { try { return localStorage.getItem('done_' + l.id); } catch(e) { return null; } })();
     const typeHTML = l.types.map(t => {
       const map = {audio:'🎧 صوتي','type-audio':true, text:'📖 نصي',quiz:'✏️ اختبار'};
       const cls = t === 'audio' ? 'type-audio' : t === 'text' ? 'type-text' : 'type-quiz';
@@ -1340,32 +1529,50 @@ function openLesson(level, idx) {
     </div>
   `;
 
-  // Simulate audio playback with transcript highlighting
-  let playing = false, currentTime = 0, speed = 1;
-  let interval = null;
+  // Real audio using Web Speech API
+  let playing = false, currentLine = 0, speed = 1;
   const totalTime = lesson.transcript.length * 7;
+  let utterance = null;
+
+  function speakLine(lineIdx) {
+    if(lineIdx >= lesson.transcript.length) {
+      playing = false;
+      currentLine = 0;
+      document.getElementById(`playbtn-${idx}`).textContent = '▶';
+      document.querySelectorAll('.transcript-line').forEach(el => el.classList.remove('active'));
+      return;
+    }
+    const text = lesson.transcript[lineIdx];
+    // Detect if line is German (not Arabic) to set language
+    const isGerman = /[a-zA-ZäöüÄÖÜß]/.test(text);
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = isGerman ? 'de-DE' : 'ar-SA';
+    utterance.rate = speed;
+    // Highlight current line
+    document.querySelectorAll('.transcript-line').forEach((el,i) => {
+      el.classList.toggle('active', i === lineIdx);
+    });
+    // Update progress
+    const prog = document.getElementById(`prog-${idx}`);
+    if(prog) prog.value = (lineIdx / lesson.transcript.length) * 100;
+    const timeEl = document.getElementById(`time-${idx}`);
+    if(timeEl) timeEl.textContent = `${lineIdx+1} / ${lesson.transcript.length}`;
+    utterance.onend = () => { if(playing) speakLine(lineIdx + 1); };
+    utterance.onerror = () => { if(playing) speakLine(lineIdx + 1); };
+    window.speechSynthesis.speak(utterance);
+  }
 
   window[`togglePlay_${idx}`] = function() {
-    playing = !playing;
-    document.getElementById(`playbtn-${idx}`).textContent = playing ? '⏸' : '▶';
-    if(playing) {
-      interval = setInterval(() => {
-        currentTime += 0.1 * speed;
-        if(currentTime >= totalTime) { currentTime = 0; playing = false; document.getElementById(`playbtn-${idx}`).textContent = '▶'; clearInterval(interval); }
-        const prog = document.getElementById(`prog-${idx}`);
-        if(prog) prog.value = (currentTime / totalTime) * 100;
-        const s = Math.floor(currentTime);
-        const m = Math.floor(s/60);
-        const secs = s % 60;
-        const timeEl = document.getElementById(`time-${idx}`);
-        if(timeEl) timeEl.textContent = `${m}:${secs.toString().padStart(2,'0')} / ${totalTime}s`;
-        // Highlight transcript
-        const lineIdx = Math.floor(currentTime / 7);
-        document.querySelectorAll('.transcript-line').forEach((el,i) => {
-          el.classList.toggle('active', i === lineIdx);
-        });
-      }, 100);
-    } else { clearInterval(interval); }
+    if(!playing) {
+      playing = true;
+      document.getElementById(`playbtn-${idx}`).textContent = '⏸';
+      window.speechSynthesis.cancel();
+      speakLine(currentLine);
+    } else {
+      playing = false;
+      document.getElementById(`playbtn-${idx}`).textContent = '▶';
+      window.speechSynthesis.cancel();
+    }
   };
 
   window.togglePlay = function(i) { if(window[`togglePlay_${i}`]) window[`togglePlay_${i}`](); };
@@ -1373,16 +1580,35 @@ function openLesson(level, idx) {
     speed = s;
     document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    if(playing && utterance) {
+      window.speechSynthesis.cancel();
+      speakLine(currentLine);
+    }
   };
-  window.seekAudio = function(i, val) { currentTime = (val/100) * totalTime; };
+  window.seekAudio = function(i, val) {
+    currentLine = Math.floor((val/100) * lesson.transcript.length);
+    if(playing) { window.speechSynthesis.cancel(); speakLine(currentLine); }
+  };
 
-  localStorage.setItem('done_' + lesson.id, '1');
+  try { localStorage.setItem('done_' + lesson.id, '1'); } catch(e) {}
   window.scrollTo(0, 0);
 }
 
 function markDone(id) {
-  localStorage.setItem('done_' + id, '1');
+  try { localStorage.setItem('done_' + id, '1'); } catch(e) {}
   alert('✅ تم تسجيل الدرس كمنتهٍ!');
+}
+
+function submitContact() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  if(!name || !email || !message) {
+    alert('يرجى ملء جميع الحقول المطلوبة (الاسم، البريد الإلكتروني، الرسالة)');
+    return;
+  }
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
 }
 
 function startQuizFromLesson(level) {
@@ -1547,9 +1773,21 @@ async function sendMessage() {
 استخدم مصطلحات بسيطة وأمثلة عملية. عند شرح القواعد استخدم جداول أو قوائم منظمة.
 رد دائماً بالعربية ما لم يكتب المستخدم بالألمانية.`;
 
+    const apiKey = window.ANTHROPIC_API_KEY || '';
+    if(!apiKey) {
+      hideTyping();
+      addMessage('bot', '⚠️ المساعد الذكي يحتاج إعداداً إضافياً من المشرف. يرجى التواصل معنا عبر صفحة "اتصل بنا".');
+      return;
+    }
+
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 1000,
@@ -1557,13 +1795,19 @@ async function sendMessage() {
         messages: [{role:'user', content: msg}]
       })
     });
+
+    if(!resp.ok) {
+      const err = await resp.json().catch(()=>({}));
+      throw new Error(err.error?.message || 'خطأ في الاتصال');
+    }
+
     const data = await resp.json();
     const text = data.content?.map(b => b.text || '').join('') || 'عذراً، حدث خطأ. حاول مجدداً.';
     hideTyping();
     addMessage('bot', text);
   } catch(e) {
     hideTyping();
-    addMessage('bot', 'عذراً، لا يمكن الاتصال بالمساعد الآن. تأكد من الاتصال بالإنترنت وحاول مجدداً.');
+    addMessage('bot', `عذراً، لا يمكن الاتصال بالمساعد الآن. (${e.message || 'تأكد من الاتصال بالإنترنت'})`);
   }
 }
 
