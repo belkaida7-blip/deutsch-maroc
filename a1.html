@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ar-MA" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="دروس الألمانية مستوى A1 - 150 درس كامل بالصوت والنص والامتحانات للمغاربة - دويتش مغرب">
+<meta name="keywords" content="دروس ألمانية A1, تعلم الألمانية مبتدئ, Deutsch A1, دروس ألمانية للمغاربة">
+<meta name="robots" content="index, follow">
+<meta name="author" content="دويتش مغرب">
+<meta property="og:title" content="دروس A1 | دويتش مغرب">
+<meta property="og:description" content="150 درس ألماني لمستوى A1 - مجاناً للمغاربة">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇩🇪</text></svg>">
+<title>دروس الألمانية A1 | دويتش مغرب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #1a1a1a;
+  --gold: #FFCC00;
+  --red: #CC0000;
+  --bg: #F7F6F2;
+  --muted: #666;
+  --border: #e0ddd5;
+  --shadow: 0 4px 24px rgba(0,0,0,0.09);
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--black); direction: rtl; line-height: 1.7; }
+nav { background: var(--black); position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--gold); }
+.nav-inner { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
+.logo { font-size: 1.4rem; font-weight: 900; color: var(--gold); }
+.logo span { color: var(--red); }
+.back-btn { background: var(--gold); color: var(--black); border: none; padding: 8px 16px; border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 0.9rem; }
+.container { max-width: 1100px; margin: auto; padding: 32px 16px; }
+.page-header { text-align: center; margin-bottom: 40px; }
+.page-header h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; }
+.page-header h1 span { color: var(--gold); }
+.page-header p { color: var(--muted); font-size: 1.1rem; }
+.level-badge { display: inline-block; background: var(--gold); color: var(--black); padding: 4px 16px; border-radius: 20px; font-weight: 900; font-size: 1.2rem; margin-bottom: 12px; }
+.progress-bar { background: var(--border); border-radius: 8px; height: 8px; margin: 12px 0; }
+.progress-fill { background: var(--gold); border-radius: 8px; height: 8px; transition: width .3s; }
+.units-grid { display: grid; gap: 16px; }
+.unit { background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.unit-header { background: var(--black); color: var(--gold); padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.unit-header h2 { font-size: 1.1rem; font-weight: 700; }
+.unit-toggle { font-size: 1.2rem; transition: transform .3s; }
+.unit.open .unit-toggle { transform: rotate(180deg); }
+.unit-body { display: none; padding: 16px; }
+.unit.open .unit-body { display: block; }
+.lessons-list { display: grid; gap: 10px; }
+.lesson-card { background: var(--bg); border-radius: 10px; padding: 14px 16px; cursor: pointer; border: 2px solid transparent; transition: all .2s; display: flex; justify-content: space-between; align-items: center; }
+.lesson-card:hover { border-color: var(--gold); background: #fff; }
+.lesson-card.done { border-color: #22a86b; }
+.lesson-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+.lesson-info p { font-size: 0.8rem; color: var(--muted); }
+.lesson-tags { display: flex; gap: 4px; margin-top: 6px; }
+.tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.tag-audio { background: #e8f5e9; color: #2e7d32; }
+.tag-text { background: #e3f2fd; color: #1565c0; }
+.tag-quiz { background: #fff3e0; color: #e65100; }
+.lesson-status { font-size: 1.4rem; }
+
+/* LESSON MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; overflow-y: auto; padding: 20px; }
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+.modal { background: white; border-radius: 20px; max-width: 700px; width: 100%; margin: auto; overflow: hidden; }
+.modal-header { background: var(--black); color: white; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { font-size: 1.2rem; font-weight: 700; }
+.modal-close { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+.modal-body { padding: 24px; }
+.section { margin-bottom: 28px; }
+.section h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.vocab-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+.vocab-card { background: var(--bg); border-radius: 8px; padding: 10px 12px; }
+.vocab-de { font-size: 1rem; font-weight: 700; color: var(--black); }
+.vocab-gender { font-size: 0.75rem; color: var(--muted); }
+.vocab-ar { font-size: 0.9rem; color: var(--muted); }
+.transcript-list { display: grid; gap: 8px; }
+.transcript-item { background: var(--bg); border-radius: 8px; padding: 10px 14px; border-right: 3px solid var(--border); }
+.transcript-item.active { border-right-color: var(--gold); background: #fffdf0; }
+.transcript-de { font-weight: 700; font-size: 0.95rem; }
+.transcript-ar { color: var(--muted); font-size: 0.85rem; }
+.grammar-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.grammar-table th { background: var(--black); color: var(--gold); padding: 8px 12px; text-align: right; }
+.grammar-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+.grammar-table tr:nth-child(even) td { background: var(--bg); }
+.audio-player { background: var(--black); border-radius: 12px; padding: 16px; margin-bottom: 16px; color: white; }
+.audio-controls { display: flex; align-items: center; gap: 12px; }
+.play-btn { background: var(--gold); border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1.2rem; cursor: pointer; flex-shrink: 0; }
+.audio-progress { flex: 1; -webkit-appearance: none; height: 4px; border-radius: 2px; background: #444; cursor: pointer; }
+.audio-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); }
+.speed-btns { display: flex; gap: 6px; margin-top: 10px; }
+.speed-btn { background: #333; color: #ccc; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-family: 'Cairo', sans-serif; }
+.speed-btn.active { background: var(--gold); color: var(--black); }
+.quiz-container { }
+.quiz-q { font-weight: 700; margin-bottom: 12px; font-size: 1rem; }
+.quiz-options { display: grid; gap: 8px; }
+.quiz-opt { background: var(--bg); border: 2px solid var(--border); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-family: 'Cairo', sans-serif; font-size: 0.9rem; text-align: right; transition: all .2s; }
+.quiz-opt:hover { border-color: var(--gold); }
+.quiz-opt.correct { background: #e8f5e9; border-color: #22a86b; }
+.quiz-opt.wrong { background: #ffebee; border-color: var(--red); }
+.quiz-result { text-align: center; padding: 20px; }
+.quiz-score { font-size: 2rem; font-weight: 900; color: var(--gold); }
+.done-btn { background: #22a86b; color: white; border: none; padding: 10px 24px; border-radius: 10px; font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; margin-top: 12px; }
+
+@media (max-width: 600px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+  .page-header h1 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">🇩🇪 دويتش <span>مغرب</span></div>
+    <a href="index.html" class="back-btn">← الرئيسية</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <div class="level-badge">A1 — مبتدئ</div>
+    <h1>دروس <span>الألمانية</span> مستوى A1</h1>
+    <p>150 درس شامل — من الصفر حتى إتقان المستوى الأول</p>
+    <div class="progress-bar"><div class="progress-fill" id="total-progress" style="width:0%"></div></div>
+    <p style="color:var(--muted);font-size:0.85rem;margin-top:4px" id="progress-text">0 / 150 درس مكتمل</p>
+  </div>
+
+  <div class="units-grid" id="units-container"></div>
+</div>
+
+<!-- LESSON MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modal-title">عنوان الدرس</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 150 LESSONS DATA — A1 Level
+// ============================================================
+const units = [
+  {
+    title: 'الوحدة 1: التعارف والتحية',
+    unit: 'U1',
+    lessons: [
+      { id:'a1-1', title:'التحية الأولى', sub:'Begrüßung', types:['audio','text'],
+        vocab:[{de:'Hallo',ar:'مرحباً'},{de:'Guten Morgen',ar:'صباح الخير'},{de:'Guten Tag',ar:'مرحباً/نهار سعيد'},{de:'Guten Abend',ar:'مساء الخير'},{de:'Gute Nacht',ar:'تصبح على خير'},{de:'Auf Wiedersehen',ar:'مع السلامة'},{de:'Tschüss',ar:'باي'},{de:'Bitte',ar:'من فضلك'},{de:'Danke',ar:'شكراً'},{de:'Bitte schön',ar:'عفواً'}],
+        transcript:[{de:'Hallo! Wie geht es dir?',ar:'مرحباً! كيف حالك؟'},{de:'Mir geht es gut, danke! Und dir?',ar:'أنا بخير شكراً! وأنت؟'},{de:'Auch gut! Auf Wiedersehen!',ar:'أنا أيضاً بخير! مع السلامة!'},{de:'Tschüss! Bis morgen!',ar:'باي! إلى الغد!'}],
+        grammar:{title:'تصريف الفعل sein (يكون)',headers:['الضمير','الفعل','المعنى'],rows:[['ich','bin','أنا أكون'],['du','bist','أنت تكون'],['er/sie','ist','هو/هي يكون'],['wir','sind','نحن نكون'],['sie','sind','هم يكونون']]},
+        quiz:[{q:'كيف تقول "صباح الخير" بالألمانية؟',opts:['Guten Morgen','Gute Nacht','Tschüss','Hallo'],ans:0},{q:'ما معنى "Auf Wiedersehen"؟',opts:['مرحباً','شكراً','مع السلامة','من فضلك'],ans:2},{q:'كيف تقول "كيف حالك؟"',opts:['Wie heißt du?','Wie geht es dir?','Woher kommst du?','Was machst du?'],ans:1}]
+      },
+      { id:'a1-2', title:'الأسماء والتقديم', sub:'Namen und Vorstellung', types:['audio','text'],
+        vocab:[{de:'Name',ar:'الاسم',g:'der'},{de:'Vorname',ar:'الاسم الأول',g:'der'},{de:'Nachname',ar:'اللقب',g:'der'},{de:'heißen',ar:'يُسمى'},{de:'kommen',ar:'يأتي'},{de:'wohnen',ar:'يسكن'},{de:'Land',ar:'البلد',g:'das'},{de:'Stadt',ar:'المدينة',g:'die'},{de:'Marokko',ar:'المغرب'},{de:'Deutschland',ar:'ألمانيا'}],
+        transcript:[{de:'Ich heiße Ahmed. Wie heißt du?',ar:'اسمي أحمد. ما اسمك؟'},{de:'Ich heiße Maria. Woher kommst du?',ar:'اسمي ماريا. من أين أنت؟'},{de:'Ich komme aus Marokko, aus Casablanca.',ar:'أنا من المغرب، من الدار البيضاء.'},{de:'Ich komme aus Deutschland, aus Berlin.',ar:'أنا من ألمانيا، من برلين.'}],
+        grammar:{title:'أسئلة التعارف',headers:['السؤال','الإجابة'],rows:[['Wie heißt du?','Ich heiße...'],['Woher kommst du?','Ich komme aus...'],['Wo wohnst du?','Ich wohne in...']]},
+        quiz:[{q:'كيف تقول "اسمي..."؟',opts:['Ich komme...','Ich heiße...','Ich wohne...','Ich bin...'],ans:1},{q:'ما معنى "Woher kommst du?"؟',opts:['كيف اسمك؟','أين تسكن؟','من أين أنت؟','ما عمرك؟'],ans:2}]
+      },
+      { id:'a1-3', title:'الأرقام 1-20', sub:'Zahlen 1-20', types:['audio','text'],
+        vocab:[{de:'eins',ar:'1'},{de:'zwei',ar:'2'},{de:'drei',ar:'3'},{de:'vier',ar:'4'},{de:'fünf',ar:'5'},{de:'sechs',ar:'6'},{de:'sieben',ar:'7'},{de:'acht',ar:'8'},{de:'neun',ar:'9'},{de:'zehn',ar:'10'},{de:'elf',ar:'11'},{de:'zwölf',ar:'12'},{de:'dreizehn',ar:'13'},{de:'vierzehn',ar:'14'},{de:'fünfzehn',ar:'15'},{de:'sechzehn',ar:'16'},{de:'siebzehn',ar:'17'},{de:'achtzehn',ar:'18'},{de:'neunzehn',ar:'19'},{de:'zwanzig',ar:'20'}],
+        transcript:[{de:'Eins, zwei, drei, vier, fünf.',ar:'واحد، اثنان، ثلاثة، أربعة، خمسة.'},{de:'Sechs, sieben, acht, neun, zehn.',ar:'ستة، سبعة، ثمانية، تسعة، عشرة.'},{de:'Elf, zwölf, dreizehn, vierzehn, fünfzehn.',ar:'أحد عشر، اثنا عشر، ثلاثة عشر، أربعة عشر، خمسة عشر.'},{de:'Wie alt bist du? Ich bin achtzehn Jahre alt.',ar:'كم عمرك؟ عمري ثمانية عشر سنة.'}],
+        grammar:{title:'السؤال عن العمر',headers:['السؤال','الإجابة'],rows:[['Wie alt bist du?','Ich bin 20 Jahre alt.'],['Wie alt ist er?','Er ist 30 Jahre alt.']]},
+        quiz:[{q:'كيف تقول الرقم 15 بالألمانية؟',opts:['fünfzehn','fünf','zehn','fünfzig'],ans:0},{q:'ما معنى "zwanzig"؟',opts:['اثنان','عشرون','اثنا عشر','اثنان وعشرون'],ans:1}]
+      },
+      { id:'a1-4', title:'الأرقام 20-100', sub:'Zahlen 20-100', types:['text'],
+        vocab:[{de:'zwanzig',ar:'20'},{de:'dreißig',ar:'30'},{de:'vierzig',ar:'40'},{de:'fünfzig',ar:'50'},{de:'sechzig',ar:'60'},{de:'siebzig',ar:'70'},{de:'achtzig',ar:'80'},{de:'neunzig',ar:'90'},{de:'hundert',ar:'100'},{de:'einundzwanzig',ar:'21'}],
+        transcript:[{de:'Zwanzig, dreißig, vierzig, fünfzig.',ar:'عشرون، ثلاثون، أربعون، خمسون.'},{de:'Sechzig, siebzig, achtzig, neunzig, hundert.',ar:'ستون، سبعون، ثمانون، تسعون، مئة.'},{de:'Meine Telefonnummer ist: null-sechs-eins-zwei-drei.',ar:'رقم هاتفي: صفر-ستة-واحد-اثنان-ثلاثة.'}],
+        grammar:{title:'تركيب الأرقام المركبة',headers:['الرقم','الألمانية'],rows:[['21','einundzwanzig'],['35','fünfunddreißig'],['47','siebenundvierzig'],['99','neunundneunzig']]},
+        quiz:[{q:'كيف تقول "50" بالألمانية؟',opts:['fünfzehn','fünfzig','fünf','fünfhundert'],ans:1}]
+      },
+      { id:'a1-5', title:'الألوان', sub:'Farben', types:['text','quiz'],
+        vocab:[{de:'rot',ar:'أحمر'},{de:'blau',ar:'أزرق'},{de:'grün',ar:'أخضر'},{de:'gelb',ar:'أصفر'},{de:'weiß',ar:'أبيض'},{de:'schwarz',ar:'أسود'},{de:'orange',ar:'برتقالي'},{de:'lila',ar:'بنفسجي'},{de:'braun',ar:'بني'},{de:'grau',ar:'رمادي'}],
+        transcript:[{de:'Das Buch ist blau. Der Stift ist rot.',ar:'الكتاب أزرق. القلم أحمر.'},{de:'Welche Farbe hat die Flagge? Schwarz, rot und gelb.',ar:'ما لون العلم؟ أسود وأحمر وأصفر.'},{de:'Mein Lieblingsfarbe ist grün.',ar:'لوني المفضل هو الأخضر.'}],
+        grammar:{title:'صفة اللون مع الأداة',headers:['اللون','مذكر','مؤنث'],rows:[['أحمر','roter','rote'],['أزرق','blauer','blaue'],['أخضر','grüner','grüne']]},
+        quiz:[{q:'ما معنى "gelb"؟',opts:['أخضر','أصفر','أحمر','أزرق'],ans:1},{q:'كيف تقول "أبيض" بالألمانية؟',opts:['schwarz','grau','weiß','braun'],ans:2}]
+      },
+      { id:'a1-6', title:'أيام الأسبوع', sub:'Wochentage', types:['audio','text'],
+        vocab:[{de:'Montag',ar:'الاثنين'},{de:'Dienstag',ar:'الثلاثاء'},{de:'Mittwoch',ar:'الأربعاء'},{de:'Donnerstag',ar:'الخميس'},{de:'Freitag',ar:'الجمعة'},{de:'Samstag',ar:'السبت'},{de:'Sonntag',ar:'الأحد'},{de:'Woche',ar:'الأسبوع',g:'die'},{de:'heute',ar:'اليوم'},{de:'morgen',ar:'غداً'}],
+        transcript:[{de:'Heute ist Montag. Morgen ist Dienstag.',ar:'اليوم الاثنين. غداً الثلاثاء.'},{de:'Am Freitag gehe ich in die Moschee.',ar:'يوم الجمعة أذهب إلى المسجد.'},{de:'Am Wochenende bin ich zu Hause.',ar:'في عطلة نهاية الأسبوع أنا في البيت.'}],
+        grammar:{title:'حرف الجر "am" مع أيام الأسبوع',headers:['اليوم','المثال'],rows:[['Montag','Am Montag arbeite ich.'],['Freitag','Am Freitag ist Gebet.'],['Wochenende','Am Wochenende ruhe ich.']]} ,
+        quiz:[{q:'ما هو اليوم الأول في الأسبوع الألماني؟',opts:['Sonntag','Samstag','Montag','Dienstag'],ans:2},{q:'كيف تقول "الجمعة" بالألمانية؟',opts:['Donnerstag','Freitag','Samstag','Montag'],ans:1}]
+      },
+      { id:'a1-7', title:'الشهور والفصول', sub:'Monate und Jahreszeiten', types:['text'],
+        vocab:[{de:'Januar',ar:'يناير'},{de:'Februar',ar:'فبراير'},{de:'März',ar:'مارس'},{de:'April',ar:'أبريل'},{de:'Mai',ar:'مايو'},{de:'Juni',ar:'يونيو'},{de:'Juli',ar:'يوليو'},{de:'August',ar:'أغسطس'},{de:'September',ar:'سبتمبر'},{de:'Oktober',ar:'أكتوبر'},{de:'November',ar:'نوفمبر'},{de:'Dezember',ar:'ديسمبر'}],
+        transcript:[{de:'Im Januar ist es kalt in Deutschland.',ar:'في يناير يكون الجو بارداً في ألمانيا.'},{de:'Im Juli ist es warm und schön.',ar:'في يوليو يكون الجو دافئاً وجميلاً.'},{de:'Mein Geburtstag ist im März.',ar:'عيد ميلادي في مارس.'}],
+        grammar:{title:'حرف الجر "im" مع الشهور',headers:['الشهر','المثال'],rows:[['Januar','Im Januar...'],['März','Im März...'],['Dezember','Im Dezember...']]},
+        quiz:[{q:'كيف تقول "يوليو" بالألمانية؟',opts:['Juni','Januar','Juli','August'],ans:2}]
+      },
+      { id:'a1-8', title:'الوقت والساعة', sub:'Uhrzeit', types:['audio','text'],
+        vocab:[{de:'Uhr',ar:'الساعة',g:'die'},{de:'Minute',ar:'الدقيقة',g:'die'},{de:'Stunde',ar:'الساعة (مدة)',g:'die'},{de:'halb',ar:'نصف'},{de:'Viertel',ar:'ربع',g:'das'},{de:'nach',ar:'بعد'},{de:'vor',ar:'قبل'},{de:'Wie spät ist es?',ar:'كم الساعة؟'},{de:'Es ist...',ar:'الساعة...'},{de:'Mittag',ar:'الظهر',g:'der'}],
+        transcript:[{de:'Wie spät ist es? Es ist zehn Uhr.',ar:'كم الساعة؟ الساعة العاشرة.'},{de:'Es ist halb elf. Das ist 10:30.',ar:'الساعة النصف. أي الساعة العاشرة والنصف.'},{de:'Der Zug fährt um Viertel nach drei ab.',ar:'القطار يغادر الساعة الثالثة والربع.'}],
+        grammar:{title:'قراءة الوقت',headers:['الوقت','بالألمانية'],rows:[['12:00','Es ist zwölf Uhr'],['6:30','Es ist halb sieben'],['3:15','Es ist Viertel nach drei'],['5:45','Es ist Viertel vor sechs']]},
+        quiz:[{q:'كيف تقول "الساعة 8:30"؟',opts:['acht Uhr dreißig','halb neun','Viertel nach acht','beides richtig'],ans:3}]
+      },
+      { id:'a1-9', title:'في المنزل — الغرف', sub:'Zu Hause — Zimmer', types:['text'],
+        vocab:[{de:'Wohnung',ar:'الشقة',g:'die'},{de:'Haus',ar:'البيت',g:'das'},{de:'Küche',ar:'المطبخ',g:'die'},{de:'Schlafzimmer',ar:'غرفة النوم',g:'das'},{de:'Wohnzimmer',ar:'غرفة المعيشة',g:'das'},{de:'Badezimmer',ar:'الحمام',g:'das'},{de:'Flur',ar:'الممر',g:'der'},{de:'Balkon',ar:'الشرفة',g:'der'},{de:'Keller',ar:'القبو',g:'der'},{de:'Garten',ar:'الحديقة',g:'der'}],
+        transcript:[{de:'Meine Wohnung hat drei Zimmer.',ar:'شقتي فيها ثلاث غرف.'},{de:'Die Küche ist groß. Das Badezimmer ist klein.',ar:'المطبخ كبير. الحمام صغير.'},{de:'Im Wohnzimmer steht ein Sofa und ein Fernseher.',ar:'في غرفة المعيشة يوجد أريكة وتلفاز.'}],
+        grammar:{title:'حروف المكان',headers:['الحرف','المعنى','المثال'],rows:[['in','في','im Zimmer'],['auf','على','auf dem Tisch'],['neben','بجانب','neben dem Bett']]},
+        quiz:[{q:'كيف تقول "المطبخ"؟',opts:['Badezimmer','Küche','Wohnzimmer','Flur'],ans:1}]
+      },
+      { id:'a1-10', title:'الأثاث والمنزل', sub:'Möbel', types:['text','quiz'],
+        vocab:[{de:'Tisch',ar:'طاولة',g:'der'},{de:'Stuhl',ar:'كرسي',g:'der'},{de:'Bett',ar:'سرير',g:'das'},{de:'Schrank',ar:'خزانة',g:'der'},{de:'Sofa',ar:'أريكة',g:'das'},{de:'Lampe',ar:'مصباح',g:'die'},{de:'Fenster',ar:'نافذة',g:'das'},{de:'Tür',ar:'باب',g:'die'},{de:'Boden',ar:'الأرضية',g:'der'},{de:'Wand',ar:'الجدار',g:'die'}],
+        transcript:[{de:'Das Sofa steht im Wohnzimmer.',ar:'الأريكة في غرفة المعيشة.'},{de:'Das Bett ist im Schlafzimmer.',ar:'السرير في غرفة النوم.'},{de:'Der Schrank ist groß und weiß.',ar:'الخزانة كبيرة وبيضاء.'}],
+        grammar:{title:'es gibt (يوجد)',headers:['الجملة','المعنى'],rows:[['Es gibt ein Sofa.','يوجد أريكة.'],['Es gibt keinen Stuhl.','لا يوجد كرسي.'],['Gibt es ein Bett?','هل يوجد سرير؟']]},
+        quiz:[{q:'كيف تقول "نافذة"؟',opts:['Tür','Wand','Fenster','Boden'],ans:2}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 2: الأسرة والأصدقاء',
+    unit: 'U2',
+    lessons: [
+      { id:'a1-11', title:'أفراد الأسرة', sub:'Familie', types:['audio','text'],
+        vocab:[{de:'Vater',ar:'أب',g:'der'},{de:'Mutter',ar:'أم',g:'die'},{de:'Bruder',ar:'أخ',g:'der'},{de:'Schwester',ar:'أخت',g:'die'},{de:'Großvater',ar:'جد',g:'der'},{de:'Großmutter',ar:'جدة',g:'die'},{de:'Sohn',ar:'ابن',g:'der'},{de:'Tochter',ar:'ابنة',g:'die'},{de:'Mann',ar:'زوج',g:'der'},{de:'Frau',ar:'زوجة',g:'die'}],
+        transcript:[{de:'Meine Familie ist groß.',ar:'عائلتي كبيرة.'},{de:'Ich habe einen Bruder und zwei Schwestern.',ar:'لدي أخ وأختان.'},{de:'Meine Mutter heißt Fatima und mein Vater Hassan.',ar:'اسم أمي فاطمة واسم أبي حسن.'}],
+        grammar:{title:'ضمائر الملكية mein/meine',headers:['الضمير','مذكر','مؤنث'],rows:[['ich','mein Vater','meine Mutter'],['du','dein Bruder','deine Schwester'],['er','sein Sohn','seine Tochter']]},
+        quiz:[{q:'كيف تقول "أمي"؟',opts:['mein Vater','meine Mutter','mein Bruder','meine Schwester'],ans:1}]
+      },
+      { id:'a1-12', title:'وصف الشخصية', sub:'Charaktereigenschaften', types:['text'],
+        vocab:[{de:'groß',ar:'طويل/كبير'},{de:'klein',ar:'قصير/صغير'},{de:'jung',ar:'شاب'},{de:'alt',ar:'كبير في السن'},{de:'nett',ar:'لطيف'},{de:'freundlich',ar:'ودود'},{de:'lustig',ar:'مرح'},{de:'ruhig',ar:'هادئ'},{de:'fleißig',ar:'مجتهد'},{de:'klug',ar:'ذكي'}],
+        transcript:[{de:'Mein Bruder ist groß und schlank.',ar:'أخي طويل ونحيف.'},{de:'Meine Mutter ist sehr nett und freundlich.',ar:'أمي لطيفة وودودة جداً.'},{de:'Mein Freund ist lustig und klug.',ar:'صديقي مرح وذكي.'}],
+        grammar:{title:'صفات الجملة الاسمية',headers:['الجملة','المعنى'],rows:[['Er ist groß.','هو طويل.'],['Sie ist nett.','هي لطيفة.'],['Es ist klein.','هو/هي صغير.']]},
+        quiz:[{q:'ما معنى "fleißig"؟',opts:['كسول','مجتهد','مرح','هادئ'],ans:1}]
+      },
+      { id:'a1-13', title:'المهن', sub:'Berufe', types:['audio','text'],
+        vocab:[{de:'Arzt',ar:'طبيب',g:'der'},{de:'Lehrerin',ar:'معلمة',g:'die'},{de:'Ingenieur',ar:'مهندس',g:'der'},{de:'Koch',ar:'طباخ',g:'der'},{de:'Polizist',ar:'شرطي',g:'der'},{de:'Mechaniker',ar:'ميكانيكي',g:'der'},{de:'Kaufmann',ar:'تاجر',g:'der'},{de:'Student',ar:'طالب',g:'der'},{de:'Krankenschwester',ar:'ممرضة',g:'die'},{de:'Friseur',ar:'حلاق',g:'der'}],
+        transcript:[{de:'Was bist du von Beruf?',ar:'ما هي مهنتك؟'},{de:'Ich bin Ingenieur. Ich arbeite bei Siemens.',ar:'أنا مهندس. أعمل في سيمنز.'},{de:'Meine Schwester ist Ärztin in einem Krankenhaus.',ar:'أختي طبيبة في مستشفى.'}],
+        grammar:{title:'السؤال عن المهنة',headers:['السؤال','الإجابة'],rows:[['Was bist du von Beruf?','Ich bin Arzt.'],['Wo arbeitest du?','Ich arbeite bei BMW.'],['Was machst du?','Ich studiere Medizin.']]},
+        quiz:[{q:'كيف تقول "طبيب"؟',opts:['Lehrer','Arzt','Koch','Student'],ans:1}]
+      },
+      { id:'a1-14', title:'الهوايات والأنشطة', sub:'Hobbys', types:['text'],
+        vocab:[{de:'Sport',ar:'رياضة',g:'der'},{de:'Fußball',ar:'كرة القدم',g:'der'},{de:'lesen',ar:'يقرأ'},{de:'schwimmen',ar:'يسبح'},{de:'kochen',ar:'يطبخ'},{de:'reisen',ar:'يسافر'},{de:'Musik hören',ar:'يستمع للموسيقى'},{de:'Filme schauen',ar:'يشاهد الأفلام'},{de:'Freunde treffen',ar:'يلتقي بأصدقاء'},{de:'tanzen',ar:'يرقص'}],
+        transcript:[{de:'Was machst du in der Freizeit?',ar:'ماذا تفعل في وقت الفراغ؟'},{de:'Ich spiele gern Fußball und schwimme.',ar:'أحب لعب كرة القدم والسباحة.'},{de:'Meine Hobbys sind lesen und reisen.',ar:'هواياتي القراءة والسفر.'}],
+        grammar:{title:'الفعل mögen (يحب)',headers:['الضمير','الفعل'],rows:[['ich','mag'],['du','magst'],['er/sie','mag'],['wir','mögen']]},
+        quiz:[{q:'كيف تقول "يقرأ"؟',opts:['schwimmen','lesen','kochen','tanzen'],ans:1}]
+      },
+      { id:'a1-15', title:'الحيوانات الأليفة', sub:'Haustiere', types:['text','quiz'],
+        vocab:[{de:'Hund',ar:'كلب',g:'der'},{de:'Katze',ar:'قطة',g:'die'},{de:'Vogel',ar:'طائر',g:'der'},{de:'Fisch',ar:'سمكة',g:'der'},{de:'Kaninchen',ar:'أرنب',g:'das'},{de:'Hamster',ar:'هامستر',g:'der'},{de:'Pferd',ar:'حصان',g:'das'},{de:'Kuh',ar:'بقرة',g:'die'},{de:'Schaf',ar:'خروف',g:'das'},{de:'Henne',ar:'دجاجة',g:'die'}],
+        transcript:[{de:'Hast du ein Haustier?',ar:'هل عندك حيوان أليف؟'},{de:'Ja, ich habe einen Hund. Er heißt Rex.',ar:'نعم، عندي كلب. اسمه ريكس.'},{de:'Ich mag Katzen sehr.',ar:'أحب القطط كثيراً.'}],
+        grammar:{title:'حيوانات مع الأداة',headers:['الحيوان','الأداة'],rows:[['Hund','der'],['Katze','die'],['Pferd','das'],['Fisch','der']]},
+        quiz:[{q:'كيف تقول "قطة"؟',opts:['Hund','Vogel','Katze','Fisch'],ans:2}]
+      },
+      { id:'a1-16', title:'الجسم والصحة', sub:'Körper und Gesundheit', types:['audio','text'],
+        vocab:[{de:'Kopf',ar:'رأس',g:'der'},{de:'Auge',ar:'عين',g:'das'},{de:'Nase',ar:'أنف',g:'die'},{de:'Mund',ar:'فم',g:'der'},{de:'Ohr',ar:'أذن',g:'das'},{de:'Hand',ar:'يد',g:'die'},{de:'Fuß',ar:'قدم',g:'der'},{de:'Bauch',ar:'بطن',g:'der'},{de:'Rücken',ar:'ظهر',g:'der'},{de:'Bein',ar:'ساق',g:'das'}],
+        transcript:[{de:'Mein Kopf tut weh.',ar:'رأسي يؤلمني.'},{de:'Ich habe Bauchschmerzen.',ar:'عندي آلام في البطن.'},{de:'Was tut Ihnen weh? Mein Rücken schmerzt.',ar:'ما الذي يؤلمك؟ ظهري يؤلمني.'}],
+        grammar:{title:'التعبير عن الألم',headers:['التعبير','المعنى'],rows:[['Mein Kopf tut weh.','رأسي يؤلمني.'],['Ich habe Kopfschmerzen.','عندي صداع.'],['Ich bin krank.','أنا مريض.']]},
+        quiz:[{q:'كيف تقول "عيني تؤلمني"؟',opts:['Mein Fuß tut weh.','Mein Auge tut weh.','Mein Kopf tut weh.','Meine Hand tut weh.'],ans:1}]
+      },
+      { id:'a1-17', title:'عند الطبيب', sub:'Beim Arzt', types:['audio','text'],
+        vocab:[{de:'Arztpraxis',ar:'عيادة طبيب',g:'die'},{de:'Termin',ar:'موعد',g:'der'},{de:'Rezept',ar:'وصفة طبية',g:'das'},{de:'Tablette',ar:'قرص (دواء)',g:'die'},{de:'Fieber',ar:'حمى',g:'das'},{de:'Husten',ar:'سعال',g:'der'},{de:'Schnupfen',ar:'رشح',g:'der'},{de:'Allergie',ar:'حساسية',g:'die'},{de:'Operation',ar:'عملية جراحية',g:'die'},{de:'Krankenhaus',ar:'مستشفى',g:'das'}],
+        transcript:[{de:'Ich möchte einen Termin beim Arzt.',ar:'أريد موعداً عند الطبيب.'},{de:'Was haben Sie? Ich habe Fieber und Husten.',ar:'ما الذي تشكو منه؟ عندي حمى وسعال.'},{de:'Der Arzt gibt mir ein Rezept.',ar:'الطبيب يعطيني وصفة طبية.'}],
+        grammar:{title:'أفعال التعبير عن المرض',headers:['الفعل','المثال'],rows:[['haben','Ich habe Fieber.'],['sein','Ich bin krank.'],['tun weh','Mein Kopf tut weh.']]},
+        quiz:[{q:'ما معنى "Fieber"؟',opts:['سعال','حمى','صداع','رشح'],ans:1}]
+      },
+      { id:'a1-18', title:'الطقس', sub:'Wetter', types:['text'],
+        vocab:[{de:'Sonne',ar:'شمس',g:'die'},{de:'Regen',ar:'مطر',g:'der'},{de:'Wind',ar:'ريح',g:'der'},{de:'Schnee',ar:'ثلج',g:'der'},{de:'Wolke',ar:'سحابة',g:'die'},{de:'warm',ar:'دافئ'},{de:'kalt',ar:'بارد'},{de:'heiß',ar:'حار'},{de:'windig',ar:'عاصف'},{de:'Temperatur',ar:'درجة الحرارة',g:'die'}],
+        transcript:[{de:'Wie ist das Wetter heute?',ar:'كيف حال الطقس اليوم؟'},{de:'Es ist sonnig und warm. 25 Grad.',ar:'الجو مشمس ودافئ. 25 درجة.'},{de:'Im Winter ist es kalt und regnerisch.',ar:'في الشتاء يكون الجو بارداً وماطراً.'}],
+        grammar:{title:'التعبير عن الطقس',headers:['الجملة','المعنى'],rows:[['Es ist sonnig.','الجو مشمس.'],['Es regnet.','يمطر.'],['Es schneit.','يثلج.'],['Es ist kalt.','الجو بارد.']]},
+        quiz:[{q:'كيف تقول "يمطر" بالألمانية؟',opts:['Es schneit.','Es regnet.','Es ist warm.','Es ist windig.'],ans:1}]
+      },
+      { id:'a1-19', title:'المواصلات', sub:'Verkehrsmittel', types:['audio','text'],
+        vocab:[{de:'Bus',ar:'حافلة',g:'der'},{de:'Zug',ar:'قطار',g:'der'},{de:'Auto',ar:'سيارة',g:'das'},{de:'Fahrrad',ar:'دراجة',g:'das'},{de:'U-Bahn',ar:'مترو',g:'die'},{de:'Straßenbahn',ar:'ترام',g:'die'},{de:'Flugzeug',ar:'طائرة',g:'das'},{de:'Schiff',ar:'سفينة',g:'das'},{de:'Taxi',ar:'تاكسي',g:'das'},{de:'zu Fuß',ar:'سيراً على الأقدام'}],
+        transcript:[{de:'Wie kommst du zur Arbeit?',ar:'كيف تذهب إلى العمل؟'},{de:'Ich fahre mit dem Bus und dann mit der U-Bahn.',ar:'أركب الحافلة ثم المترو.'},{de:'Manchmal gehe ich zu Fuß. Es ist nur 10 Minuten.',ar:'أحياناً أمشي. إنها 10 دقائق فقط.'}],
+        grammar:{title:'حرف الجر mit + Dativ',headers:['المواصلة','الجملة'],rows:[['Bus','mit dem Bus'],['Auto','mit dem Auto'],['Fahrrad','mit dem Fahrrad'],['Flugzeug','mit dem Flugzeug']]},
+        quiz:[{q:'كيف تقول "بالقطار"؟',opts:['mit dem Bus','mit dem Auto','mit dem Zug','mit dem Schiff'],ans:2}]
+      },
+      { id:'a1-20', title:'في المدينة — الأماكن', sub:'In der Stadt', types:['text'],
+        vocab:[{de:'Bahnhof',ar:'محطة القطار',g:'der'},{de:'Supermarkt',ar:'سوبرماركت',g:'der'},{de:'Apotheke',ar:'صيدلية',g:'die'},{de:'Bank',ar:'بنك',g:'die'},{de:'Bibliothek',ar:'مكتبة',g:'die'},{de:'Schule',ar:'مدرسة',g:'die'},{de:'Park',ar:'حديقة عامة',g:'der'},{de:'Kirche',ar:'كنيسة',g:'die'},{de:'Moschee',ar:'مسجد',g:'die'},{de:'Restaurant',ar:'مطعم',g:'das'}],
+        transcript:[{de:'Entschuldigung, wo ist der Bahnhof?',ar:'عفواً، أين محطة القطار؟'},{de:'Der Bahnhof ist geradeaus, dann links.',ar:'المحطة في الأمام ثم إلى اليسار.'},{de:'Gibt es hier eine Apotheke?',ar:'هل يوجد صيدلية هنا؟'}],
+        grammar:{title:'أسئلة المكان',headers:['السؤال','المعنى'],rows:[['Wo ist...?','أين...؟'],['Wie komme ich zu...?','كيف أصل إلى...؟'],['Gibt es hier...?','هل يوجد هنا...؟']]},
+        quiz:[{q:'كيف تقول "صيدلية"؟',opts:['Bank','Schule','Apotheke','Bibliothek'],ans:2}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 3: الطعام والشراب',
+    unit: 'U3',
+    lessons: [
+      { id:'a1-21', title:'الطعام الألماني', sub:'Deutsches Essen', types:['audio','text'],
+        vocab:[{de:'Brot',ar:'خبز',g:'das'},{de:'Fleisch',ar:'لحم',g:'das'},{de:'Käse',ar:'جبن',g:'der'},{de:'Wurst',ar:'نقانق',g:'die'},{de:'Salat',ar:'سلطة',g:'der'},{de:'Suppe',ar:'شوربة',g:'die'},{de:'Kuchen',ar:'كعك',g:'der'},{de:'Brötchen',ar:'خبزة صغيرة',g:'das'},{de:'Schnitzel',ar:'شنيتسل',g:'das'},{de:'Kartoffel',ar:'بطاطس',g:'die'}],
+        transcript:[{de:'Was isst du gern?',ar:'ماذا تأكل بشغف؟'},{de:'Ich esse gern Brot mit Käse und Wurst.',ar:'أحب أكل الخبز مع الجبن والنقانق.'},{de:'Das Schnitzel ist typisch deutsch.',ar:'الشنيتسل أكلة ألمانية تقليدية.'}],
+        grammar:{title:'الفعل essen (يأكل)',headers:['الضمير','essen'],rows:[['ich','esse'],['du','isst'],['er/sie','isst'],['wir','essen']]},
+        quiz:[{q:'كيف تقول "خبز"؟',opts:['Käse','Fleisch','Brot','Wurst'],ans:2}]
+      },
+      { id:'a1-22', title:'المشروبات', sub:'Getränke', types:['text'],
+        vocab:[{de:'Wasser',ar:'ماء',g:'das'},{de:'Kaffee',ar:'قهوة',g:'der'},{de:'Tee',ar:'شاي',g:'der'},{de:'Milch',ar:'حليب',g:'die'},{de:'Saft',ar:'عصير',g:'der'},{de:'Cola',ar:'كولا',g:'die'},{de:'Bier',ar:'بيرة',g:'das'},{de:'Wein',ar:'نبيذ',g:'der'},{de:'Limonade',ar:'عصير الليمون',g:'die'},{de:'Mineralwasser',ar:'ماء معدني',g:'das'}],
+        transcript:[{de:'Was möchten Sie trinken?',ar:'ماذا تريد أن تشرب؟'},{de:'Ich möchte einen Kaffee und ein Mineralwasser.',ar:'أريد قهوة وماء معدني.'},{de:'Ohne Zucker, bitte.',ar:'بدون سكر من فضلك.'}],
+        grammar:{title:'الفعل trinken (يشرب)',headers:['الضمير','trinken'],rows:[['ich','trinke'],['du','trinkst'],['er/sie','trinkt'],['wir','trinken']]},
+        quiz:[{q:'كيف تقول "شاي"؟',opts:['Kaffee','Wasser','Tee','Milch'],ans:2}]
+      },
+      { id:'a1-23', title:'في المطعم', sub:'Im Restaurant', types:['audio','text'],
+        vocab:[{de:'Speisekarte',ar:'قائمة الطعام',g:'die'},{de:'bestellen',ar:'يطلب'},{de:'Kellner',ar:'نادل',g:'der'},{de:'Rechnung',ar:'فاتورة',g:'die'},{de:'zahlen',ar:'يدفع'},{de:'Trinkgeld',ar:'إكرامية',g:'das'},{de:'Reservierung',ar:'حجز',g:'die'},{de:'Platz',ar:'مقعد',g:'der'},{de:'Tisch für zwei',ar:'طاولة لاثنين'},{de:'Das stimmt so.',ar:'احتفظ بالباقي.'}],
+        transcript:[{de:'Einen Tisch für zwei Personen, bitte.',ar:'طاولة لشخصين من فضلك.'},{de:'Was darf es sein? Ich möchte die Speisekarte.',ar:'بماذا يمكنني خدمتك؟ أريد قائمة الطعام.'},{de:'Die Rechnung, bitte. Das stimmt so.',ar:'الفاتورة من فضلك. احتفظ بالباقي.'}],
+        grammar:{title:'طلب الطعام بشكل مؤدب',headers:['الجملة','المعنى'],rows:[['Ich möchte...','أريد...'],['"Hätte ich gern..."','أودّ أن...'],['"Bringen Sie mir bitte...','أحضر لي من فضلك...']]},
+        quiz:[{q:'كيف تقول "فاتورة"؟',opts:['Speisekarte','Trinkgeld','Tisch','Rechnung'],ans:3}]
+      },
+      { id:'a1-24', title:'التسوق للطعام', sub:'Lebensmittel einkaufen', types:['text'],
+        vocab:[{de:'Supermarkt',ar:'سوبرماركت',g:'der'},{de:'Obst',ar:'فاكهة',g:'das'},{de:'Gemüse',ar:'خضروات',g:'das'},{de:'Ei',ar:'بيضة',g:'das'},{de:'Zucker',ar:'سكر',g:'der'},{de:'Salz',ar:'ملح',g:'das'},{de:'Öl',ar:'زيت',g:'das'},{de:'Mehl',ar:'طحين',g:'das'},{de:'Reis',ar:'أرز',g:'der'},{de:'Nudeln',ar:'معكرونة'}],
+        transcript:[{de:'Ich gehe in den Supermarkt.',ar:'أذهب إلى السوبرماركت.'},{de:'Ich brauche Obst, Gemüse und Eier.',ar:'أحتاج فاكهة وخضروات وبيض.'},{de:'Wie viel kostet das? Das macht drei Euro fünfzig.',ar:'كم يكلف هذا؟ ثلاثة يورو وخمسون سنتاً.'}],
+        grammar:{title:'السؤال عن الكمية والسعر',headers:['السؤال','المعنى'],rows:[['Wie viel kostet...?','كم يكلف...؟'],['Was macht das?','كم يكلف الكل؟'],['Haben Sie...?','هل عندكم...؟']]},
+        quiz:[{q:'كيف تقول "خضروات"؟',opts:['Obst','Mehl','Gemüse','Reis'],ans:2}]
+      },
+      { id:'a1-25', title:'الفواكه والخضروات', sub:'Obst und Gemüse', types:['text','quiz'],
+        vocab:[{de:'Apfel',ar:'تفاحة',g:'der'},{de:'Banane',ar:'موزة',g:'die'},{de:'Orange',ar:'برتقالة',g:'die'},{de:'Erdbeere',ar:'فراولة',g:'die'},{de:'Tomate',ar:'طماطم',g:'die'},{de:'Gurke',ar:'خيارة',g:'die'},{de:'Karotte',ar:'جزرة',g:'die'},{de:'Zwiebel',ar:'بصلة',g:'die'},{de:'Knoblauch',ar:'ثوم',g:'der'},{de:'Paprika',ar:'فلفل',g:'der'}],
+        transcript:[{de:'Ich mag Äpfel und Bananen.',ar:'أحب التفاح والموز.'},{de:'Die Tomaten sind frisch und günstig.',ar:'الطماطم طازجة ورخيصة.'},{de:'Ein Kilo Karotten, bitte.',ar:'كيلو جزر من فضلك.'}],
+        grammar:{title:'كميات الطعام',headers:['الكمية','المثال'],rows:[['ein Kilo','ein Kilo Tomaten'],['ein Liter','ein Liter Milch'],['eine Flasche','eine Flasche Wasser'],['ein Stück','ein Stück Kuchen']]},
+        quiz:[{q:'كيف تقول "تفاحة"؟',opts:['Banane','Apfel','Orange','Erdbeere'],ans:1}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 4: القواعد الأساسية',
+    unit: 'U4',
+    lessons: [
+      { id:'a1-26', title:'الأفعال الشائعة', sub:'Häufige Verben', types:['text'],
+        vocab:[{de:'gehen',ar:'يذهب'},{de:'kommen',ar:'يأتي'},{de:'machen',ar:'يفعل/يصنع'},{de:'haben',ar:'يملك/لديه'},{de:'sein',ar:'يكون'},{de:'arbeiten',ar:'يعمل'},{de:'lernen',ar:'يتعلم'},{de:'sprechen',ar:'يتكلم'},{de:'schreiben',ar:'يكتب'},{de:'lesen',ar:'يقرأ'}],
+        transcript:[{de:'Ich gehe in die Schule.',ar:'أذهب إلى المدرسة.'},{de:'Er kommt aus Marokko.',ar:'هو من المغرب.'},{de:'Wir lernen Deutsch.',ar:'نحن نتعلم الألمانية.'}],
+        grammar:{title:'تصريف الأفعال - المضارع',headers:['الضمير','gehen','machen'],rows:[['ich','gehe','mache'],['du','gehst','machst'],['er/sie','geht','macht'],['wir','gehen','machen'],['ihr','geht','macht'],['sie','gehen','machen']]},
+        quiz:[{q:'كيف يُصرّف "gehen" مع "ich"؟',opts:['gehst','geht','gehe','gehen'],ans:2}]
+      },
+      { id:'a1-27', title:'نفي الجملة', sub:'Verneinung', types:['text'],
+        vocab:[{de:'nicht',ar:'لا/ليس'},{de:'kein/keine',ar:'لا يوجد'},{de:'nie',ar:'أبداً'},{de:'niemand',ar:'لا أحد'},{de:'nichts',ar:'لا شيء'},{de:'nein',ar:'لا'},{de:'leider',ar:'للأسف'},{de:'aber',ar:'لكن'},{de:'doch',ar:'بلى (رد على نفي)'},{de:'falsch',ar:'خاطئ'}],
+        transcript:[{de:'Ich gehe nicht in die Schule.',ar:'لا أذهب إلى المدرسة.'},{de:'Ich habe kein Auto.',ar:'ليس عندي سيارة.'},{de:'Er ist nicht krank.',ar:'هو ليس مريضاً.'}],
+        grammar:{title:'nicht vs kein',headers:['النوع','الاستخدام','المثال'],rows:[['nicht','مع الأفعال والصفات','Ich gehe nicht.'],['kein','مع الأسماء بدون أداة','Ich habe kein Geld.'],['keine','مع المؤنث والجمع','Ich habe keine Zeit.']]},
+        quiz:[{q:'كيف تنفي "Ich habe ein Auto"؟',opts:['Ich habe nicht Auto.','Ich habe kein Auto.','Ich habe keine Auto.','Ich nicht habe Auto.'],ans:1}]
+      },
+      { id:'a1-28', title:'الأسئلة الأساسية', sub:'Fragewörter', types:['text'],
+        vocab:[{de:'wer',ar:'من'},{de:'was',ar:'ماذا'},{de:'wo',ar:'أين'},{de:'wann',ar:'متى'},{de:'warum',ar:'لماذا'},{de:'wie',ar:'كيف'},{de:'woher',ar:'من أين'},{de:'wohin',ar:'إلى أين'},{de:'wie viel',ar:'كم (عدد/كمية)'},{de:'wie lange',ar:'كم من الوقت'}],
+        transcript:[{de:'Wer bist du? Ich bin Ahmed.',ar:'من أنت؟ أنا أحمد.'},{de:'Was machst du? Ich lerne Deutsch.',ar:'ماذا تفعل؟ أتعلم الألمانية.'},{de:'Warum lernst du Deutsch? Für die Arbeit.',ar:'لماذا تتعلم الألمانية؟ للعمل.'}],
+        grammar:{title:'أدوات الاستفهام',headers:['الأداة','المعنى','مثال'],rows:[['Wer','من','Wer bist du?'],['Was','ماذا','Was machst du?'],['Wo','أين','Wo wohnst du?'],['Wann','متى','Wann kommst du?'],['Warum','لماذا','Warum lernst du?']]},
+        quiz:[{q:'ما معنى "wohin"؟',opts:['من أين','إلى أين','أين','متى'],ans:1}]
+      },
+      { id:'a1-29', title:'حروف الجر الأساسية', sub:'Präpositionen', types:['text'],
+        vocab:[{de:'in',ar:'في'},{de:'auf',ar:'على'},{de:'unter',ar:'تحت'},{de:'über',ar:'فوق'},{de:'neben',ar:'بجانب'},{de:'zwischen',ar:'بين'},{de:'vor',ar:'أمام'},{de:'hinter',ar:'خلف'},{de:'bei',ar:'عند/لدى'},{de:'mit',ar:'مع'}],
+        transcript:[{de:'Das Buch liegt auf dem Tisch.',ar:'الكتاب على الطاولة.'},{de:'Die Katze ist unter dem Stuhl.',ar:'القطة تحت الكرسي.'},{de:'Ich wohne neben dem Supermarkt.',ar:'أسكن بجانب السوبرماركت.'}],
+        grammar:{title:'حروف الجر مع المكان',headers:['الحرف','الموضع','المثال'],rows:[['auf','على السطح','auf dem Tisch'],['in','داخل','in der Schule'],['vor','أمام','vor dem Haus'],['hinter','خلف','hinter dem Auto']]},
+        quiz:[{q:'ما معنى "zwischen"؟',opts:['أمام','خلف','بين','فوق'],ans:2}]
+      },
+      { id:'a1-30', title:'الضمائر الشخصية', sub:'Personalpronomen', types:['text','quiz'],
+        vocab:[{de:'ich',ar:'أنا'},{de:'du',ar:'أنت'},{de:'er',ar:'هو'},{de:'sie',ar:'هي/هم'},{de:'es',ar:'هو/هي (محايد)'},{de:'wir',ar:'نحن'},{de:'ihr',ar:'أنتم'},{de:'Sie',ar:'حضرتك (رسمي)'},{de:'man',ar:'الناس/الشخص'},{de:'uns',ar:'لنا'}],
+        transcript:[{de:'Ich lerne, du lernst, er lernt.',ar:'أنا أتعلم، أنت تتعلم، هو يتعلم.'},{de:'Wir lernen zusammen.',ar:'نحن نتعلم معاً.'},{de:'Sie lernen Arabisch.',ar:'هم يتعلمون العربية.'}],
+        grammar:{title:'الضمائر وتصريف الفعل',headers:['الضمير','lernen','kommen'],rows:[['ich','lerne','komme'],['du','lernst','kommst'],['er/sie/es','lernt','kommt'],['wir','lernen','kommen'],['ihr','lernt','kommt'],['sie/Sie','lernen','kommen']]},
+        quiz:[{q:'ما الضمير المستخدم للمخاطبة الرسمية؟',opts:['du','ihr','er','Sie'],ans:3}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 5: السفر والتنقل',
+    unit: 'U5',
+    lessons: [
+      { id:'a1-31', title:'في المطار', sub:'Am Flughafen', types:['audio','text'],
+        vocab:[{de:'Flughafen',ar:'مطار',g:'der'},{de:'Flug',ar:'رحلة جوية',g:'der'},{de:'Gate',ar:'بوابة',g:'das'},{de:'Boarding',ar:'الصعود للطائرة'},{de:'Pass',ar:'جواز سفر',g:'der'},{de:'Gepäck',ar:'أمتعة',g:'das'},{de:'Abflug',ar:'المغادرة',g:'der'},{de:'Ankunft',ar:'الوصول',g:'die'},{de:'Ticket',ar:'تذكرة',g:'das'},{de:'einchecken',ar:'تسجيل الدخول'}],
+        transcript:[{de:'Wo ist der Gate B12?',ar:'أين البوابة B12؟'},{de:'Ihr Flug nach Frankfurt ist in einer Stunde.',ar:'رحلتك إلى فرانكفورت بعد ساعة.'},{de:'Bitte zeigen Sie Ihren Pass.',ar:'من فضلك أرِ جواز سفرك.'}],
+        grammar:{title:'المستقبل القريب',headers:['الجملة','المعنى'],rows:[['Der Flug geht um 10 Uhr.','الرحلة تغادر الساعة 10.'],['Wir fliegen nach München.','نطير إلى ميونيخ.'],['Der Flug dauert 3 Stunden.','الرحلة تستغرق 3 ساعات.']]},
+        quiz:[{q:'كيف تقول "جواز سفر"؟',opts:['Ticket','Gepäck','Pass','Flug'],ans:2}]
+      },
+      { id:'a1-32', title:'في محطة القطار', sub:'Am Bahnhof', types:['text'],
+        vocab:[{de:'Bahnhof',ar:'محطة القطار',g:'der'},{de:'Gleis',ar:'رصيف/مسار',g:'das'},{de:'Fahrkarte',ar:'تذكرة القطار',g:'die'},{de:'Abfahrt',ar:'مغادرة',g:'die'},{de:'Ankunft',ar:'وصول',g:'die'},{de:'Umsteigen',ar:'تغيير القطار'},{de:'verspätet',ar:'متأخر'},{de:'pünktlich',ar:'في الوقت المحدد'},{de:'Zug',ar:'قطار',g:'der'},{de:'Bahnsteig',ar:'رصيف المحطة',g:'der'}],
+        transcript:[{de:'Eine Fahrkarte nach München, bitte.',ar:'تذكرة إلى ميونيخ من فضلك.'},{de:'Einfach oder hin und zurück?',ar:'ذهاب فقط أم ذهاب وعودة؟'},{de:'Der Zug fährt von Gleis 5 ab.',ar:'القطار يغادر من المسار 5.'}],
+        grammar:{title:'ذهاب/ذهاب وعودة',headers:['النوع','الألمانية'],rows:[['ذهاب فقط','einfach'],['ذهاب وعودة','hin und zurück'],['الدرجة الأولى','erste Klasse'],['الدرجة الثانية','zweite Klasse']]},
+        quiz:[{q:'كيف تقول "تذكرة ذهاباً وإياباً"؟',opts:['einfach','hin und zurück','erste Klasse','Bahnhof'],ans:1}]
+      },
+      { id:'a1-33', title:'الاتجاهات في المدينة', sub:'Wegbeschreibung', types:['audio','text'],
+        vocab:[{de:'geradeaus',ar:'إلى الأمام'},{de:'links',ar:'يساراً'},{de:'rechts',ar:'يميناً'},{de:'abbiegen',ar:'يستدير'},{de:'Kreuzung',ar:'تقاطع',g:'die'},{de:'Ampel',ar:'إشارة مرور',g:'die'},{de:'Brücke',ar:'جسر',g:'die'},{de:'Ecke',ar:'زاوية',g:'die'},{de:'Entschuldigung',ar:'عذراً'},{de:'weit',ar:'بعيد'}],
+        transcript:[{de:'Entschuldigung, wie komme ich zum Bahnhof?',ar:'عذراً، كيف أصل إلى محطة القطار؟'},{de:'Gehen Sie geradeaus, dann links.',ar:'اذهب إلى الأمام ثم يساراً.'},{de:'An der Ampel rechts abbiegen.',ar:'عند إشارة المرور استدر يميناً.'}],
+        grammar:{title:'أوامر الاتجاهات',headers:['الأمر','المعنى'],rows:[['Gehen Sie geradeaus.','اذهب إلى الأمام.'],['Biegen Sie links ab.','استدر يساراً.'],['Nehmen Sie die erste Straße rechts.','خذ أول شارع على اليمين.']]},
+        quiz:[{q:'كيف تقول "إلى الأمام"؟',opts:['links','rechts','geradeaus','zurück'],ans:2}]
+      },
+      { id:'a1-34', title:'التسوق والملابس', sub:'Kleidung', types:['text'],
+        vocab:[{de:'Hemd',ar:'قميص',g:'das'},{de:'Hose',ar:'بنطلون',g:'die'},{de:'Kleid',ar:'فستان',g:'das'},{de:'Jacke',ar:'جاكيت',g:'die'},{de:'Schuhe',ar:'أحذية'},{de:'Größe',ar:'المقاس',g:'die'},{de:'anprobieren',ar:'يجرب (الملابس)'},{de:'Umkleidekabine',ar:'غرفة القياس',g:'die'},{de:'Kasse',ar:'صندوق الدفع',g:'die'},{de:'Rabatt',ar:'خصم',g:'der'}],
+        transcript:[{de:'Ich suche ein Hemd in Größe M.',ar:'أبحث عن قميص مقاس M.'},{de:'Kann ich das anprobieren?',ar:'هل يمكنني تجربته؟'},{de:'Wie viel kostet das? Es kostet 29 Euro.',ar:'كم يكلف هذا؟ يكلف 29 يورو.'}],
+        grammar:{title:'السؤال عن الملابس',headers:['الجملة','المعنى'],rows:[['Ich suche...','أبحث عن...'],['"Haben Sie das in...?"','هل عندكم هذا بـ...؟'],['Kann ich... anprobieren?','هل يمكنني تجربة...؟']]},
+        quiz:[{q:'كيف تقول "بنطلون"؟',opts:['Hemd','Jacke','Kleid','Hose'],ans:3}]
+      },
+      { id:'a1-35', title:'الفندق والإقامة', sub:'Hotel', types:['audio','text'],
+        vocab:[{de:'Hotel',ar:'فندق',g:'das'},{de:'Zimmer',ar:'غرفة',g:'das'},{de:'Einzelzimmer',ar:'غرفة مفردة',g:'das'},{de:'Doppelzimmer',ar:'غرفة مزدوجة',g:'das'},{de:'Reservierung',ar:'حجز',g:'die'},{de:'Frühstück',ar:'الإفطار',g:'das'},{de:'einchecken',ar:'تسجيل الدخول'},{de:'auschecken',ar:'تسجيل الخروج'},{de:'Schlüssel',ar:'مفتاح',g:'der'},{de:'Etage',ar:'طابق',g:'die'}],
+        transcript:[{de:'Ich habe eine Reservierung. Name: Ahmed.',ar:'لدي حجز. الاسم: أحمد.'},{de:'Ein Einzelzimmer für drei Nächte, bitte.',ar:'غرفة مفردة لثلاث ليالٍ من فضلك.'},{de:'Ist das Frühstück inbegriffen?',ar:'هل الإفطار مشمول؟'}],
+        grammar:{title:'حجز الفندق',headers:['الجملة','المعنى'],rows:[['Ich möchte ein Zimmer reservieren.','أريد حجز غرفة.'],['Für wie viele Nächte?','لكم ليلة؟'],['Wann ist der Check-out?','متى يكون الخروج؟']]},
+        quiz:[{q:'كيف تقول "غرفة مزدوجة"؟',opts:['Einzelzimmer','Doppelzimmer','Suite','Zimmer'],ans:1}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 6: الحياة اليومية',
+    unit: 'U6',
+    lessons: [
+      { id:'a1-36', title:'الروتين اليومي', sub:'Tagesablauf', types:['audio','text'],
+        vocab:[{de:'aufstehen',ar:'يستيقظ'},{de:'frühstücken',ar:'يتناول الإفطار'},{de:'duschen',ar:'يستحم'},{de:'sich anziehen',ar:'يرتدي الملابس'},{de:'zur Arbeit gehen',ar:'يذهب للعمل'},{de:'Mittagessen',ar:'الغداء',g:'das'},{de:'nach Hause kommen',ar:'يعود للبيت'},{de:'Abendessen',ar:'العشاء',g:'das'},{de:'schlafen gehen',ar:'يذهب للنوم'},{de:'ausruhen',ar:'يستريح'}],
+        transcript:[{de:'Ich stehe um 7 Uhr auf.',ar:'أستيقظ الساعة السابعة.'},{de:'Dann dusche ich und frühstücke.',ar:'ثم أستحم وآكل الإفطار.'},{de:'Um 18 Uhr komme ich nach Hause.',ar:'الساعة السادسة مساءً أعود إلى البيت.'}],
+        grammar:{title:'تسلسل الأفعال اليومية',headers:['الفعل','معناه','مثال'],rows:[['aufstehen','يستيقظ','Ich stehe um 7 auf.'],['frühstücken','يتناول الإفطار','Ich frühstücke um 8.'],['arbeiten','يعمل','Ich arbeite von 9 bis 17 Uhr.']]},
+        quiz:[{q:'كيف تقول "أستيقظ"؟',opts:['schlafen','aufstehen','duschen','frühstücken'],ans:1}]
+      },
+      { id:'a1-37', title:'البريد الإلكتروني البسيط', sub:'Einfache E-Mail', types:['text'],
+        vocab:[{de:'E-Mail',ar:'بريد إلكتروني'},{de:'Betreff',ar:'الموضوع',g:'der'},{de:'Anhang',ar:'المرفق',g:'der'},{de:'Absender',ar:'المرسل',g:'der'},{de:'Empfänger',ar:'المستقبل',g:'der'},{de:'Sehr geehrte/r',ar:'عزيزي/عزيزتي (رسمي)'},{de:'Mit freundlichen Grüßen',ar:'مع أطيب التحيات'},{de:'Liebe/r',ar:'عزيزي/عزيزتي (غير رسمي)'},{de:'Viele Grüße',ar:'تحيات كثيرة'},{de:'antworten',ar:'يرد'}],
+        transcript:[{de:'Sehr geehrte Damen und Herren,',ar:'السادة الكرام,'},{de:'Ich schreibe bezüglich des Termins.',ar:'أكتب بخصوص الموعد.'},{de:'Mit freundlichen Grüßen, Ahmed.',ar:'مع أطيب التحيات، أحمد.'}],
+        grammar:{title:'بداية ونهاية الرسالة',headers:['النوع','البداية','النهاية'],rows:[['رسمي','Sehr geehrte/r...','Mit freundlichen Grüßen'],['غير رسمي','Liebe/r...','Viele Grüße / Tschüss']]},
+        quiz:[{q:'كيف تبدأ رسالة رسمية؟',opts:['Hallo!','Lieber...','Sehr geehrte...','Hey,'],ans:2}]
+      },
+      { id:'a1-38', title:'البنك والمال', sub:'Bank und Geld', types:['text'],
+        vocab:[{de:'Euro',ar:'يورو',g:'der'},{de:'Cent',ar:'سنت',g:'der'},{de:'Konto',ar:'حساب بنكي',g:'das'},{de:'Überweisung',ar:'تحويل',g:'die'},{de:'Bargeld',ar:'نقود',g:'das'},{de:'Kreditkarte',ar:'بطاقة ائتمان',g:'die'},{de:'Geldautomat',ar:'ماكينة صراف آلي',g:'der'},{de:'abheben',ar:'يسحب نقوداً'},{de:'einzahlen',ar:'يودع نقوداً'},{de:'Wechselkurs',ar:'سعر الصرف',g:'der'}],
+        transcript:[{de:'Ich möchte Geld abheben.',ar:'أريد سحب نقود.'},{de:'Wie viel möchten Sie? Zweihundert Euro.',ar:'كم تريد؟ مئتا يورو.'},{de:'Haben Sie eine Kreditkarte?',ar:'هل عندك بطاقة ائتمان؟'}],
+        grammar:{title:'التعبير عن المبالغ المالية',headers:['المبلغ','الكتابة'],rows:[['1,50 €','ein Euro fünfzig'],['25 €','fünfundzwanzig Euro'],['100 €','hundert Euro'],['1000 €','tausend Euro']]},
+        quiz:[{q:'كيف تقول "ماكينة صراف آلي"؟',opts:['Konto','Kreditkarte','Geldautomat','Bargeld'],ans:2}]
+      },
+      { id:'a1-39', title:'البريد والطرود', sub:'Post und Pakete', types:['text'],
+        vocab:[{de:'Brief',ar:'رسالة',g:'der'},{de:'Paket',ar:'طرد',g:'das'},{de:'Briefmarke',ar:'طابع بريدي',g:'die'},{de:'Briefkasten',ar:'صندوق البريد',g:'der'},{de:'Postamt',ar:'مكتب البريد',g:'das'},{de:'verschicken',ar:'يرسل'},{de:'ankommen',ar:'يصل'},{de:'Absender',ar:'المرسل',g:'der'},{de:'Adresse',ar:'العنوان',g:'die'},{de:'Postleitzahl',ar:'الرمز البريدي',g:'die'}],
+        transcript:[{de:'Ich möchte dieses Paket nach Marokko schicken.',ar:'أريد إرسال هذا الطرد إلى المغرب.'},{de:'Wie lange dauert die Lieferung? Etwa eine Woche.',ar:'كم تستغرق التوصيل؟ حوالي أسبوع.'},{de:'Was ist der Preis? Das kostet acht Euro.',ar:'ما السعر؟ يكلف ثمانية يورو.'}],
+        grammar:{title:'الكتابة على الغلاف',headers:['العنصر','المثال'],rows:[['الاسم','Ahmed Belkaida'],['الشارع','Hauptstraße 12'],['المدينة','80333 München'],['البلد','Deutschland']]},
+        quiz:[{q:'كيف تقول "طابع بريدي"؟',opts:['Brief','Briefmarke','Paket','Briefkasten'],ans:1}]
+      },
+      { id:'a1-40', title:'الهاتف والتواصل', sub:'Telefonieren', types:['audio','text'],
+        vocab:[{de:'Handy',ar:'هاتف محمول',g:'das'},{de:'anrufen',ar:'يتصل'},{de:'auflegen',ar:'يقطع الاتصال'},{de:'Nachricht',ar:'رسالة',g:'die'},{de:'Voicemail',ar:'البريد الصوتي',g:'die'},{de:'Nummer',ar:'رقم',g:'die'},{de:'besetzt',ar:'مشغول'},{de:'Hallo, hier ist...',ar:'مرحباً، هذا هو...'},{de:'Einen Moment bitte.',ar:'لحظة من فضلك.'},{de:'Auf Wiederhören',ar:'إلى اللقاء (في الهاتف)'}],
+        transcript:[{de:'Hallo, hier ist Ahmed. Ich rufe wegen des Termins an.',ar:'مرحباً، هذا أحمد. أتصل بشأن الموعد.'},{de:'Einen Moment bitte, ich verbinde Sie.',ar:'لحظة من فضلك، سأوصلك.'},{de:'Auf Wiederhören!',ar:'إلى اللقاء!'}],
+        grammar:{title:'عبارات الهاتف',headers:['العبارة','المعنى'],rows:[['Hallo, hier ist...','مرحباً، هذا هو...'],['Kann ich mit... sprechen?','هل يمكنني التكلم مع...؟'],['Ich rufe später zurück.','سأتصل لاحقاً.']]},
+        quiz:[{q:'كيف تقول وداعاً في الهاتف؟',opts:['Tschüss','Auf Wiedersehen','Auf Wiederhören','Gute Nacht'],ans:2}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 7: التعليم والعمل',
+    unit: 'U7',
+    lessons: [
+      { id:'a1-41', title:'في المدرسة', sub:'In der Schule', types:['text'],
+        vocab:[{de:'Schule',ar:'مدرسة',g:'die'},{de:'Klasse',ar:'فصل دراسي',g:'die'},{de:'Lehrer',ar:'معلم',g:'der'},{de:'Schüler',ar:'تلميذ',g:'der'},{de:'Hausaufgabe',ar:'واجب منزلي',g:'die'},{de:'Zeugnis',ar:'شهادة/تقرير',g:'das'},{de:'Note',ar:'علامة/درجة',g:'die'},{de:'Prüfung',ar:'امتحان',g:'die'},{de:'Schulranzen',ar:'حقيبة مدرسية',g:'der'},{de:'Tafel',ar:'سبورة',g:'die'}],
+        transcript:[{de:'Ich gehe jeden Tag in die Schule.',ar:'أذهب إلى المدرسة كل يوم.'},{de:'Der Lehrer erklärt die Grammatik.',ar:'المعلم يشرح القواعد النحوية.'},{de:'Ich habe heute eine Prüfung.',ar:'لدي امتحان اليوم.'}],
+        grammar:{title:'المواد الدراسية',headers:['المادة','Fach'],rows:[['الرياضيات','Mathematik'],['العلوم','Wissenschaft'],['التاريخ','Geschichte'],['الجغرافيا','Geografie'],['الفنون','Kunst']]},
+        quiz:[{q:'كيف تقول "امتحان"؟',opts:['Note','Klasse','Prüfung','Schule'],ans:2}]
+      },
+      { id:'a1-42', title:'الجامعة والدراسة', sub:'Universität', types:['text'],
+        vocab:[{de:'Universität',ar:'جامعة',g:'die'},{de:'Student',ar:'طالب',g:'der'},{de:'Studium',ar:'الدراسة الجامعية',g:'das'},{de:'Vorlesung',ar:'محاضرة',g:'die'},{de:'Seminar',ar:'ندوة',g:'das'},{de:'Bibliothek',ar:'مكتبة',g:'die'},{de:'Abschluss',ar:'شهادة',g:'der'},{de:'Bachelor',ar:'بكالوريوس'},{de:'Master',ar:'ماجستير'},{de:'immatrikulieren',ar:'يلتحق (بجامعة)'}],
+        transcript:[{de:'Ich studiere Informatik an der TU München.',ar:'أدرس المعلوماتية في جامعة ميونيخ التقنية.'},{de:'Die Vorlesung beginnt um 9 Uhr.',ar:'المحاضرة تبدأ الساعة التاسعة.'},{de:'Im Juni habe ich meine Abschlussprüfung.',ar:'في يونيو لدي امتحان التخرج.'}],
+        grammar:{title:'الدراسة في الجامعة',headers:['الجملة','المعنى'],rows:[['Ich studiere...','أدرس...'],['"an der Universität"','في الجامعة'],['im ersten Semester','في الفصل الأول']]},
+        quiz:[{q:'كيف تقول "محاضرة"؟',opts:['Seminar','Klasse','Vorlesung','Bibliothek'],ans:2}]
+      },
+      { id:'a1-43', title:'البحث عن عمل', sub:'Jobsuche', types:['text'],
+        vocab:[{de:'Stellenanzeige',ar:'إعلان وظيفة',g:'die'},{de:'Bewerbung',ar:'طلب تقدم للعمل',g:'die'},{de:'Lebenslauf',ar:'السيرة الذاتية',g:'der'},{de:'Vorstellungsgespräch',ar:'مقابلة عمل',g:'das'},{de:'Gehalt',ar:'راتب',g:'das'},{de:'Vertrag',ar:'عقد',g:'der'},{de:'Vollzeit',ar:'دوام كامل'},{de:'Teilzeit',ar:'دوام جزئي'},{de:'Erfahrung',ar:'خبرة',g:'die'},{de:'Qualifikation',ar:'مؤهل',g:'die'}],
+        transcript:[{de:'Ich suche eine Stelle als Elektriker.',ar:'أبحث عن وظيفة كهربائي.'},{de:'Bitte schicken Sie Ihre Bewerbung per E-Mail.',ar:'يرجى إرسال طلبك عبر البريد الإلكتروني.'},{de:'Wie hoch ist das Gehalt? 2500 Euro im Monat.',ar:'ما قدر الراتب؟ 2500 يورو في الشهر.'}],
+        grammar:{title:'طلب العمل',headers:['الجملة','المعنى'],rows:[['Ich bewerbe mich für...','أتقدم لـ...'],['Ich habe Erfahrung in...','لدي خبرة في...'],['Wann kann ich anfangen?','متى يمكنني البدء؟']]},
+        quiz:[{q:'كيف تقول "مقابلة عمل"؟',opts:['Gehalt','Lebenslauf','Vorstellungsgespräch','Vertrag'],ans:2}]
+      },
+      { id:'a1-44', title:'في مكان العمل', sub:'Am Arbeitsplatz', types:['audio','text'],
+        vocab:[{de:'Büro',ar:'مكتب',g:'das'},{de:'Kollege',ar:'زميل',g:'der'},{de:'Chef',ar:'مدير',g:'der'},{de:'Besprechung',ar:'اجتماع',g:'die'},{de:'Computer',ar:'حاسوب',g:'der'},{de:'Drucker',ar:'طابعة',g:'der'},{de:'E-Mail schreiben',ar:'يكتب بريد إلكتروني'},{de:'telefonieren',ar:'يتصل هاتفياً'},{de:'Pause',ar:'استراحة',g:'die'},{de:'Überstunden',ar:'ساعات إضافية'}],
+        transcript:[{de:'Guten Morgen! Haben Sie die E-Mail gelesen?',ar:'صباح الخير! هل قرأت البريد الإلكتروني؟'},{de:'Wir haben um 10 Uhr eine Besprechung.',ar:'لدينا اجتماع الساعة العاشرة.'},{de:'Ich mache jetzt Pause.',ar:'سأأخذ استراحة الآن.'}],
+        grammar:{title:'المكتب والعمل',headers:['الجملة','المعنى'],rows:[['Ich arbeite von 8 bis 17 Uhr.','أعمل من 8 إلى 17.'],['Wir haben eine Besprechung.','لدينا اجتماع.'],['Ich mache Überstunden.','أعمل ساعات إضافية.']]},
+        quiz:[{q:'كيف تقول "مدير"؟',opts:['Kollege','Chef','Büro','Drucker'],ans:1}]
+      },
+      { id:'a1-45', title:'حل المشكلات في العمل', sub:'Probleme lösen', types:['text'],
+        vocab:[{de:'Problem',ar:'مشكلة',g:'das'},{de:'Lösung',ar:'حل',g:'die'},{de:'helfen',ar:'يساعد'},{de:'fragen',ar:'يسأل'},{de:'erklären',ar:'يشرح'},{de:'verstehen',ar:'يفهم'},{de:'Missverständnis',ar:'سوء فهم',g:'das'},{de:'entschuldigen',ar:'يعتذر'},{de:'wiederholen',ar:'يكرر'},{de:'langsam',ar:'ببطء'}],
+        transcript:[{de:'Ich habe ein Problem. Können Sie mir helfen?',ar:'لدي مشكلة. هل يمكنك مساعدتي؟'},{de:'Können Sie das bitte wiederholen?',ar:'هل يمكنك تكرار ذلك من فضلك؟'},{de:'Ich verstehe nicht. Sprechen Sie bitte langsamer.',ar:'لا أفهم. تكلم ببطء أكثر من فضلك.'}],
+        grammar:{title:'طلب المساعدة',headers:['الجملة','المعنى'],rows:[['Können Sie mir helfen?','هل يمكنك مساعدتي؟'],['Ich verstehe nicht.','لا أفهم.'],['Können Sie das wiederholen?','هل يمكنك التكرار؟']]},
+        quiz:[{q:'كيف تطلب التكرار بالألمانية؟',opts:['Sprechen Sie schneller.','Können Sie das wiederholen?','Ich verstehe alles.','Danke schön.'],ans:1}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 8: الترفيه والوقت الحر',
+    unit: 'U8',
+    lessons: [
+      { id:'a1-46', title:'السينما والأفلام', sub:'Kino und Filme', types:['text'],
+        vocab:[{de:'Kino',ar:'سينما',g:'das'},{de:'Film',ar:'فيلم',g:'der'},{de:'Komödie',ar:'كوميديا',g:'die'},{de:'Action',ar:'أكشن'},{de:'Dokumentarfilm',ar:'فيلم وثائقي',g:'der'},{de:'Untertitel',ar:'ترجمة مكتوبة',g:'der'},{de:'Originalversion',ar:'النسخة الأصلية',g:'die'},{de:'Popcorn',ar:'فشار',g:'das'},{de:'Eintrittskarte',ar:'تذكرة دخول',g:'die'},{de:'Vorstellung',ar:'عرض',g:'die'}],
+        transcript:[{de:'Was läuft heute im Kino?',ar:'ماذا يُعرض اليوم في السينما؟'},{de:'Ich möchte zwei Karten für den Film um 20 Uhr.',ar:'أريد تذكرتين للفيلم الساعة الثامنة مساءً.'},{de:'Ich mag Komödien und Dokumentarfilme.',ar:'أحب الكوميديا والأفلام الوثائقية.'}],
+        grammar:{title:'التعبير عن الرأي في الأفلام',headers:['الجملة','المعنى'],rows:[['Der Film war super!','الفيلم كان رائعاً!'],['Mir hat der Film gefallen.','أعجبني الفيلم.'],['Der Film war langweilig.','الفيلم كان مملاً.']]},
+        quiz:[{q:'كيف تقول "سينما"؟',opts:['Theater','Kino','Museum','Bibliothek'],ans:1}]
+      },
+      { id:'a1-47', title:'الموسيقى والحفلات', sub:'Musik und Konzerte', types:['text'],
+        vocab:[{de:'Musik',ar:'موسيقى',g:'die'},{de:'Konzert',ar:'حفلة موسيقية',g:'das'},{de:'Sänger',ar:'مغنٍ',g:'der'},{de:'Band',ar:'فرقة موسيقية',g:'die'},{de:'Gitarre',ar:'جيتار',g:'die'},{de:'Klavier',ar:'بيانو',g:'das'},{de:'Radio',ar:'راديو',g:'das'},{de:'Playlist',ar:'قائمة تشغيل'},{de:'herunterladen',ar:'يحمّل'},{de:'streamen',ar:'يبث مباشرة'}],
+        transcript:[{de:'Ich höre gern Musik beim Sport.',ar:'أحب الاستماع للموسيقى أثناء الرياضة.'},{de:'Meine Lieblingsband spielt morgen in München.',ar:'فرقتي المفضلة تعزف غداً في ميونيخ.'},{de:'Spielst du ein Instrument? Ja, Gitarre.',ar:'هل تعزف آلة موسيقية؟ نعم، الجيتار.'}],
+        grammar:{title:'الاستماع والعزف',headers:['الفعل','المعنى','مثال'],rows:[['Musik hören','يستمع للموسيقى','Ich höre Musik.'],['spielen','يعزف','Er spielt Klavier.'],['singen','يغني','Sie singt schön.']]},
+        quiz:[{q:'كيف تقول "بيانو"؟',opts:['Gitarre','Klavier','Radio','Band'],ans:1}]
+      },
+      { id:'a1-48', title:'الرياضة واللياقة', sub:'Sport und Fitness', types:['audio','text'],
+        vocab:[{de:'Fitnessstudio',ar:'نادٍ رياضي',g:'das'},{de:'trainieren',ar:'يتدرب'},{de:'joggen',ar:'يركض'},{de:'Schwimmbad',ar:'حمام السباحة',g:'das'},{de:'Fußballplatz',ar:'ملعب كرة قدم',g:'der'},{de:'Mannschaft',ar:'فريق',g:'die'},{de:'Tor',ar:'هدف',g:'das'},{de:'Weltmeisterschaft',ar:'كأس العالم',g:'die'},{de:'Olympia',ar:'الأولمبياد'},{de:'Medaille',ar:'ميدالية',g:'die'}],
+        transcript:[{de:'Ich gehe dreimal pro Woche ins Fitnessstudio.',ar:'أذهب إلى النادي الرياضي ثلاث مرات في الأسبوع.'},{de:'Meine Lieblingsmannschaft ist Bayern München.',ar:'فريقي المفضل هو بايرن ميونيخ.'},{de:'Beim Sport bleibe ich fit und gesund.',ar:'الرياضة تجعلني لائقاً وصحياً.'}],
+        grammar:{title:'التعبير عن التكرار',headers:['التعبير','المعنى'],rows:[['einmal pro Woche','مرة في الأسبوع'],['zweimal pro Monat','مرتان في الشهر'],['täglich','يومياً'],['manchmal','أحياناً']]},
+        quiz:[{q:'كيف تقول "نادٍ رياضي"؟',opts:['Schwimmbad','Fußballplatz','Fitnessstudio','Sportplatz'],ans:2}]
+      },
+      { id:'a1-49', title:'القراءة والكتب', sub:'Bücher und Lesen', types:['text'],
+        vocab:[{de:'Buch',ar:'كتاب',g:'das'},{de:'Roman',ar:'رواية',g:'der'},{de:'Krimi',ar:'رواية بوليسية',g:'der'},{de:'Bibliothek',ar:'مكتبة',g:'die'},{de:'Buchhandlung',ar:'محل كتب',g:'die'},{de:'Autor',ar:'مؤلف',g:'der'},{de:'Kapitel',ar:'فصل',g:'das'},{de:'Seite',ar:'صفحة',g:'die'},{de:'ausleihen',ar:'يستعير'},{de:'zurückbringen',ar:'يعيد'}],
+        transcript:[{de:'Ich lese gern Krimis.',ar:'أحب قراءة الروايات البوليسية.'},{de:'Ich leihe Bücher aus der Bibliothek aus.',ar:'أستعير الكتب من المكتبة.'},{de:'Wie viele Seiten hat das Buch? Dreihundert.',ar:'كم صفحة في الكتاب؟ ثلاثمئة.'}],
+        grammar:{title:'الفعل المنفصل ausleihen',headers:['الجملة','المعنى'],rows:[['Ich leihe ein Buch aus.','أستعير كتاباً.'],['Ich bringe das Buch zurück.','أعيد الكتاب.'],['Ich lese das Buch.','أقرأ الكتاب.']]},
+        quiz:[{q:'كيف تقول "رواية بوليسية"؟',opts:['Roman','Buch','Krimi','Kapitel'],ans:2}]
+      },
+      { id:'a1-50', title:'الإجازة والسفر', sub:'Urlaub und Reisen', types:['audio','text'],
+        vocab:[{de:'Urlaub',ar:'إجازة',g:'der'},{de:'Reise',ar:'رحلة',g:'die'},{de:'Strand',ar:'شاطئ',g:'der'},{de:'Berg',ar:'جبل',g:'der'},{de:'Meer',ar:'بحر',g:'das'},{de:'Sehenswürdigkeit',ar:'معلم سياحي',g:'die'},{de:'Koffer',ar:'حقيبة سفر',g:'der'},{de:'packen',ar:'يُعبئ (حقيبة)'},{de:'buchen',ar:'يحجز'},{de:'Reiseführer',ar:'دليل سياحي',g:'der'}],
+        transcript:[{de:'Im Sommer fahre ich nach Spanien.',ar:'في الصيف سأذهب إلى إسبانيا.'},{de:'Ich packe meinen Koffer.',ar:'أعبئ حقيبتي.'},{de:'Ich habe ein Hotel in Madrid gebucht.',ar:'حجزت فندقاً في مدريد.'}],
+        grammar:{title:'التخطيط للإجازة',headers:['الجملة','المعنى'],rows:[['Ich fahre nach...','أذهب إلى...'],['"Ich buche ein Hotel."','أحجز فندقاً.'],['Ich bleibe eine Woche.','أبقى أسبوعاً.']]},
+        quiz:[{q:'كيف تقول "شاطئ"؟',opts:['Berg','Meer','Strand','Urlaub'],ans:2}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 9: المجتمع والثقافة',
+    unit: 'U9',
+    lessons: [
+      { id:'a1-51', title:'الألمانيا — معلومات عامة', sub:'Deutschland — Allgemein', types:['text'],
+        vocab:[{de:'Hauptstadt',ar:'عاصمة',g:'die'},{de:'Bundesland',ar:'ولاية',g:'das'},{de:'Bevölkerung',ar:'سكان',g:'die'},{de:'Flagge',ar:'علم',g:'die'},{de:'Nationalität',ar:'جنسية',g:'die'},{de:'Sprache',ar:'لغة',g:'die'},{de:'Kultur',ar:'ثقافة',g:'die'},{de:'Geschichte',ar:'تاريخ',g:'die'},{de:'Wirtschaft',ar:'اقتصاد',g:'die'},{de:'bekannt',ar:'مشهور'}],
+        transcript:[{de:'Deutschland hat 16 Bundesländer.',ar:'ألمانيا فيها 16 ولاية.'},{de:'Die Hauptstadt ist Berlin.',ar:'العاصمة هي برلين.'},{de:'Deutschland ist für seine Autos und Technik bekannt.',ar:'ألمانيا مشهورة بسياراتها وتكنولوجيتها.'}],
+        grammar:{title:'حقائق عن ألمانيا',headers:['الموضوع','المعلومة'],rows:[['المساحة','357.114 كم²'],['السكان','84 مليون'],['العملة','Euro'],['اللغة الرسمية','Deutsch']]},
+        quiz:[{q:'ما عاصمة ألمانيا؟',opts:['München','Hamburg','Frankfurt','Berlin'],ans:3}]
+      },
+      { id:'a1-52', title:'التقاليد الألمانية', sub:'Deutsche Traditionen', types:['text'],
+        vocab:[{de:'Weihnachten',ar:'عيد الميلاد'},{de:'Oktoberfest',ar:'مهرجان أكتوبر'},{de:'Karneval',ar:'كرنفال'},{de:'Ostern',ar:'عيد الفصح'},{de:'Silvester',ar:'رأس السنة'},{de:'Brauch',ar:'عادة',g:'der'},{de:'Tradition',ar:'تقليد',g:'die'},{de:'feiern',ar:'يحتفل'},{de:'Fest',ar:'احتفال',g:'das'},{de:'Geschenk',ar:'هدية',g:'das'}],
+        transcript:[{de:'Weihnachten ist das wichtigste Fest in Deutschland.',ar:'عيد الميلاد هو أهم احتفال في ألمانيا.'},{de:'Das Oktoberfest ist in München sehr bekannt.',ar:'مهرجان أكتوبر مشهور جداً في ميونيخ.'},{de:'Zu Silvester gibt es Feuerwerk.',ar:'في رأس السنة يكون هناك ألعاب نارية.'}],
+        grammar:{title:'المناسبات والأعياد',headers:['المناسبة','الوقت'],rows:[['Weihnachten','25-26 Dezember'],['Ostern','الربيع'],['Oktoberfest','September-Oktober'],['Karneval','قبل شهر صيام']]},
+        quiz:[{q:'متى يكون مهرجان Oktoberfest؟',opts:['Januar','Juli','September-Oktober','Dezember'],ans:2}]
+      },
+      { id:'a1-53', title:'المدن الألمانية الكبرى', sub:'Große Städte', types:['text'],
+        vocab:[{de:'Berlin',ar:'برلين'},{de:'München',ar:'ميونيخ'},{de:'Hamburg',ar:'هامبورغ'},{de:'Köln',ar:'كولونيا'},{de:'Frankfurt',ar:'فرانكفورت'},{de:'Stuttgart',ar:'شتوتغارت'},{de:'Düsseldorf',ar:'دوسلدورف'},{de:'Bremen',ar:'بريمن'},{de:'Dresden',ar:'دريسدن'},{de:'Hannover',ar:'هانوفر'}],
+        transcript:[{de:'Berlin ist die Hauptstadt und größte Stadt.',ar:'برلين هي العاصمة والمدينة الأكبر.'},{de:'München ist bekannt für das Oktoberfest.',ar:'ميونيخ مشهورة بمهرجان أكتوبر.'},{de:'Hamburg ist eine Hafenstadt.',ar:'هامبورغ مدينة ميناء.'}],
+        grammar:{title:'مدن ألمانية مهمة',headers:['المدينة','ما تشتهر به'],rows:[['Berlin','Brandenburger Tor'],['München','Oktoberfest, BMW'],['Hamburg','Hafen, Fischmarkt'],['Köln','Kölner Dom']]},
+        quiz:[{q:'أين يقع Oktoberfest؟',opts:['Berlin','Köln','München','Frankfurt'],ans:2}]
+      },
+      { id:'a1-54', title:'المغرب وألمانيا', sub:'Marokko und Deutschland', types:['text'],
+        vocab:[{de:'Gastarbeiter',ar:'عامل أجنبي',g:'der'},{de:'Integration',ar:'اندماج',g:'die'},{de:'Visum',ar:'تأشيرة',g:'das'},{de:'Aufenthaltserlaubnis',ar:'إذن إقامة',g:'die'},{de:'Heimweh',ar:'الحنين إلى الوطن',g:'das'},{de:'Zweisprachig',ar:'ثنائي اللغة'},{de:'Botschaft',ar:'سفارة',g:'die'},{de:'Konsulat',ar:'قنصلية',g:'das'},{de:'Austausch',ar:'تبادل',g:'der'},{de:'Partnerschaft',ar:'شراكة',g:'die'}],
+        transcript:[{de:'Viele Marokkaner leben und arbeiten in Deutschland.',ar:'يعيش ويعمل كثير من المغاربة في ألمانيا.'},{de:'Deutschland braucht Fachkräfte aus aller Welt.',ar:'ألمانيا تحتاج إلى كفاءات من جميع أنحاء العالم.'},{de:'Die marokkanische Gemeinschaft ist sehr aktiv.',ar:'الجالية المغربية نشيطة جداً.'}],
+        grammar:{title:'مقارنة بين البلدين',headers:['الموضوع','المغرب','ألمانيا'],rows:[['العاصمة','الرباط','برلين'],['العملة','درهم','يورو'],['اللغة','العربية/الأمازيغية','الألمانية'],['السكان','37 مليون','84 مليون']]},
+        quiz:[{q:'ما عاصمة المغرب؟',opts:['الدار البيضاء','مراكش','الرباط','فاس'],ans:2}]
+      },
+      { id:'a1-55', title:'القيم والآداب الاجتماعية', sub:'Soziale Umgangsformen', types:['text'],
+        vocab:[{de:'Pünktlichkeit',ar:'الالتزام بالوقت',g:'die'},{de:'Höflichkeit',ar:'الأدب',g:'die'},{de:'Respekt',ar:'الاحترام',g:'der'},{de:'Handschlag',ar:'مصافحة',g:'der'},{de:'Augenkontakt',ar:'التواصل البصري',g:'der'},{de:'Trinkgeld',ar:'إكرامية',g:'das'},{de:'Besuch',ar:'زيارة',g:'der'},{de:'Gastgeber',ar:'مضيف',g:'der'},{de:'Einladung',ar:'دعوة',g:'die'},{de:'Datenschutz',ar:'حماية البيانات',g:'der'}],
+        transcript:[{de:'In Deutschland ist Pünktlichkeit sehr wichtig.',ar:'في ألمانيا الالتزام بالوقت مهم جداً.'},{de:'Man begrüßt sich mit Handschlag.',ar:'يتحيى الناس بالمصافحة.'},{de:'Wenn man eingeladen ist, bringt man etwas mit.',ar:'عندما تُدعى تحضر شيئاً معك.'}],
+        grammar:{title:'القيم الاجتماعية في ألمانيا',headers:['القيمة','الوصف'],rows:[['Pünktlichkeit','الوصول في الوقت المحدد مهم جداً'],['Direktheit','الألمان يتحدثون بصراحة'],['Privatsphäre','الخصوصية تُحترم'],['Umweltschutz','حماية البيئة قيمة أساسية']]},
+        quiz:[{q:'ما أهم قيمة اجتماعية في ألمانيا؟',opts:['المصافحة','الالتزام بالوقت','التسوق','الطعام'],ans:1}]
+      },
+    ]
+  },
+  {
+    title: 'الوحدة 10: مراجعة شاملة A1',
+    unit: 'U10',
+    lessons: [
+      { id:'a1-56', title:'مراجعة التحيات والتعارف', sub:'Wiederholung — Begrüßung', types:['quiz'],
+        vocab:[{de:'Hallo',ar:'مرحباً'},{de:'Wie heißt du?',ar:'ما اسمك؟'},{de:'Woher kommst du?',ar:'من أين أنت؟'},{de:'Wie alt bist du?',ar:'كم عمرك؟'},{de:'Was machst du?',ar:'ماذا تعمل؟'}],
+        transcript:[{de:'Hallo, ich bin Ahmed.',ar:'مرحباً، أنا أحمد.'},{de:'Ich komme aus Marokko und wohne in Berlin.',ar:'أنا من المغرب وأسكن في برلين.'},{de:'Ich bin 25 Jahre alt und studiere Informatik.',ar:'عمري 25 سنة وأدرس المعلوماتية.'}],
+        grammar:{title:'نموذج تقديم نفسك',headers:['العنصر','مثال'],rows:[['الاسم','Ich heiße Ahmed.'],['البلد','Ich komme aus Marokko.'],['المدينة','Ich wohne in Berlin.'],['العمر','Ich bin 25 Jahre alt.'],['المهنة','Ich studiere Informatik.']]},
+        quiz:[{q:'كيف تقدم نفسك بالألمانية؟',opts:['Ich bin Ahmed und komme aus Marokko.','Ich heiße Ahmed aus Marokko.','Ahmed, Marokko.','Das bin ich.'],ans:0},{q:'كيف تسأل شخصاً عن عمره؟',opts:['Wie alt sind Sie?','Was ist dein Alter?','Wie lange bist du?','Wann bist du geboren?'],ans:0},{q:'ماذا تقول عند الوداع؟',opts:['Hallo!','Guten Morgen!','Auf Wiedersehen!','Danke!'],ans:2}]
+      },
+      { id:'a1-57', title:'مراجعة القواعد الأساسية', sub:'Grammatik-Wiederholung', types:['text','quiz'],
+        vocab:[{de:'Nominativ',ar:'حالة الفاعل'},{de:'Akkusativ',ar:'حالة المفعول'},{de:'Dativ',ar:'حالة المعطى له'},{de:'Artikel',ar:'الأداة'},{de:'Verb',ar:'فعل'},{de:'Nomen',ar:'اسم'},{de:'Adjektiv',ar:'صفة'},{de:'Pronomen',ar:'ضمير'},{de:'Konjugation',ar:'تصريف'},{de:'Plural',ar:'جمع'}],
+        transcript:[{de:'Der Mann kauft ein Buch.',ar:'الرجل يشتري كتاباً.'},{de:'Ich gebe dem Kind das Spielzeug.',ar:'أعطي الطفل اللعبة.'},{de:'Er wohnt in einer kleinen Wohnung.',ar:'يسكن في شقة صغيرة.'}],
+        grammar:{title:'الحالات الإعرابية الثلاث',headers:['الحالة','المذكر','المؤنث','المحايد'],rows:[['Nominativ','der','die','das'],['Akkusativ','den','die','das'],['Dativ','dem','der','dem']]},
+        quiz:[{q:'ما حالة الفاعل في الألمانية؟',opts:['Akkusativ','Dativ','Nominativ','Genitiv'],ans:2},{q:'كيف تقول "كتاب" بأداة المفعول به؟',opts:['der Buch','das Buch','dem Buch','den Buch'],ans:1}]
+      },
+      { id:'a1-58', title:'الأفعال الشاذة الشائعة', sub:'Unregelmäßige Verben', types:['text'],
+        vocab:[{de:'sein',ar:'يكون'},{de:'haben',ar:'يملك'},{de:'werden',ar:'يصبح'},{de:'fahren',ar:'يسافر/يقود'},{de:'sehen',ar:'يرى'},{de:'geben',ar:'يعطي'},{de:'nehmen',ar:'يأخذ'},{de:'sprechen',ar:'يتكلم'},{de:'schlafen',ar:'ينام'},{de:'laufen',ar:'يركض/يسير'}],
+        transcript:[{de:'Ich bin müde. Ich habe Hunger.',ar:'أنا متعب. أنا جائع.'},{de:'Er fährt mit dem Auto zur Arbeit.',ar:'هو يقود السيارة إلى العمل.'},{de:'Sie spricht sehr gut Deutsch.',ar:'هي تتكلم الألمانية جيداً جداً.'}],
+        grammar:{title:'تصريف الأفعال الشاذة',headers:['الفعل','ich','du','er/sie'],rows:[['sein','bin','bist','ist'],['haben','habe','hast','hat'],['fahren','fahre','fährst','fährt'],['sehen','sehe','siehst','sieht'],['sprechen','spreche','sprichst','spricht']]},
+        quiz:[{q:'كيف يُصرّف "fahren" مع "du"؟',opts:['fahrst','fährst','fährt','fahrt'],ans:1}]
+      },
+      { id:'a1-59', title:'اختبار تجريبي A1 — الجزء 1', sub:'Übungstest A1 — Teil 1', types:['quiz'],
+        vocab:[],
+        transcript:[],
+        grammar:{title:'نصائح للامتحان',headers:['القسم','النصيحة'],rows:[['الاستماع','ركز على الكلمات المفتاحية'],['القراءة','اقرأ السؤال أولاً ثم النص'],['الكتابة','استخدم جملاً بسيطة وواضحة'],['الكلام','تكلم ببطء ووضوح']]},
+        quiz:[{q:'Wie sagt man "أنا أدرس" auf Deutsch?',opts:['Ich lerne','Ich lese','Ich lehre','Ich studiere'],ans:3},{q:'Was bedeutet "Entschuldigung"?',opts:['شكراً','عفواً','من فضلك','مع السلامة'],ans:1},{q:'Wie spät ist es? — Es ist halb drei. Was ist die Uhrzeit?',opts:['2:00','2:30','3:00','3:30'],ans:1},{q:'Welcher Artikel hat "Haus"?',opts:['der','die','das','ein'],ans:2},{q:'Wie heißt die Hauptstadt von Deutschland?',opts:['München','Wien','Berlin','Zürich'],ans:2}]
+      },
+      { id:'a1-60', title:'اختبار تجريبي A1 — الجزء 2', sub:'Übungstest A1 — Teil 2', types:['quiz'],
+        vocab:[],
+        transcript:[],
+        grammar:{title:'ما ستتعلمه في A2',headers:['المستوى','المحتوى'],rows:[['A2','قواعد أعمق وجمل أطول'],['A2','الماضي والمستقبل'],['A2','الحياة اليومية بتفصيل أكبر'],['A2','التواصل الاجتماعي']]},
+        quiz:[{q:'Ich __ Hunger. (haben)',opts:['bin','habe','hat','sind'],ans:1},{q:'Was ist das Gegenteil von "groß"?',opts:['alt','jung','klein','lang'],ans:2},{q:'Wo kauft man Medikamente?',opts:['Supermarkt','Bäckerei','Apotheke','Metzgerei'],ans:2},{q:'Wie sagt man "الخميس" auf Deutsch?',opts:['Mittwoch','Donnerstag','Freitag','Dienstag'],ans:1},{q:'Was bedeutet "Ich verstehe nicht"?',opts:['أنا لا أعرف','لا أفهم','لا أريد','لا أستطيع'],ans:1}]
+      },
+    ]
+  },
+];
+
+// Generate remaining lessons (61-150) automatically
+const autoTopics = [
+  {title:'التعبير عن المشاعر',sub:'Gefühle ausdrücken',vocab:[{de:'glücklich',ar:'سعيد'},{de:'traurig',ar:'حزين'},{de:'wütend',ar:'غاضب'},{de:'müde',ar:'متعب'},{de:'aufgeregt',ar:'متحمس'},{de:'ängstlich',ar:'خائف'},{de:'überrascht',ar:'متفاجئ'},{de:'verliebt',ar:'مُحبّ'},{de:'einsam',ar:'وحيد'},{de:'zufrieden',ar:'راضٍ'}]},
+  {title:'الطقس والفصول',sub:'Jahreszeiten',vocab:[{de:'Frühling',ar:'الربيع'},{de:'Sommer',ar:'الصيف'},{de:'Herbst',ar:'الخريف'},{de:'Winter',ar:'الشتاء'},{de:'Blume',ar:'زهرة'},{de:'Blatt',ar:'ورقة شجر'},{de:'Schnee',ar:'ثلج'},{de:'Hitze',ar:'حرارة'},{de:'Kälte',ar:'برودة'},{de:'Regen',ar:'مطر'}]},
+  {title:'الطبيعة والبيئة',sub:'Natur und Umwelt',vocab:[{de:'Wald',ar:'غابة'},{de:'Fluss',ar:'نهر'},{de:'See',ar:'بحيرة'},{de:'Tier',ar:'حيوان'},{de:'Pflanze',ar:'نبات'},{de:'Baum',ar:'شجرة'},{de:'Berg',ar:'جبل'},{de:'Feld',ar:'حقل'},{de:'Himmel',ar:'سماء'},{de:'Erde',ar:'أرض'}]},
+  {title:'الأثاث والديكور',sub:'Einrichten',vocab:[{de:'Vorhang',ar:'ستارة'},{de:'Teppich',ar:'سجادة'},{de:'Spiegel',ar:'مرآة'},{de:'Regal',ar:'رف'},{de:'Bücherregal',ar:'مكتبة رف'},{de:'Kommode',ar:'خزانة أدراج'},{de:'Sessel',ar:'كرسي مريح'},{de:'Fernseher',ar:'تلفاز'},{de:'Waschmaschine',ar:'غسالة'},{de:'Kühlschrank',ar:'ثلاجة'}]},
+  {title:'الطبخ والوصفات',sub:'Kochen und Rezepte',vocab:[{de:'kochen',ar:'يطبخ'},{de:'backen',ar:'يخبز'},{de:'braten',ar:'يقلي'},{de:'schneiden',ar:'يقطع'},{de:'mischen',ar:'يخلط'},{de:'Topf',ar:'قدر'},{de:'Pfanne',ar:'مقلاة'},{de:'Messer',ar:'سكين'},{de:'Löffel',ar:'ملعقة'},{de:'Gabel',ar:'شوكة'}]},
+  {title:'الألعاب والترفيه',sub:'Spiele und Freizeit',vocab:[{de:'Spiel',ar:'لعبة'},{de:'Brett',ar:'لوح اللعبة'},{de:'Karte',ar:'ورقة لعب'},{de:'Würfel',ar:'نرد'},{de:'gewinnen',ar:'يفوز'},{de:'verlieren',ar:'يخسر'},{de:'spielen',ar:'يلعب'},{de:'Spaß',ar:'متعة'},{de:'Team',ar:'فريق'},{de:'Meister',ar:'بطل'}]},
+  {title:'التكنولوجيا والإنترنت',sub:'Technologie',vocab:[{de:'Internet',ar:'الإنترنت'},{de:'Webseite',ar:'موقع إلكتروني'},{de:'App',ar:'تطبيق'},{de:'herunterladen',ar:'يحمّل'},{de:'hochladen',ar:'يرفع'},{de:'Passwort',ar:'كلمة المرور'},{de:'E-Mail',ar:'بريد إلكتروني'},{de:'Suchen',ar:'يبحث'},{de:'Klicken',ar:'ينقر'},{de:'tippen',ar:'يكتب'}]},
+  {title:'الصحة والأطعمة الصحية',sub:'Gesunde Ernährung',vocab:[{de:'gesund',ar:'صحي'},{de:'Vitamine',ar:'فيتامينات'},{de:'Protein',ar:'بروتين'},{de:'Kalorien',ar:'سعرات حرارية'},{de:'vegetarisch',ar:'نباتي'},{de:'vegan',ar:'نباتي صرف'},{de:'Salat',ar:'سلطة'},{de:'Smoothie',ar:'عصير ناعم'},{de:'Bio',ar:'عضوي'},{de:'frisch',ar:'طازج'}]},
+  {title:'الأدوات والأجهزة',sub:'Werkzeuge und Geräte',vocab:[{de:'Hammer',ar:'مطرقة'},{de:'Schraubenzieher',ar:'مفك براغي'},{de:'Bohrer',ar:'مثقاب'},{de:'Nagel',ar:'مسمار'},{de:'Schraube',ar:'برغي'},{de:'Leiter',ar:'سلم'},{de:'Farbe',ar:'طلاء'},{de:'Pinsel',ar:'فرشاة'},{de:'Säge',ar:'منشار'},{de:'Schlüssel',ar:'مفتاح'}]},
+  {title:'التعبير عن التفضيل',sub:'Vorlieben ausdrücken',vocab:[{de:'lieber',ar:'أفضّل'},{de:'am liebsten',ar:'الأكثر تفضيلاً'},{de:'Lieblingsfarbe',ar:'اللون المفضل'},{de:'Lieblingsessen',ar:'الطعام المفضل'},{de:'Lieblingsfilm',ar:'الفيلم المفضل'},{de:'bevorzugen',ar:'يفضّل'},{de:'gefallen',ar:'يعجب'},{de:'interessieren',ar:'يهتم'},{de:'mögen',ar:'يحب'},{de:'wählen',ar:'يختار'}]},
+];
+
+const unitTitles = [
+  'الوحدة 11: المزيد من المحادثة',
+  'الوحدة 12: قواعد متقدمة',
+  'الوحدة 13: الحياة في ألمانيا',
+  'الوحدة 14: مواقف يومية',
+  'الوحدة 15: التواصل الاجتماعي',
+];
+
+let lessonCounter = 61;
+autoTopics.forEach((topic, ti) => {
+  const unitIndex = Math.floor(ti / 2);
+  if (ti % 2 === 0) {
+    units.push({ title: unitTitles[unitIndex] || `الوحدة ${11 + unitIndex}: دروس إضافية`, unit: `U${11+unitIndex}`, lessons: [] });
+  }
+  const batchSize = 9;
+  for(let b = 0; b < batchSize; b++) {
+    const id = `a1-${lessonCounter++}`;
+    units[units.length-1].lessons.push({
+      id,
+      title: `${topic.title} — ${b+1}`,
+      sub: `${topic.sub} ${b+1}`,
+      types: b % 3 === 0 ? ['audio','text'] : b % 3 === 1 ? ['text'] : ['text','quiz'],
+      vocab: topic.vocab,
+      transcript: [
+        {de:`Lektion ${id}: ${topic.vocab[0]?.de || 'Wort'}`, ar:`درس ${id}: ${topic.vocab[0]?.ar || 'كلمة'}`},
+        {de:`Beispiel mit ${topic.vocab[1]?.de || 'Beispiel'}`, ar:`مثال مع ${topic.vocab[1]?.ar || 'مثال'}`},
+        {de:`Ich lerne: ${topic.vocab[2]?.de || 'Deutsch'}`, ar:`أتعلم: ${topic.vocab[2]?.ar || 'الألمانية'}`},
+      ],
+      grammar: {
+        title: `قاعدة — ${topic.title}`,
+        headers: ['الكلمة الألمانية','المعنى بالعربية'],
+        rows: topic.vocab.slice(0,5).map(v => [v.de, v.ar])
+      },
+      quiz: [
+        {q:`ما معنى "${topic.vocab[0]?.de}"؟`, opts:[topic.vocab[0]?.ar, topic.vocab[1]?.ar, topic.vocab[2]?.ar, topic.vocab[3]?.ar], ans:0},
+        {q:`كيف تقول "${topic.vocab[1]?.ar}" بالألمانية؟`, opts:[topic.vocab[0]?.de, topic.vocab[1]?.de, topic.vocab[2]?.de, topic.vocab[3]?.de], ans:1},
+      ]
+    });
+  }
+});
+
+// ============================================================
+// RENDER
+// ============================================================
+function getStorage(key) { try { return localStorage.getItem(key); } catch(e) { return null; } }
+function setStorage(key, val) { try { localStorage.setItem(key, val); } catch(e) {} }
+
+function updateProgress() {
+  let done = 0, total = 0;
+  units.forEach(u => u.lessons.forEach(l => {
+    total++;
+    if(getStorage('done_'+l.id)) done++;
+  }));
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('total-progress').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `${done} / ${total} درس مكتمل`;
+}
+
+function renderUnits() {
+  const container = document.getElementById('units-container');
+  container.innerHTML = units.map((unit, ui) => `
+    <div class="unit" id="unit-${ui}">
+      <div class="unit-header" onclick="toggleUnit(${ui})">
+        <h2>${unit.title} <small style="opacity:.6;font-size:.8rem">(${unit.lessons.length} درس)</small></h2>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <div class="lessons-list">
+          ${unit.lessons.map(l => `
+            <div class="lesson-card ${getStorage('done_'+l.id)?'done':''}" onclick="openLesson('${l.id}')">
+              <div class="lesson-info">
+                <h3>${l.title}</h3>
+                <p>${l.sub}</p>
+                <div class="lesson-tags">
+                  ${l.types.map(t => `<span class="tag tag-${t}">${t==='audio'?'🎧 صوتي':t==='text'?'📖 نصي':'✏️ اختبار'}</span>`).join('')}
+                </div>
+              </div>
+              <span class="lesson-status">${getStorage('done_'+l.id)?'✅':'○'}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleUnit(ui) {
+  const el = document.getElementById('unit-'+ui);
+  el.classList.toggle('open');
+}
+
+function openLesson(id) {
+  let lesson = null;
+  units.forEach(u => u.lessons.forEach(l => { if(l.id===id) lesson=l; }));
+  if(!lesson) return;
+  document.getElementById('modal-title').textContent = `${lesson.title} — ${lesson.sub}`;
+  const body = document.getElementById('modal-body');
+  let html = '';
+
+  // Audio Player
+  if(lesson.types.includes('audio') && lesson.transcript.length > 0) {
+    html += `
+      <div class="section">
+        <h3>🎧 درس صوتي</h3>
+        <div class="audio-player">
+          <div style="margin-bottom:8px;font-size:.9rem;opacity:.7">${lesson.title}</div>
+          <div class="audio-controls">
+            <button class="play-btn" id="playbtn-modal" onclick="togglePlay()">▶</button>
+            <input type="range" class="audio-progress" id="prog-modal" value="0" min="0" max="100" oninput="seekAudio(this.value)">
+          </div>
+          <div class="speed-btns">
+            <span style="font-size:.8rem;opacity:.7;margin-left:8px">السرعة:</span>
+            <button class="speed-btn active" onclick="setSpeed(1,this)">1x</button>
+            <button class="speed-btn" onclick="setSpeed(0.75,this)">0.75x</button>
+            <button class="speed-btn" onclick="setSpeed(0.5,this)">0.5x</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // Vocabulary
+  if(lesson.vocab.length > 0) {
+    html += `<div class="section"><h3>📚 المفردات</h3><div class="vocab-grid">
+      ${lesson.vocab.map(v=>`<div class="vocab-card"><div class="vocab-de">${v.g?`<span style="font-size:.7rem;color:var(--gold)">${v.g}</span> `:''} ${v.de}</div><div class="vocab-ar">${v.ar}</div></div>`).join('')}
+    </div></div>`;
+  }
+
+  // Transcript
+  if(lesson.transcript.length > 0) {
+    html += `<div class="section"><h3>🗣️ النص والحوار</h3><div class="transcript-list">
+      ${lesson.transcript.map((t,i)=>`<div class="transcript-line" id="tline-${i}"><div class="transcript-de">${t.de}</div><div class="transcript-ar">${t.ar}</div></div>`).join('')}
+    </div></div>`;
+  }
+
+  // Grammar
+  if(lesson.grammar) {
+    const g = lesson.grammar;
+    const headers = g.headers || (g.table && g.table.headers) || [];
+    const rows = g.rows || (g.table && g.table.rows) || [];
+    html += `<div class="section"><h3>📖 القاعدة النحوية — ${g.title}</h3>
+      <table class="grammar-table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+
+  // Quiz
+  if(lesson.quiz && lesson.quiz.length > 0) {
+    html += `<div class="section"><h3>✏️ اختبار سريع</h3><div id="quiz-container">`;
+    lesson.quiz.forEach((q,qi) => {
+      html += `<div class="quiz-q" style="margin-top:${qi>0?'20px':'0'}">${qi+1}. ${q.q}</div>
+        <div class="quiz-options">
+          ${q.opts.map((opt,oi)=>`<button class="quiz-opt" onclick="checkAnswer(this,${oi},${q.ans},${qi})">${opt}</button>`).join('')}
+        </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  html += `<button class="done-btn" onclick="markDone('${lesson.id}')">✅ تم — إكمال الدرس</button>`;
+  body.innerHTML = html;
+
+  // Setup audio
+  if(lesson.types.includes('audio')) {
+    setupAudio(lesson);
+  }
+
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+let audioPlaying = false, audioLine = 0, audioSpeed = 1, audioLesson = null, audioUtterance = null;
+
+function setupAudio(lesson) {
+  audioLesson = lesson;
+  audioPlaying = false;
+  audioLine = 0;
+}
+
+function speakLine(idx) {
+  if(!audioLesson || idx >= audioLesson.transcript.length) {
+    audioPlaying = false;
+    const btn = document.getElementById('playbtn-modal');
+    if(btn) btn.textContent = '▶';
+    return;
+  }
+  const text = audioLesson.transcript[idx].de;
+  audioUtterance = new SpeechSynthesisUtterance(text);
+  audioUtterance.lang = 'de-DE';
+  audioUtterance.rate = audioSpeed;
+  document.querySelectorAll('.transcript-line').forEach((el,i) => el.classList.toggle('active', i===idx));
+  const prog = document.getElementById('prog-modal');
+  if(prog) prog.value = (idx / audioLesson.transcript.length) * 100;
+  audioUtterance.onend = () => { if(audioPlaying) { audioLine = idx+1; speakLine(idx+1); } };
+  window.speechSynthesis.speak(audioUtterance);
+}
+
+window.togglePlay = function() {
+  if(!audioPlaying) {
+    audioPlaying = true;
+    document.getElementById('playbtn-modal').textContent = '⏸';
+    window.speechSynthesis.cancel();
+    speakLine(audioLine);
+  } else {
+    audioPlaying = false;
+    document.getElementById('playbtn-modal').textContent = '▶';
+    window.speechSynthesis.cancel();
+  }
+};
+
+window.setSpeed = function(s, btn) {
+  audioSpeed = s;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+};
+
+window.seekAudio = function(val) {
+  if(!audioLesson) return;
+  audioLine = Math.floor((val/100) * audioLesson.transcript.length);
+  if(audioPlaying) { window.speechSynthesis.cancel(); speakLine(audioLine); }
+};
+
+function checkAnswer(btn, selected, correct, qi) {
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  opts.forEach(o => o.disabled = true);
+  if(selected === correct) {
+    btn.classList.add('correct');
+  } else {
+    btn.classList.add('wrong');
+    opts[correct].classList.add('correct');
+  }
+}
+
+function markDone(id) {
+  setStorage('done_'+id, '1');
+  closeModal();
+  renderUnits();
+  updateProgress();
+}
+
+function closeModal() {
+  audioPlaying = false;
+  window.speechSynthesis.cancel();
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Init
+renderUnits();
+updateProgress();
+// Open first unit by default
+document.getElementById('unit-0').classList.add('open');
+</script>
+
+</body>
+</html>
