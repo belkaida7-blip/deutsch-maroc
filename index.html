@@ -555,9 +555,10 @@ footer .footer-links a:hover { color: var(--gold); }
 
 /* Hamburger button */
 .hamburger {
-  display: none;
+  display: flex;
   background: none; border: none; cursor: pointer;
   flex-direction: column; gap: 5px; padding: 8px;
+  z-index: 301;
 }
 .hamburger span {
   display: block; width: 24px; height: 2px;
@@ -567,6 +568,75 @@ footer .footer-links a:hover { color: var(--gold); }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* SIDEBAR */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 299;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.open { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 280px; height: 100%;
+  background: var(--black);
+  z-index: 300;
+  transition: right .3s ease;
+  overflow-y: auto;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.4);
+}
+.sidebar.open { right: 0; }
+.sidebar-header {
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  padding: 24px 20px;
+  border-bottom: 3px solid var(--gold);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sidebar-logo { font-size: 1.3rem; font-weight: 900; color: var(--gold); }
+.sidebar-logo span { color: var(--red); }
+.sidebar-close {
+  background: none; border: none; color: #aaa;
+  font-size: 1.4rem; cursor: pointer; padding: 4px;
+}
+.sidebar-nav { padding: 12px 0; }
+.sidebar-section {
+  padding: 8px 20px 4px;
+  font-size: 0.7rem; font-weight: 700;
+  color: #555; text-transform: uppercase; letter-spacing: 1px;
+}
+.sidebar-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 20px;
+  color: #ccc; font-size: 0.95rem;
+  cursor: pointer; border: none; background: none;
+  width: 100%; text-align: right;
+  font-family: 'Cairo', sans-serif;
+  transition: all .2s;
+  border-right: 3px solid transparent;
+}
+.sidebar-item:hover { background: rgba(255,204,0,0.08); color: var(--gold); border-right-color: var(--gold); }
+.sidebar-item.active { background: rgba(255,204,0,0.12); color: var(--gold); border-right-color: var(--gold); font-weight: 700; }
+.sidebar-item .item-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+.sidebar-divider { height: 1px; background: #2a2a2a; margin: 8px 20px; }
+.sidebar-sub {
+  padding: 8px 20px 8px 44px;
+  color: #888; font-size: 0.85rem;
+  cursor: pointer; display: block; width: 100%;
+  text-align: right; background: none; border: none;
+  font-family: 'Cairo', sans-serif;
+  transition: color .2s;
+}
+.sidebar-sub:hover { color: var(--gold); }
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #2a2a2a;
+  margin-top: 8px;
+}
+.sidebar-footer p { font-size: 0.75rem; color: #444; text-align: center; }
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDVQBNZK5X"></script>
@@ -579,18 +649,65 @@ footer .footer-links a:hover { color: var(--gold); }
 </head>
 <body>
 
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">🇩🇪 دويتش <span>مغرب</span></div>
+    <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+  </div>
+  <div class="sidebar-nav">
+    <div class="sidebar-section">القائمة الرئيسية</div>
+    <button class="sidebar-item active" id="sb-home" onclick="navTo('home')">
+      <span class="item-icon">🏠</span> الرئيسية
+    </button>
+    <button class="sidebar-item" id="sb-lessons" onclick="navTo('lessons')">
+      <span class="item-icon">📚</span> الدروس
+    </button>
+    <div class="sidebar-sub-group" id="lessons-sub" style="display:none">
+      <button class="sidebar-sub" onclick="navToLesson('A1')">📗 A1 — مبتدئ</button>
+      <button class="sidebar-sub" onclick="navToLesson('A2')">📘 A2 — أساسي</button>
+      <button class="sidebar-sub" onclick="navToLesson('B1')">📙 B1 — متوسط</button>
+      <button class="sidebar-sub" onclick="navToLesson('B2')">📕 B2 — متقدم</button>
+      <button class="sidebar-sub" onclick="window.location.href='a1.html'">⭐ 150 درس A1 كامل</button>
+    </div>
+    <button class="sidebar-item" id="sb-quiz" onclick="navTo('quiz')">
+      <span class="item-icon">✏️</span> الامتحانات
+    </button>
+    <button class="sidebar-item" id="sb-ai" onclick="navTo('ai')">
+      <span class="item-icon">🤖</span> المساعد الذكي
+    </button>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">معلومات</div>
+    <button class="sidebar-item" id="sb-about" onclick="navTo('about')">
+      <span class="item-icon">ℹ️</span> عن الموقع
+    </button>
+    <button class="sidebar-item" id="sb-privacy" onclick="navTo('privacy')">
+      <span class="item-icon">🔒</span> سياسة الخصوصية
+    </button>
+    <button class="sidebar-item" id="sb-contact" onclick="navTo('contact')">
+      <span class="item-icon">📬</span> اتصل بنا
+    </button>
+  </div>
+  <div class="sidebar-footer">
+    <p>© 2025 دويتش مغرب<br>تعلم الألمانية مجاناً</p>
+  </div>
+</div>
+
 <!-- NAVIGATION -->
-<nav style="position:relative">
+<nav>
   <div class="nav-inner">
     <div class="logo">🇩🇪 دويتش <span>مغرب</span></div>
     <div class="nav-links" id="nav-links">
-      <button class="active" onclick="showPage('home');closeNav()">🏠 الرئيسية</button>
-      <button onclick="showPage('lessons');closeNav()">📚 الدروس</button>
-      <button onclick="showPage('quiz');closeNav()">✏️ الامتحانات</button>
-      <button onclick="showPage('ai');closeNav()">🤖 المساعد الذكي</button>
-      <button onclick="showPage('about');closeNav()">ℹ️ عن الموقع</button>
+      <button class="active" onclick="showPage('home')">🏠 الرئيسية</button>
+      <button onclick="showPage('lessons')">📚 الدروس</button>
+      <button onclick="showPage('quiz')">✏️ الامتحانات</button>
+      <button onclick="showPage('ai')">🤖 المساعد الذكي</button>
+      <button onclick="showPage('about')">ℹ️ عن الموقع</button>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="القائمة">
+    <button class="hamburger" id="hamburger" onclick="toggleSidebar()" aria-label="القائمة">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1353,17 +1470,47 @@ let currentLevel = '';
 let currentQuizLevel = '';
 let quizQ = 0, quizScore = 0, quizAnswered = false;
 
-function toggleNav() {
-  const nav = document.getElementById('nav-links');
-  const btn = document.getElementById('hamburger');
-  nav.classList.toggle('open');
-  btn.classList.toggle('open');
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const hamburger = document.getElementById('hamburger');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('open');
+  document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
 }
 
-function closeNav() {
-  document.getElementById('nav-links').classList.remove('open');
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
 }
+
+function navTo(page) {
+  // Toggle lessons submenu
+  if(page === 'lessons') {
+    const sub = document.getElementById('lessons-sub');
+    sub.style.display = sub.style.display === 'none' ? 'block' : 'none';
+  }
+  showPage(page);
+  // Update sidebar active
+  document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('sb-' + page);
+  if(el) el.classList.add('active');
+  if(page !== 'lessons') closeSidebar();
+}
+
+function navToLesson(level) {
+  showPage('lessons');
+  setTimeout(() => showLevelLessons(level), 100);
+  closeSidebar();
+}
+
+function toggleNav() { toggleSidebar(); }
+function closeNav() { closeSidebar(); }
+
+
 
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1374,9 +1521,12 @@ function showPage(page) {
   const idx = {'home':0,'lessons':1,'quiz':2,'ai':3,'about':4}[page];
   const btns = document.querySelectorAll('.nav-links button');
   if(idx !== undefined && btns[idx]) btns[idx].classList.add('active');
+  // Sync sidebar
+  document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+  const sbEl = document.getElementById('sb-' + page);
+  if(sbEl) sbEl.classList.add('active');
   window.scrollTo(0, 0);
-  closeNav();
-  // Update page title for SEO
+  closeSidebar();
   const titles = {
     home: 'دويتش مغرب | تعلم الألمانية من الصفر',
     lessons: 'الدروس | دويتش مغرب',
@@ -1387,7 +1537,6 @@ function showPage(page) {
     contact: 'اتصل بنا | دويتش مغرب'
   };
   if(titles[page]) document.title = titles[page];
-  // Update URL without reload
   const paths = {home:'', lessons:'lessons', quiz:'quiz', ai:'ai', about:'about', privacy:'privacy', contact:'contact'};
   const path = paths[page] !== undefined ? paths[page] : page;
   history.pushState({page}, '', path ? '#' + path : location.pathname.replace(/#.*$/, ''));
@@ -1543,11 +1692,11 @@ function openLesson(level, idx) {
       document.querySelectorAll('.transcript-line').forEach(el => el.classList.remove('active'));
       return;
     }
-    const text = lesson.transcript[lineIdx];
-    // Detect if line is German (not Arabic) to set language
-    const isGerman = /[a-zA-ZäöüÄÖÜß]/.test(text);
+    const item = lesson.transcript[lineIdx];
+    // Extract German text from object or use string directly
+    const text = (typeof item === 'object') ? (item.de || item.text || String(item)) : String(item);
     utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = isGerman ? 'de-DE' : 'ar-SA';
+    utterance.lang = 'de-DE';
     utterance.rate = speed;
     // Highlight current line
     document.querySelectorAll('.transcript-line').forEach((el,i) => {
