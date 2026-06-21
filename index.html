@@ -774,7 +774,7 @@ footer .footer-links a:hover { color: var(--gold); }
         <span class="level-tag" style="background:#CC0000">B1</span>
         <h3>متوسط</h3>
         <p>العمل، الصحة، الترفيه، والتعبير عن الرأي</p>
-        <div class="level-meta"><span>📚 6 دروس</span><span>⏱️ 2 ساعة</span></div>
+        <div class="level-meta"><span>📚 50 درس</span><span>⏱️ 13 ساعة</span></div>
         <div class="level-progress"><div class="level-bar" style="width:0%"></div></div>
       </div>
       <div class="level-card" style="--lc:#1a1a1a" onclick="showLevelLessons('B2')">
@@ -2600,6 +2600,564 @@ const LESSONS = {
         {time:'0:17',de:'Datenschutz ist in Deutschland besonders wichtig und gesetzlich geregelt.',ar:'حماية البيانات مهمة بشكل خاص في ألمانيا وهي منظمة قانونياً.'},
       ],
       grammar:{title:'الجمل الاسمية المركبة',table:{headers:['البسيط','المركب'],rows:[['Er nutzt das Internet.','Er nutzt das Internet, um Informationen zu finden.'],['Sie kauft online.','Sie kauft online, weil es bequemer ist.']]}}
+    },
+    {
+      id:'b1-7', title:'الانتقال والإسكان', sub:'Umzug und Wohnungssuche', types:['text'],
+      vocab:[
+        {de:'Umzug',ar:'انتقال',gender:'der'},{de:'Möbelwagen',ar:'شاحنة نقل الأثاث',gender:'der'},
+        {de:'Nebenkostenabrechnung',ar:'فاتورة التكاليف الإضافية',gender:'die'},{de:'Anmeldung',ar:'تسجيل العنوان',gender:'die'},
+        {de:'Wohnungsbesichtigung',ar:'معاينة الشقة',gender:'die'},{de:'Kaution zurückbekommen',ar:'استرجاع التأمين',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Nach dem Umzug muss man sich beim Bürgeramt anmelden.',ar:'بعد الانتقال يجب التسجيل في مكتب البلدية.'},
+        {time:'0:08',de:'Die Wohnungsbesichtigung war erfolgreich, aber es gab viele Bewerber.',ar:'كانت معاينة الشقة ناجحة، لكن كان هناك متقدمون كثيرون.'},
+        {time:'0:16',de:'Ich hoffe, ich bekomme meine Kaution vollständig zurück.',ar:'أتمنى أن أسترجع تأميني بالكامل.'},
+      ],
+      grammar:{title:'تعبيرات السكن المتقدمة',table:{headers:['الجملة','المعنى'],rows:[['sich anmelden','يسجل عنوانه'],['die Kaution zurückbekommen','يسترجع التأمين']]}}
+    },
+    {
+      id:'b1-8', title:'العقود وحقوق المستهلك', sub:'Verträge und Verbraucherrechte', types:['text'],
+      vocab:[
+        {de:'Verbraucherrecht',ar:'حق المستهلك',gender:'das'},{de:'Widerrufsrecht',ar:'حق التراجع',gender:'das'},
+        {de:'Kleingedrucktes',ar:'الشروط الصغيرة بالعقد',gender:'das'},{de:'kündigen',ar:'يُلغي/يفسخ',gender:null},
+        {de:'Garantie',ar:'ضمان',gender:'die'},{de:'Reklamation',ar:'شكوى/مطالبة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Man sollte das Kleingedruckte immer lesen, bevor man unterschreibt.',ar:'يجب قراءة الشروط الصغيرة دائماً قبل التوقيع.'},
+        {time:'0:08',de:'Bei Online-Käufen hat man vierzehn Tage Widerrufsrecht.',ar:'في المشتريات الإلكترونية لديك حق التراجع لمدة 14 يوماً.'},
+        {time:'0:16',de:'Wenn das Produkt defekt ist, kann man eine Reklamation einreichen.',ar:'إذا كان المنتج معطلاً يمكن تقديم شكوى.'},
+      ],
+      grammar:{title:'bevor (قبل أن)',table:{headers:['الجملة','المعنى'],rows:[['..., bevor man unterschreibt.','قبل أن يوقّع.'],['..., bevor er geht.','قبل أن يذهب.']]}}
+    },
+    {
+      id:'b1-9', title:'سوق العمل والمهن المستقبلية', sub:'Arbeitsmarkt und Zukunftsberufe', types:['text'],
+      vocab:[
+        {de:'Arbeitsmarkt',ar:'سوق العمل',gender:'der'},{de:'Fachkräftemangel',ar:'نقص اليد العاملة المتخصصة',gender:'der'},
+        {de:'Weiterbildung',ar:'تأهيل/تدريب مستمر',gender:'die'},{de:'Automatisierung',ar:'الأتمتة',gender:'die'},
+        {de:'Quereinstieg',ar:'دخول مهنة بدون تكوين رسمي',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'In Deutschland gibt es einen großen Fachkräftemangel in der Pflege und IT.',ar:'يوجد في ألمانيا نقص كبير في اليد العاملة المتخصصة في التمريض والمعلوماتية.'},
+        {time:'0:09',de:'Viele Berufe werden sich durch die Automatisierung verändern.',ar:'كثير من المهن ستتغير بسبب الأتمتة.'},
+        {time:'0:16',de:'Lebenslanges Lernen und Weiterbildung werden immer wichtiger.',ar:'التعلم مدى الحياة والتدريب المستمر يصبحان أكثر أهمية.'},
+      ],
+      grammar:{title:'الزمن المستقبلي werden + Infinitiv',table:{headers:['الجملة','المعنى'],rows:[['Es wird sich verändern.','سيتغيّر.'],['Wir werden mehr lernen.','سنتعلم أكثر.']]}}
+    },
+    {
+      id:'b1-10', title:'التعليم عن بعد', sub:'Fernunterricht', types:['text'],
+      vocab:[
+        {de:'Fernunterricht',ar:'تعليم عن بعد',gender:'der'},{de:'Online-Kurs',ar:'دورة عبر الإنترنت',gender:'der'},
+        {de:'Selbstdisziplin',ar:'الانضباط الذاتي',gender:'die'},{de:'Plattform',ar:'منصة',gender:'die'},
+        {de:'Motivation',ar:'حافز',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Fernunterricht erfordert viel Selbstdisziplin.',ar:'التعليم عن بعد يتطلب انضباطاً ذاتياً كثيراً.'},
+        {time:'0:06',de:'Viele Studierende verlieren leicht die Motivation.',ar:'كثير من الطلاب يفقدون الحافز بسهولة.'},
+        {time:'0:12',de:'Die Plattform bietet aufgezeichnete Vorlesungen an.',ar:'المنصة توفر محاضرات مسجلة.'},
+      ],
+      grammar:{title:'erfordern (يتطلب)',table:{headers:['الضمير','التصريف'],rows:[['es','erfordert'],['sie (هم)','erfordern']]}}
+    },
+    {
+      id:'b1-11', title:'الثقافة الألمانية والعادات', sub:'Deutsche Kultur und Bräuche', types:['text'],
+      vocab:[
+        {de:'Pünktlichkeit',ar:'دقة المواعيد',gender:'die'},{de:'Tradition',ar:'تقليد',gender:'die'},
+        {de:'Brauch',ar:'عادة',gender:'der'},{de:'Höflichkeit',ar:'لطف/أدب',gender:'die'},
+        {de:'Mülltrennung',ar:'فصل النفايات',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Pünktlichkeit ist in der deutschen Kultur sehr wichtig.',ar:'الدقة في المواعيد مهمة جداً في الثقافة الألمانية.'},
+        {time:'0:06',de:'Es gibt viele regionale Bräuche, besonders in Bayern.',ar:'توجد عادات إقليمية كثيرة، خصوصاً في بافاريا.'},
+        {time:'0:13',de:'Die Deutschen nehmen die Mülltrennung sehr ernst.',ar:'الألمان يأخذون فصل النفايات بجدية كبيرة.'},
+      ],
+      grammar:{title:'sehr + صفة',table:{headers:['الجملة','المعنى'],rows:[['Das ist sehr wichtig.','هذا مهم جداً.'],['Sie nehmen es ernst.','يأخذونه بجدية.']]}}
+    },
+    {
+      id:'b1-12', title:'الأعياد الألمانية', sub:'Deutsche Feste', types:['text'],
+      vocab:[
+        {de:'Weihnachten',ar:'عيد الميلاد',gender:null},{de:'Oktoberfest',ar:'مهرجان أكتوبر',gender:'das'},
+        {de:'Karneval',ar:'كرنفال',gender:'der'},{de:'Weihnachtsmarkt',ar:'سوق عيد الميلاد',gender:'der'},
+        {de:'feiern',ar:'يحتفل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Im Dezember besuchen viele Leute den Weihnachtsmarkt.',ar:'في ديسمبر يزور كثير من الناس سوق عيد الميلاد.'},
+        {time:'0:06',de:'Das Oktoberfest in München ist weltbekannt.',ar:'مهرجان أكتوبر في ميونيخ معروف عالمياً.'},
+        {time:'0:12',de:'Im Februar feiert man in Köln den Karneval.',ar:'في فبراير يحتفلون بالكرنفال في كولونيا.'},
+      ],
+      grammar:{title:'الأشهر والاحتفالات',table:{headers:['الشهر','العيد'],rows:[['Dezember','Weihnachten'],['Februar','Karneval'],['September/Oktober','Oktoberfest']]}}
+    },
+    {
+      id:'b1-13', title:'وسائل الإعلام والصحافة', sub:'Medien und Presse', types:['text'],
+      vocab:[
+        {de:'Presse',ar:'صحافة',gender:'die'},{de:'Journalist',ar:'صحفي',gender:'der'},
+        {de:'Pressefreiheit',ar:'حرية الصحافة',gender:'die'},{de:'Schlagzeile',ar:'عنوان رئيسي',gender:'die'},
+        {de:'Quelle',ar:'مصدر',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Pressefreiheit ist ein wichtiger Wert in der Demokratie.',ar:'حرية الصحافة قيمة مهمة في الديمقراطية.'},
+        {time:'0:07',de:'Man sollte immer die Quelle einer Nachricht überprüfen.',ar:'يجب دائماً التحقق من مصدر أي خبر.'},
+        {time:'0:14',de:'Diese Schlagzeile war ziemlich übertrieben.',ar:'كان هذا العنوان مبالَغاً فيه نوعاً ما.'},
+      ],
+      grammar:{title:'sollte (يجب/ينبغي - نصيحة)',table:{headers:['الجملة','المعنى'],rows:[['Man sollte das prüfen.','يجب التحقق من ذلك.'],['Du solltest vorsichtig sein.','يجب أن تكون حذراً.']]}}
+    },
+    {
+      id:'b1-14', title:'الإعلانات والتسويق', sub:'Werbung und Marketing', types:['text'],
+      vocab:[
+        {de:'Werbung',ar:'إعلان',gender:'die'},{de:'Marke',ar:'علامة تجارية',gender:'die'},
+        {de:'Zielgruppe',ar:'الفئة المستهدفة',gender:'die'},{de:'überzeugen',ar:'يقنع',gender:null},
+        {de:'Slogan',ar:'شعار/عبارة دعائية',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Gute Werbung muss die Zielgruppe genau verstehen.',ar:'الإعلان الجيد يجب أن يفهم الفئة المستهدفة جيداً.'},
+        {time:'0:07',de:'Dieser Slogan ist sehr bekannt geworden.',ar:'أصبح هذا الشعار معروفاً جداً.'},
+        {time:'0:13',de:'Werbung versucht, uns zum Kauf zu überzeugen.',ar:'الإعلان يحاول إقناعنا بالشراء.'},
+      ],
+      grammar:{title:'versuchen + zu',table:{headers:['الجملة','المعنى'],rows:[['Sie versucht zu überzeugen.','هي تحاول الإقناع.'],['Wir versuchen zu lernen.','نحاول التعلم.']]}}
+    },
+    {
+      id:'b1-15', title:'ريادة الأعمال', sub:'Unternehmertum', types:['text'],
+      vocab:[
+        {de:'Unternehmer',ar:'رائد أعمال',gender:'der'},{de:'Geschäftsidee',ar:'فكرة مشروع',gender:'die'},
+        {de:'Risiko',ar:'خطر/مجازفة',gender:'das'},{de:'Investor',ar:'مستثمر',gender:'der'},
+        {de:'scheitern',ar:'يفشل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Viele Unternehmer scheitern beim ersten Versuch.',ar:'كثير من رواد الأعمال يفشلون في المحاولة الأولى.'},
+        {time:'0:06',de:'Eine gute Geschäftsidee braucht auch einen Investor.',ar:'الفكرة الجيدة للمشروع تحتاج أيضاً مستثمراً.'},
+        {time:'0:13',de:'Unternehmertum bedeutet, Risiken einzugehen.',ar:'ريادة الأعمال تعني تحمّل المخاطر.'},
+      ],
+      grammar:{title:'bedeuten (يعني)',table:{headers:['الجملة','المعنى'],rows:[['Das bedeutet Risiko.','هذا يعني خطراً.'],['Es bedeutet viel Arbeit.','يعني الكثير من العمل.']]}}
+    },
+    {
+      id:'b1-16', title:'إدارة الوقت والإنتاجية', sub:'Zeitmanagement', types:['text'],
+      vocab:[
+        {de:'Prioritäten setzen',ar:'يحدد الأولويات',gender:null},{de:'Zeitverschwendung',ar:'هدر الوقت',gender:'die'},
+        {de:'Aufschieberitis',ar:'التسويف',gender:'die'},{de:'effizient',ar:'فعّال/منتج',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Man sollte jeden Tag Prioritäten setzen.',ar:'يجب تحديد الأولويات كل يوم.'},
+        {time:'0:06',de:'Aufschieberitis ist ein großes Problem für viele Studierende.',ar:'التسويف مشكلة كبيرة لكثير من الطلاب.'},
+        {time:'0:13',de:'Eine To-Do-Liste hilft, effizienter zu arbeiten.',ar:'قائمة المهام تساعد على العمل بفعالية أكبر.'},
+      ],
+      grammar:{title:'helfen + zu',table:{headers:['الجملة','المعنى'],rows:[['Es hilft, effizient zu arbeiten.','يساعد على العمل بفعالية.']]}}
+    },
+    {
+      id:'b1-17', title:'التوتر والضغط في العمل', sub:'Stress am Arbeitsplatz', types:['text'],
+      vocab:[
+        {de:'Stress',ar:'توتر/ضغط',gender:'der'},{de:'Burnout',ar:'الاحتراق الوظيفي',gender:'der'},
+        {de:'Work-Life-Balance',ar:'التوازن بين العمل والحياة',gender:null},{de:'sich entspannen',ar:'يسترخي',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Viele Arbeitnehmer leiden unter Stress und Burnout.',ar:'كثير من الموظفين يعانون من التوتر والاحتراق الوظيفي.'},
+        {time:'0:07',de:'Eine gute Work-Life-Balance ist sehr wichtig.',ar:'التوازن الجيد بين العمل والحياة مهم جداً.'},
+        {time:'0:13',de:'Man muss lernen, sich richtig zu entspannen.',ar:'يجب أن نتعلم الاسترخاء بشكل صحيح.'},
+      ],
+      grammar:{title:'leiden unter (يعاني من)',table:{headers:['الجملة','المعنى'],rows:[['Er leidet unter Stress.','هو يعاني من التوتر.']]}}
+    },
+    {
+      id:'b1-18', title:'التغير المناخي', sub:'Klimawandel', types:['text'],
+      vocab:[
+        {de:'Klimawandel',ar:'تغير المناخ',gender:'der'},{de:'Treibhauseffekt',ar:'تأثير الاحتباس الحراري',gender:'der'},
+        {de:'Emissionen',ar:'انبعاثات',gender:null},{de:'Naturkatastrophe',ar:'كارثة طبيعية',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Der Klimawandel verursacht immer mehr Naturkatastrophen.',ar:'تغير المناخ يسبب كوارث طبيعية أكثر فأكثر.'},
+        {time:'0:07',de:'Wir müssen die CO2-Emissionen drastisch reduzieren.',ar:'يجب علينا تقليل انبعاثات الكربون بشكل كبير.'},
+        {time:'0:14',de:'Der Treibhauseffekt erwärmt die Erde langsam.',ar:'تأثير الاحتباس الحراري يُسخّن الأرض ببطء.'},
+      ],
+      grammar:{title:'verursachen (يسبّب)',table:{headers:['الجملة','المعنى'],rows:[['Es verursacht Probleme.','يسبّب مشاكل.']]}}
+    },
+    {
+      id:'b1-19', title:'الطاقة المتجددة', sub:'Erneuerbare Energien', types:['text'],
+      vocab:[
+        {de:'erneuerbare Energie',ar:'طاقة متجددة',gender:'die'},{de:'Solarenergie',ar:'الطاقة الشمسية',gender:'die'},
+        {de:'Windkraft',ar:'طاقة الريح',gender:'die'},{de:'fossile Brennstoffe',ar:'الوقود الأحفوري',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Deutschland investiert stark in Solarenergie und Windkraft.',ar:'ألمانيا تستثمر بقوة في الطاقة الشمسية وطاقة الريح.'},
+        {time:'0:07',de:'Fossile Brennstoffe sollen schrittweise ersetzt werden.',ar:'يجب استبدال الوقود الأحفوري تدريجياً.'},
+        {time:'0:14',de:'Erneuerbare Energien sind besser für die Umwelt.',ar:'الطاقة المتجددة أفضل للبيئة.'},
+      ],
+      grammar:{title:'sollen + Passiv',table:{headers:['الجملة','المعنى'],rows:[['Es soll ersetzt werden.','يجب أن يُستبدَل.']]}}
+    },
+    {
+      id:'b1-20', title:'الهجرة واللجوء', sub:'Migration und Asyl', types:['text'],
+      vocab:[
+        {de:'Migration',ar:'هجرة',gender:'die'},{de:'Asylbewerber',ar:'طالب لجوء',gender:'der'},
+        {de:'Integration',ar:'دمج/اندماج',gender:'die'},{de:'Aufenthaltstitel',ar:'إذن الإقامة',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Integration beginnt mit dem Lernen der Sprache.',ar:'الاندماج يبدأ بتعلّم اللغة.'},
+        {time:'0:06',de:'Viele Asylbewerber warten lange auf ihren Aufenthaltstitel.',ar:'كثير من طالبي اللجوء ينتظرون طويلاً للحصول على إذن إقامتهم.'},
+        {time:'0:14',de:'Migration prägt die Geschichte vieler Länder.',ar:'الهجرة تشكّل تاريخ كثير من الدول.'},
+      ],
+      grammar:{title:'beginnen mit (يبدأ بـ)',table:{headers:['الجملة','المعنى'],rows:[['Es beginnt mit der Sprache.','يبدأ باللغة.']]}}
+    },
+    {
+      id:'b1-21', title:'حقوق الإنسان', sub:'Menschenrechte', types:['text'],
+      vocab:[
+        {de:'Menschenrechte',ar:'حقوق الإنسان',gender:null},{de:'Würde',ar:'كرامة',gender:'die'},
+        {de:'Freiheit',ar:'حرية',gender:'die'},{de:'Gerechtigkeit',ar:'عدالة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Jeder Mensch hat das Recht auf Würde und Freiheit.',ar:'كل إنسان له الحق في الكرامة والحرية.'},
+        {time:'0:07',de:'Menschenrechte gelten unabhängig von Herkunft oder Religion.',ar:'حقوق الإنسان تنطبق بغض النظر عن الأصل أو الدين.'},
+      ],
+      grammar:{title:'das Recht auf (الحق في)',table:{headers:['الجملة','المعنى'],rows:[['Recht auf Bildung','الحق في التعليم'],['Recht auf Freiheit','الحق في الحرية']]}}
+    },
+    {
+      id:'b1-22', title:'المساواة بين الجنسين', sub:'Gleichstellung der Geschlechter', types:['text'],
+      vocab:[
+        {de:'Gleichstellung',ar:'مساواة',gender:'die'},{de:'Lohnunterschied',ar:'فرق الأجور',gender:'der'},
+        {de:'Chancengleichheit',ar:'تكافؤ الفرص',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'In vielen Berufen gibt es noch einen Lohnunterschied zwischen Männern und Frauen.',ar:'في كثير من المهن لا يزال هناك فرق في الأجور بين الرجال والنساء.'},
+        {time:'0:09',de:'Chancengleichheit ist ein wichtiges gesellschaftliches Ziel.',ar:'تكافؤ الفرص هدف مجتمعي مهم.'},
+      ],
+      grammar:{title:'zwischen (بين)',table:{headers:['الجملة','المعنى'],rows:[['zwischen Männern und Frauen','بين الرجال والنساء']]}}
+    },
+    {
+      id:'b1-23', title:'النظام التعليمي الألماني', sub:'Das deutsche Bildungssystem', types:['text'],
+      vocab:[
+        {de:'Grundschule',ar:'مدرسة أساسية',gender:'die'},{de:'Gymnasium',ar:'ثانوية (مسار أكاديمي)',gender:'das'},
+        {de:'Ausbildung',ar:'تكوين مهني',gender:'die'},{de:'Abitur',ar:'شهادة الباكالوريا الألمانية',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Nach der Grundschule wechseln die Schüler aufs Gymnasium oder eine andere Schulform.',ar:'بعد المدرسة الأساسية ينتقل الطلاب للثانوية أو نوع آخر من المدارس.'},
+        {time:'0:09',de:'Viele Jugendliche machen eine Ausbildung statt zu studieren.',ar:'كثير من الشباب يلتحقون بتكوين مهني بدل الدراسة الجامعية.'},
+      ],
+      grammar:{title:'statt + zu (بدلاً من)',table:{headers:['الجملة','المعنى'],rows:[['statt zu studieren','بدلاً من الدراسة']]}}
+    },
+    {
+      id:'b1-24', title:'الجامعات والتخصصات', sub:'Universitäten und Fachrichtungen', types:['text'],
+      vocab:[
+        {de:'Fachrichtung',ar:'تخصص',gender:'die'},{de:'Bachelor',ar:'بكالوريوس',gender:'der'},
+        {de:'Master',ar:'ماجستير',gender:'der'},{de:'Studiengebühren',ar:'رسوم الدراسة',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'In Deutschland sind die Studiengebühren an staatlichen Universitäten meist sehr niedrig.',ar:'في ألمانيا رسوم الدراسة في الجامعات العامة منخفضة جداً عادةً.'},
+        {time:'0:09',de:'Nach dem Bachelor kann man einen Master machen.',ar:'بعد البكالوريوس يمكن دراسة الماجستير.'},
+      ],
+      grammar:{title:'niedrig/hoch (منخفض/مرتفع)',table:{headers:['الجملة','المعنى'],rows:[['Die Gebühren sind niedrig.','الرسوم منخفضة.']]}}
+    },
+    {
+      id:'b1-25', title:'المبني للمجهول Passiv', sub:'Das Passiv', types:['text'],
+      vocab:[
+        {de:'gebaut werden',ar:'يُبنى',gender:null},{de:'geschrieben werden',ar:'يُكتب',gender:null},
+        {de:'verkauft werden',ar:'يُباع',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Das Haus wird nächstes Jahr gebaut.',ar:'سيُبنى البيت السنة القادمة.'},
+        {time:'0:06',de:'Diese Bücher werden in vielen Ländern verkauft.',ar:'تُباع هذه الكتب في بلدان كثيرة.'},
+        {time:'0:12',de:'Der Brief wurde gestern geschrieben.',ar:'كُتبت الرسالة بالأمس.'},
+      ],
+      grammar:{title:'تكوين المبني للمجهول',table:{headers:['الزمن','الصيغة'],rows:[['الحاضر','werden + Partizip II'],['الماضي','wurde + Partizip II']]}}
+    },
+    {
+      id:'b1-26', title:'المبني للمجهول في الماضي', sub:'Passiv im Präteritum', types:['text'],
+      vocab:[
+        {de:'wurde gebaut',ar:'بُني',gender:null},{de:'wurde gegründet',ar:'تأسس',gender:null},
+        {de:'wurde entdeckt',ar:'اُكتُشف',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Dieses Schloss wurde im achtzehnten Jahrhundert gebaut.',ar:'بُني هذا القصر في القرن الثامن عشر.'},
+        {time:'0:07',de:'Die Firma wurde vor zwanzig Jahren gegründet.',ar:'تأسست الشركة منذ عشرين عاماً.'},
+      ],
+      grammar:{title:'wurde + Partizip II',table:{headers:['الفعل','المبني للمجهول الماضي'],rows:[['bauen','wurde gebaut'],['gründen','wurde gegründet'],['entdecken','wurde entdeckt']]}}
+    },
+    {
+      id:'b1-27', title:'النصيحة والافتراض Konjunktiv II', sub:'Konjunktiv II', types:['text'],
+      vocab:[
+        {de:'würde',ar:'كنت سـ/سوف (افتراضي)',gender:null},{de:'könnte',ar:'لربما يمكن',gender:null},
+        {de:'sollte',ar:'يجب أن (نصيحة)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'An deiner Stelle würde ich mehr Deutsch üben.',ar:'لو كنت مكانك لكنت تدربت أكثر على الألمانية.'},
+        {time:'0:07',de:'Du solltest früher schlafen gehen.',ar:'يجب أن تنام مبكراً.'},
+        {time:'0:12',de:'Ich könnte dir morgen helfen.',ar:'يمكن أن أساعدك غداً.'},
+      ],
+      grammar:{title:'würde + Infinitiv',table:{headers:['الضمير','würde'],rows:[['ich','würde'],['du','würdest'],['er/sie','würde'],['wir','würden']]}}
+    },
+    {
+      id:'b1-28', title:'الجمل النسبية', sub:'Relativsätze', types:['text'],
+      vocab:[
+        {de:'der/die/das (نسبي)',ar:'الذي/التي',gender:null},{de:'welche(r/s)',ar:'الذي/التي (بديل)',gender:null},
+        {de:'der Mann',ar:'الرجل',gender:'der'},{de:'die Frau',ar:'المرأة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Das ist der Mann, der neben mir wohnt.',ar:'هذا هو الرجل الذي يسكن بجانبي.'},
+        {time:'0:06',de:'Das Buch, das ich lese, ist sehr interessant.',ar:'الكتاب الذي أقرأه مثير جداً.'},
+        {time:'0:13',de:'Die Frau, die dort steht, ist meine Lehrerin.',ar:'المرأة التي تقف هناك هي معلمتي.'},
+      ],
+      grammar:{title:'ضمائر الوصل النسبية',table:{headers:['الجنس','الضمير'],rows:[['مذكر','der'],['مؤنث','die'],['محايد','das'],['جمع','die']]}}
+    },
+    {
+      id:'b1-29', title:'حالة الجر Genitiv', sub:'Der Genitiv', types:['text'],
+      vocab:[
+        {de:'des Mannes',ar:'الخاص بالرجل',gender:null},{de:'der Frau',ar:'الخاصة بالمرأة',gender:null},
+        {de:'wegen',ar:'بسبب',gender:null},{de:'während',ar:'خلال',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Das ist das Auto des Lehrers.',ar:'هذه هي سيارة المعلم.'},
+        {time:'0:05',de:'Wegen des Regens bleiben wir zu Hause.',ar:'بسبب المطر سنبقى في البيت.'},
+        {time:'0:11',de:'Während der Prüfung darf man nicht sprechen.',ar:'خلال الامتحان لا يُسمح بالحديث.'},
+      ],
+      grammar:{title:'حالة الجر Genitiv',table:{headers:['الجنس','الأداة'],rows:[['مذكر','des'],['مؤنث','der'],['محايد','des'],['جمع','der']]}}
+    },
+    {
+      id:'b1-30', title:'الكلام المنقول غير المباشر', sub:'Indirekte Rede', types:['text'],
+      vocab:[
+        {de:'sagen, dass',ar:'يقول إنّ',gender:null},{de:'fragen, ob',ar:'يسأل إن كان',gender:null},
+        {de:'meinen',ar:'يرى/يعتقد',gender:null},{de:'antworten',ar:'يجيب',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Er sagt, dass er morgen kommt.',ar:'يقول إنه سيأتي غداً.'},
+        {time:'0:06',de:'Sie hat gefragt, ob ich Zeit habe.',ar:'سألت إن كان لدي وقت.'},
+        {time:'0:12',de:'Er meinte, dass das Projekt fertig sei.',ar:'قال إن المشروع جاهز.'},
+      ],
+      grammar:{title:'الكلام المنقول بـ dass/ob',table:{headers:['الصيغة','المعنى'],rows:[['sagen, dass...','يقول إنّ...'],['fragen, ob...','يسأل إن كان...']]}}
+    },
+    {
+      id:'b1-31', title:'أدوات الربط obwohl وtrotzdem', sub:'Konnektoren: obwohl, trotzdem', types:['text'],
+      vocab:[
+        {de:'obwohl',ar:'مع أنّ/رغم أنّ',gender:null},{de:'trotzdem',ar:'مع ذلك',gender:null},
+        {de:'dennoch',ar:'مع ذلك (مرادف)',gender:null},{de:'allerdings',ar:'لكن/إلا أنّ',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Obwohl es regnet, gehen wir spazieren.',ar:'رغم أنها تمطر، نذهب للتمشية.'},
+        {time:'0:06',de:'Er ist müde. Trotzdem arbeitet er weiter.',ar:'هو متعب. مع ذلك يستمر بالعمل.'},
+      ],
+      grammar:{title:'obwohl وtrotzdem',table:{headers:['الكلمة','الترتيب'],rows:[['obwohl','الفعل في آخر الجملة'],['trotzdem','الفعل بعدها مباشرة']]}}
+    },
+    {
+      id:'b1-32', title:'أدوات الربط الزمنية', sub:'Temporale Konnektoren: während, bevor, nachdem', types:['text'],
+      vocab:[
+        {de:'während',ar:'بينما/خلال',gender:null},{de:'bevor',ar:'قبل أن',gender:null},
+        {de:'nachdem',ar:'بعد أن',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Während ich kochte, hat er die Wohnung aufgeräumt.',ar:'بينما كنت أطبخ، رتّب هو الشقة.'},
+        {time:'0:07',de:'Bevor ich schlafe, lese ich immer ein bisschen.',ar:'قبل أن أنام أقرأ قليلاً دائماً.'},
+        {time:'0:14',de:'Nachdem wir gegessen hatten, sind wir spazieren gegangen.',ar:'بعد أن أكلنا، ذهبنا للتمشية.'},
+      ],
+      grammar:{title:'أدوات الربط الزمنية',table:{headers:['الكلمة','المعنى'],rows:[['während','بينما'],['bevor','قبل أن'],['nachdem','بعد أن']]}}
+    },
+    {
+      id:'b1-33', title:'التعبير عن الرأي بشكل رسمي', sub:'Meinung äußern', types:['text'],
+      vocab:[
+        {de:'meiner Meinung nach',ar:'برأيي',gender:null},{de:'ich bin der Ansicht',ar:'أنا أرى أنّ',gender:null},
+        {de:'einerseits...andererseits',ar:'من جهة...من جهة أخرى',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Meiner Meinung nach ist Bildung das Wichtigste.',ar:'برأيي، التعليم هو الأهم.'},
+        {time:'0:06',de:'Einerseits ist die Stadt praktisch, andererseits sehr laut.',ar:'من جهة المدينة عملية، ومن جهة أخرى صاخبة جداً.'},
+      ],
+      grammar:{title:'تعبيرات الرأي',table:{headers:['التعبير','المعنى'],rows:[['meiner Meinung nach','برأيي'],['ich denke, dass...','أعتقد أن...']]}}
+    },
+    {
+      id:'b1-34', title:'كتابة مقال نقاش', sub:'Einen Diskussionstext schreiben', types:['text'],
+      vocab:[
+        {de:'Argument',ar:'حجة',gender:'das'},{de:'Gegenargument',ar:'حجة مضادة',gender:'das'},
+        {de:'Schlussfolgerung',ar:'استنتاج',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ein guter Diskussionstext braucht klare Argumente.',ar:'مقال النقاش الجيد يحتاج حججاً واضحة.'},
+        {time:'0:06',de:'Man sollte auch Gegenargumente berücksichtigen.',ar:'يجب أيضاً مراعاة الحجج المضادة.'},
+      ],
+      grammar:{title:'هيكل مقال النقاش',table:{headers:['الجزء','المحتوى'],rows:[['المقدمة','عرض الموضوع'],['الحجج','الإيجابيات والسلبيات'],['الاستنتاج','الرأي الشخصي']]}}
+    },
+    {
+      id:'b1-35', title:'القراءة النقدية للأخبار', sub:'Nachrichten kritisch lesen', types:['text'],
+      vocab:[
+        {de:'Fake News',ar:'أخبار مزيفة',gender:null},{de:'Objektivität',ar:'الموضوعية',gender:'die'},
+        {de:'überprüfen',ar:'يتحقق',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Heutzutage muss man Nachrichten kritisch lesen.',ar:'في هذا العصر يجب قراءة الأخبار بنظرة نقدية.'},
+        {time:'0:06',de:'Fake News verbreiten sich schnell in sozialen Medien.',ar:'الأخبار المزيفة تنتشر بسرعة في وسائل التواصل.'},
+      ],
+      grammar:{title:'heutzutage (في هذا العصر)',table:{headers:['الجملة','المعنى'],rows:[['Heutzutage ist alles digital.','في هذا العصر كل شيء رقمي.']]}}
+    },
+    {
+      id:'b1-36', title:'حياة المهاجر في ألمانيا', sub:'Leben als Migrant in Deutschland', types:['text'],
+      vocab:[
+        {de:'Heimweh',ar:'الحنين للوطن',gender:'das'},{de:'sich anpassen',ar:'يتكيّف',gender:null},
+        {de:'Diaspora',ar:'الجالية المهاجرة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Am Anfang hatte ich oft Heimweh.',ar:'في البداية كان يصيبني الحنين للوطن كثيراً.'},
+        {time:'0:06',de:'Mit der Zeit habe ich mich gut angepasst.',ar:'مع الوقت تكيّفت بشكل جيد.'},
+      ],
+      grammar:{title:'sich anpassen (يتكيّف)',table:{headers:['الضمير','التصريف'],rows:[['ich','passe mich an'],['er/sie','passt sich an']]}}
+    },
+    {
+      id:'b1-37', title:'اللغة الألمانية في العمل', sub:'Deutsch im Beruf', types:['text'],
+      vocab:[
+        {de:'Fachsprache',ar:'لغة مهنية متخصصة',gender:'die'},{de:'Geschäftsdeutsch',ar:'الألمانية التجارية',gender:'das'},
+        {de:'Kollege',ar:'زميل',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Im Berufsleben braucht man oft eine spezielle Fachsprache.',ar:'في الحياة المهنية نحتاج غالباً لغة مهنية متخصصة.'},
+        {time:'0:07',de:'Es ist wichtig, mit Kollegen klar zu kommunizieren.',ar:'من المهم التواصل بوضوح مع الزملاء.'},
+      ],
+      grammar:{title:'es ist wichtig + zu',table:{headers:['الجملة','المعنى'],rows:[['Es ist wichtig, klar zu sprechen.','من المهم التحدث بوضوح.']]}}
+    },
+    {
+      id:'b1-38', title:'كتابة شكوى رسمية', sub:'Eine Beschwerde schreiben', types:['text'],
+      vocab:[
+        {de:'Beschwerde',ar:'شكوى',gender:'die'},{de:'unzufrieden',ar:'غير راضٍ',gender:null},
+        {de:'Erstattung',ar:'استرداد المبلغ',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich bin sehr unzufrieden mit dieser Dienstleistung.',ar:'أنا غير راضٍ جداً عن هذه الخدمة.'},
+        {time:'0:06',de:'Ich möchte eine vollständige Erstattung beantragen.',ar:'أريد طلب استرداد كامل للمبلغ.'},
+      ],
+      grammar:{title:'صيغة الشكوى الرسمية',table:{headers:['الجملة','المعنى'],rows:[['Ich bin unzufrieden mit...','أنا غير راضٍ عن...'],['Ich beantrage...','أنا أطلب رسمياً...']]}}
+    },
+    {
+      id:'b1-39', title:'التفاوض والمساومة', sub:'Verhandeln und Feilschen', types:['text'],
+      vocab:[
+        {de:'verhandeln',ar:'يتفاوض',gender:null},{de:'Preisnachlass',ar:'تخفيض في السعر',gender:'der'},
+        {de:'Kompromiss',ar:'حل وسط',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Können wir über den Preis verhandeln?',ar:'هل يمكننا التفاوض على السعر؟'},
+        {time:'0:06',de:'Ich biete Ihnen einen kleinen Preisnachlass an.',ar:'أعرض عليك تخفيضاً صغيراً في السعر.'},
+        {time:'0:12',de:'Lassen Sie uns einen Kompromiss finden.',ar:'لنجد حلاً وسطاً.'},
+      ],
+      grammar:{title:'lassen uns + Infinitiv',table:{headers:['الجملة','المعنى'],rows:[['Lassen Sie uns reden.','لنتحدث.']]}}
+    },
+    {
+      id:'b1-40', title:'إدارة المال الشخصي', sub:'Persönliche Finanzen', types:['text'],
+      vocab:[
+        {de:'Budget',ar:'موازنة شخصية',gender:'das'},{de:'sparen',ar:'يدخّر',gender:null},
+        {de:'Schulden',ar:'ديون',gender:null},{de:'Investition',ar:'استثمار',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Es ist wichtig, jeden Monat ein Budget zu planen.',ar:'من المهم تخطيط موازنة شهرية كل شهر.'},
+        {time:'0:07',de:'Ich versuche, zehn Prozent meines Gehalts zu sparen.',ar:'أحاول توفير عشرة بالمئة من راتبي.'},
+      ],
+      grammar:{title:'versuchen zu (يحاول أن)',table:{headers:['الجملة','المعنى'],rows:[['Ich versuche zu sparen.','أحاول التوفير.']]}}
+    },
+    {
+      id:'b1-41', title:'الضرائب الأساسية', sub:'Grundlagen der Steuern', types:['text'],
+      vocab:[
+        {de:'Steuer',ar:'ضريبة',gender:'die'},{de:'Steuererklärung',ar:'تصريح ضريبي',gender:'die'},
+        {de:'Finanzamt',ar:'مكتب الضرائب',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Jedes Jahr muss man eine Steuererklärung beim Finanzamt einreichen.',ar:'كل سنة يجب تقديم تصريح ضريبي لمكتب الضرائب.'},
+        {time:'0:08',de:'Manche Ausgaben kann man steuerlich absetzen.',ar:'بعض النفقات يمكن خصمها ضريبياً.'},
+      ],
+      grammar:{title:'einreichen (يقدّم رسمياً)',table:{headers:['الجملة','المعنى'],rows:[['Ich reiche die Erklärung ein.','أقدّم التصريح.']]}}
+    },
+    {
+      id:'b1-42', title:'نظام التقاعد', sub:'Rentensystem', types:['text'],
+      vocab:[
+        {de:'Rente',ar:'تقاعد',gender:'die'},{de:'Rentenversicherung',ar:'تأمين التقاعد',gender:'die'},
+        {de:'im Ruhestand',ar:'متقاعد',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'In Deutschland zahlt man während des Arbeitslebens in die Rentenversicherung ein.',ar:'في ألمانيا يدفع الشخص في تأمين التقاعد خلال حياته العملية.'},
+        {time:'0:09',de:'Viele Menschen gehen mit siebenundsechzig Jahren in den Ruhestand.',ar:'كثير من الناس يتقاعدون في السابعة والستين من عمرهم.'},
+      ],
+      grammar:{title:'einzahlen in (يدفع في)',table:{headers:['الجملة','المعنى'],rows:[['Man zahlt in die Rente ein.','يدفع في صندوق التقاعد.']]}}
+    },
+    {
+      id:'b1-43', title:'الفنون والمعارض', sub:'Kunst und Ausstellungen', types:['text'],
+      vocab:[
+        {de:'Ausstellung',ar:'معرض',gender:'die'},{de:'Gemälde',ar:'لوحة فنية',gender:'das'},
+        {de:'Künstler',ar:'فنان',gender:'der'},{de:'Museum',ar:'متحف',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Diese Ausstellung zeigt Gemälde aus dem neunzehnten Jahrhundert.',ar:'يعرض هذا المعرض لوحات من القرن التاسع عشر.'},
+        {time:'0:08',de:'Der Künstler hat sein Werk im Museum vorgestellt.',ar:'قدّم الفنان عمله في المتحف.'},
+      ],
+      grammar:{title:'vorstellen (يقدّم)',table:{headers:['الضمير','التصريف'],rows:[['ich','stelle vor'],['er/sie','stellt vor']]}}
+    },
+    {
+      id:'b1-44', title:'مقدمة عن الأدب الألماني', sub:'Deutsche Literatur', types:['text'],
+      vocab:[
+        {de:'Schriftsteller',ar:'كاتب',gender:'der'},{de:'Roman',ar:'رواية',gender:'der'},
+        {de:'Gedicht',ar:'قصيدة',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Goethe ist einer der bekanntesten deutschen Schriftsteller.',ar:'غوته هو أحد أشهر الكتّاب الألمان.'},
+        {time:'0:07',de:'Sein Roman wird auch heute noch viel gelesen.',ar:'روايته تُقرأ كثيراً حتى اليوم.'},
+      ],
+      grammar:{title:'einer der + صفة تفوق',table:{headers:['الجملة','المعنى'],rows:[['einer der bekanntesten','أحد الأشهر']]}}
+    },
+    {
+      id:'b1-45', title:'السينما الألمانية', sub:'Deutscher Film', types:['text'],
+      vocab:[
+        {de:'Regisseur',ar:'مخرج',gender:'der'},{de:'Drehbuch',ar:'سيناريو',gender:'das'},
+        {de:'Filmfestival',ar:'مهرجان سينمائي',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Die Berlinale ist eines der wichtigsten Filmfestivals der Welt.',ar:'مهرجان برلين السينمائي أحد أهم مهرجانات السينما في العالم.'},
+        {time:'0:08',de:'Der Regisseur hat das Drehbuch selbst geschrieben.',ar:'كتب المخرج السيناريو بنفسه.'},
+      ],
+      grammar:{title:'selbst (بنفسه)',table:{headers:['الجملة','المعنى'],rows:[['Er hat es selbst gemacht.','فعله بنفسه.']]}}
+    },
+    {
+      id:'b1-46', title:'العمل التطوعي', sub:'Ehrenamtliche Arbeit', types:['text'],
+      vocab:[
+        {de:'ehrenamtlich',ar:'تطوعي',gender:null},{de:'sich engagieren',ar:'ينخرط/يتفاعل',gender:null},
+        {de:'gemeinnützig',ar:'ذو نفع عام',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Viele junge Menschen engagieren sich ehrenamtlich.',ar:'كثير من الشباب ينخرطون في العمل التطوعي.'},
+        {time:'0:07',de:'Gemeinnützige Organisationen brauchen immer Freiwillige.',ar:'المنظمات ذات النفع العام تحتاج دائماً متطوعين.'},
+      ],
+      grammar:{title:'sich engagieren (ينخرط)',table:{headers:['الضمير','التصريف'],rows:[['ich','engagiere mich'],['er/sie','engagiert sich']]}}
+    },
+    {
+      id:'b1-47', title:'الفروق الثقافية', sub:'Kulturelle Unterschiede', types:['text'],
+      vocab:[
+        {de:'Unterschied',ar:'فرق/اختلاف',gender:'der'},{de:'Vorurteil',ar:'حكم مسبق',gender:'das'},
+        {de:'Toleranz',ar:'تسامح',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Kulturelle Unterschiede können manchmal zu Missverständnissen führen.',ar:'الفروق الثقافية يمكن أن تؤدي أحياناً لسوء فهم.'},
+        {time:'0:08',de:'Toleranz und Offenheit helfen, diese Unterschiede zu überwinden.',ar:'التسامح والانفتاح يساعدان على تجاوز هذه الفروق.'},
+      ],
+      grammar:{title:'führen zu (يؤدي إلى)',table:{headers:['الجملة','المعنى'],rows:[['Es führt zu Problemen.','يؤدي إلى مشاكل.']]}}
+    },
+    {
+      id:'b1-48', title:'تقديم ملاحظات بنّاءة', sub:'Konstruktives Feedback geben', types:['text'],
+      vocab:[
+        {de:'Feedback',ar:'ملاحظات/تغذية راجعة',gender:'das'},{de:'konstruktiv',ar:'بنّاء',gender:null},
+        {de:'verbessern',ar:'يُحسّن',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Konstruktives Feedback hilft dem Kollegen, sich zu verbessern.',ar:'الملاحظات البنّاءة تساعد الزميل على التحسّن.'},
+        {time:'0:07',de:'Man sollte immer höflich und klar bleiben.',ar:'يجب الحفاظ على اللطف والوضوح دائماً.'},
+      ],
+      grammar:{title:'helfen + Dativ + zu',table:{headers:['الجملة','المعنى'],rows:[['Es hilft ihm, sich zu verbessern.','يساعده على التحسّن.']]}}
+    },
+    {
+      id:'b1-49', title:'مهارات العرض والتقديم', sub:'Präsentationstechniken', types:['text'],
+      vocab:[
+        {de:'Präsentation',ar:'عرض تقديمي',gender:'die'},{de:'Publikum',ar:'الجمهور',gender:'das'},
+        {de:'überzeugend',ar:'مقنع',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Eine gute Präsentation braucht eine klare Struktur.',ar:'العرض التقديمي الجيد يحتاج بنية واضحة.'},
+        {time:'0:07',de:'Man sollte Augenkontakt mit dem Publikum halten.',ar:'يجب الحفاظ على التواصل البصري مع الجمهور.'},
+      ],
+      grammar:{title:'Augenkontakt halten',table:{headers:['الجملة','المعنى'],rows:[['Augenkontakt halten','الحفاظ على التواصل البصري']]}}
+    },
+    {
+      id:'b1-50', title:'التخطيط للمستقبل المهني', sub:'Berufliche Zukunftsplanung', types:['text'],
+      vocab:[
+        {de:'Zukunftsplanung',ar:'تخطيط المستقبل',gender:'die'},{de:'Karriere',ar:'مسيرة مهنية',gender:'die'},
+        {de:'Ziel setzen',ar:'يحدد هدفاً',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Es ist wichtig, sich klare berufliche Ziele zu setzen.',ar:'من المهم تحديد أهداف مهنية واضحة.'},
+        {time:'0:07',de:'Meine Karriereplanung umfasst die nächsten fünf Jahre.',ar:'تخطيط مسيرتي المهنية يشمل السنوات الخمس القادمة.'},
+      ],
+      grammar:{title:'sich Ziele setzen (يحدد أهدافاً)',table:{headers:['الجملة','المعنى'],rows:[['Ich setze mir Ziele.','أحدد لنفسي أهدافاً.']]}}
     },
   ],
   B2: [
