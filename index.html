@@ -671,7 +671,6 @@ footer .footer-links a:hover { color: var(--gold); }
       <button class="sidebar-sub" onclick="navToLesson('A2')">📘 A2 — أساسي</button>
       <button class="sidebar-sub" onclick="navToLesson('B1')">📙 B1 — متوسط</button>
       <button class="sidebar-sub" onclick="navToLesson('B2')">📕 B2 — متقدم</button>
-      <button class="sidebar-sub" onclick="window.location.href='a1.html'">⭐ 150 درس A1 كامل</button>
     </div>
     <button class="sidebar-item" id="sb-quiz" onclick="navTo('quiz')">
       <span class="item-icon">✏️</span> الامتحانات
@@ -745,8 +744,8 @@ footer .footer-links a:hover { color: var(--gold); }
 
     <!-- STATS -->
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-num">200+</div><div class="stat-label">درس متكامل</div></div>
-      <div class="stat-card"><div class="stat-num">1500+</div><div class="stat-label">كلمة ألمانية</div></div>
+      <div class="stat-card"><div class="stat-num">29</div><div class="stat-label">درس متكامل</div></div>
+      <div class="stat-card"><div class="stat-num">290+</div><div class="stat-label">كلمة ألمانية</div></div>
       <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">امتحان تدريبي</div></div>
       <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">مستويات A1→B2</div></div>
     </div>
@@ -768,14 +767,14 @@ footer .footer-links a:hover { color: var(--gold); }
         <span class="level-tag" style="background:#e6a000">A2</span>
         <h3>أساسي</h3>
         <p>التسوق، الاتجاهات، الطعام، الوقت والمواعيد</p>
-        <div class="level-meta"><span>📚 45 درس</span><span>⏱️ 15 ساعة</span></div>
+        <div class="level-meta"><span>📚 8 دروس</span><span>⏱️ 2.5 ساعة</span></div>
         <div class="level-progress"><div class="level-bar" style="width:0%"></div></div>
       </div>
       <div class="level-card" style="--lc:#CC0000" onclick="showLevelLessons('B1')">
         <span class="level-tag" style="background:#CC0000">B1</span>
         <h3>متوسط</h3>
         <p>العمل، الصحة، الترفيه، والتعبير عن الرأي</p>
-        <div class="level-meta"><span>📚 50 درس</span><span>⏱️ 20 ساعة</span></div>
+        <div class="level-meta"><span>📚 6 دروس</span><span>⏱️ 2 ساعة</span></div>
         <div class="level-progress"><div class="level-bar" style="width:0%"></div></div>
       </div>
       <div class="level-card" style="--lc:#1a1a1a" onclick="showLevelLessons('B2')">
@@ -1361,6 +1360,486 @@ const LESSONS = {
         {time:'0:20',de:'Ist der Zug pünktlich? Ja, er kommt um 14 Uhr an.',ar:'هل القطار في الوقت؟ نعم، يصل الساعة الثانية مساءً.'},
       ],
       grammar:{title:'حرف الجر mit مع المواصلات',table:{headers:['المواصلة','الجملة'],rows:[['Bus','Ich fahre mit dem Bus.'],['Zug','Ich fahre mit dem Zug.'],['Fahrrad','Ich fahre mit dem Fahrrad.'],['Auto','Ich fahre mit dem Auto.']]}}
+    },
+    {
+      id:'a1-11', title:'الفصول والشهور', sub:'Jahreszeiten und Monate', types:['audio','text'],
+      vocab:[
+        {de:'Frühling',ar:'الربيع',gender:'der'},{de:'Sommer',ar:'الصيف',gender:'der'},
+        {de:'Herbst',ar:'الخريف',gender:'der'},{de:'Winter',ar:'الشتاء',gender:'der'},
+        {de:'Januar',ar:'يناير',gender:null},{de:'März',ar:'مارس',gender:null},
+        {de:'Monat',ar:'شهر',gender:'der'},{de:'Jahr',ar:'سنة',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Welche Jahreszeit ist jetzt? Jetzt ist Winter.',ar:'أي فصل الآن؟ الآن الشتاء.'},
+        {time:'0:06',de:'Im Sommer ist es warm und sonnig.',ar:'في الصيف الجو دافئ ومشمس.'},
+        {time:'0:12',de:'Mein Geburtstag ist im März.',ar:'عيد ميلادي في مارس.'},
+        {time:'0:17',de:'Wie viele Monate hat ein Jahr? Ein Jahr hat zwölf Monate.',ar:'كم شهراً في السنة؟ السنة فيها اثنا عشر شهراً.'},
+      ],
+      grammar:{title:'أسماء الفصول الأربعة',table:{headers:['الفصل','المعنى'],rows:[['Frühling','الربيع'],['Sommer','الصيف'],['Herbst','الخريف'],['Winter','الشتاء']]}}
+    },
+    {
+      id:'a1-12', title:'الطقس', sub:'Das Wetter', types:['audio','text'],
+      vocab:[
+        {de:'Sonne',ar:'شمس',gender:'die'},{de:'Regen',ar:'مطر',gender:'der'},
+        {de:'Wind',ar:'ريح',gender:'der'},{de:'Schnee',ar:'ثلج',gender:'der'},
+        {de:'warm',ar:'دافئ',gender:null},{de:'kalt',ar:'بارد',gender:null},
+        {de:'Regenschirm',ar:'مظلة',gender:'der'},{de:'windig',ar:'عاصف',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie ist das Wetter heute? Es ist sonnig und warm.',ar:'كيف الطقس اليوم؟ مشمس ودافئ.'},
+        {time:'0:06',de:'Morgen regnet es.',ar:'غداً ستمطر.'},
+        {time:'0:10',de:'Im Winter schneit es oft in Deutschland.',ar:'في الشتاء تتساقط الثلوج كثيراً في ألمانيا.'},
+        {time:'0:16',de:'Ich brauche einen Regenschirm, es ist windig.',ar:'أحتاج مظلة، الجو عاصف.'},
+      ],
+      grammar:{title:'التعبير عن الطقس بـ es',table:{headers:['التعبير','المعنى'],rows:[['Es ist sonnig.','الجو مشمس.'],['Es regnet.','تمطر.'],['Es schneit.','تتساقط الثلوج.'],['Es ist kalt.','الجو بارد.']]}}
+    },
+    {
+      id:'a1-13', title:'الروتين اليومي', sub:'Tagesablauf', types:['audio','text'],
+      vocab:[
+        {de:'aufstehen',ar:'يستيقظ',gender:null},{de:'frühstücken',ar:'يتناول الفطور',gender:null},
+        {de:'duschen',ar:'يستحم',gender:null},{de:'arbeiten',ar:'يعمل',gender:null},
+        {de:'Mittagessen',ar:'غداء',gender:'das'},{de:'schlafen gehen',ar:'ينام',gender:null},
+        {de:'früh',ar:'باكراً',gender:null},{de:'spät',ar:'متأخراً',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich stehe um sieben Uhr auf.',ar:'أستيقظ في الساعة السابعة.'},
+        {time:'0:05',de:'Dann dusche ich und frühstücke.',ar:'ثم أستحم وأتناول الفطور.'},
+        {time:'0:10',de:'Um acht Uhr gehe ich zur Arbeit.',ar:'في الساعة الثامنة أذهب إلى العمل.'},
+        {time:'0:15',de:'Abends gehe ich um elf Uhr schlafen.',ar:'مساءً أنام في الساعة الحادية عشرة.'},
+      ],
+      grammar:{title:'الأفعال المنفصلة (trennbare Verben)',table:{headers:['الفعل','الجملة'],rows:[['aufstehen','Ich stehe um 7 Uhr auf.'],['fernsehen','Ich sehe abends fern.'],['einkaufen','Wir kaufen Brot ein.']]}}
+    },
+    {
+      id:'a1-14', title:'غرف البيت والأثاث', sub:'Wohnung und Möbel', types:['audio','text'],
+      vocab:[
+        {de:'Wohnzimmer',ar:'غرفة المعيشة',gender:'das'},{de:'Schlafzimmer',ar:'غرفة النوم',gender:'das'},
+        {de:'Küche',ar:'مطبخ',gender:'die'},{de:'Bad',ar:'حمام',gender:'das'},
+        {de:'Tisch',ar:'طاولة',gender:'der'},{de:'Stuhl',ar:'كرسي',gender:'der'},
+        {de:'Bett',ar:'سرير',gender:'das'},{de:'Schrank',ar:'خزانة',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie viele Zimmer hat deine Wohnung? Sie hat drei Zimmer.',ar:'كم غرفة في شقتك؟ فيها ثلاث غرف.'},
+        {time:'0:06',de:'Das Sofa steht im Wohnzimmer.',ar:'الأريكة في غرفة المعيشة.'},
+        {time:'0:11',de:'Mein Bett ist im Schlafzimmer.',ar:'سريري في غرفة النوم.'},
+        {time:'0:16',de:'Die Küche ist klein, aber praktisch.',ar:'المطبخ صغير لكنه عملي.'},
+      ],
+      grammar:{title:'der/die/das مع غرف البيت',table:{headers:['الغرفة','الجنس'],rows:[['Wohnzimmer','das'],['Küche','die'],['Schlafzimmer','das'],['Bad','das']]}}
+    },
+    {
+      id:'a1-15', title:'في المدرسة', sub:'In der Schule', types:['audio','text'],
+      vocab:[
+        {de:'Schule',ar:'مدرسة',gender:'die'},{de:'Lehrer',ar:'معلم',gender:'der'},
+        {de:'Schüler',ar:'طالب',gender:'der'},{de:'Klasse',ar:'صف',gender:'die'},
+        {de:'Buch',ar:'كتاب',gender:'das'},{de:'Heft',ar:'كراسة',gender:'das'},
+        {de:'Tafel',ar:'سبورة',gender:'die'},{de:'Pause',ar:'استراحة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich gehe jeden Tag in die Schule.',ar:'أذهب إلى المدرسة كل يوم.'},
+        {time:'0:05',de:'Mein Lehrer heißt Herr Müller.',ar:'معلمي اسمه السيد مولر.'},
+        {time:'0:10',de:'Wir haben heute Deutsch und Mathematik.',ar:'لدينا اليوم ألمانية ورياضيات.'},
+        {time:'0:15',de:'Die Schüler schreiben im Heft.',ar:'الطلاب يكتبون في الكراسة.'},
+      ],
+      grammar:{title:'جمع بعض أسماء المدرسة',table:{headers:['المفرد','الجمع'],rows:[['das Buch','die Bücher'],['das Heft','die Hefte'],['der Lehrer','die Lehrer'],['die Schule','die Schulen']]}}
+    },
+    {
+      id:'a1-16', title:'المهن', sub:'Berufe', types:['audio','text'],
+      vocab:[
+        {de:'Arzt',ar:'طبيب',gender:'der'},{de:'Ärztin',ar:'طبيبة',gender:'die'},
+        {de:'Ingenieur',ar:'مهندس',gender:'der'},{de:'Verkäufer',ar:'بائع',gender:'der'},
+        {de:'Koch',ar:'طباخ',gender:'der'},{de:'Beruf',ar:'مهنة',gender:'der'},
+        {de:'Student',ar:'طالب جامعي',gender:'der'},{de:'arbeiten als',ar:'يعمل كـ',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Was bist du von Beruf? Ich bin Ingenieur.',ar:'ما مهنتك؟ أنا مهندس.'},
+        {time:'0:05',de:'Meine Schwester ist Ärztin.',ar:'أختي طبيبة.'},
+        {time:'0:09',de:'Er arbeitet als Lehrer in einer Schule.',ar:'يعمل كمعلم في مدرسة.'},
+        {time:'0:14',de:'Was machst du beruflich? Ich bin Student.',ar:'ماذا تعمل؟ أنا طالب.'},
+      ],
+      grammar:{title:'المهن للمؤنث بإضافة -in',table:{headers:['المذكر','المؤنث'],rows:[['der Lehrer','die Lehrerin'],['der Arzt','die Ärztin'],['der Verkäufer','die Verkäuferin'],['der Student','die Studentin']]}}
+    },
+    {
+      id:'a1-17', title:'الهوايات', sub:'Hobbys', types:['audio','text'],
+      vocab:[
+        {de:'lesen',ar:'يقرأ',gender:null},{de:'schwimmen',ar:'يسبح',gender:null},
+        {de:'malen',ar:'يرسم',gender:null},{de:'fotografieren',ar:'يصوّر',gender:null},
+        {de:'Musik hören',ar:'يستمع للموسيقى',gender:null},{de:'kochen',ar:'يطبخ',gender:null},
+        {de:'reisen',ar:'يسافر',gender:null},{de:'tanzen',ar:'يرقص',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Was ist dein Hobby? Ich lese gern Bücher.',ar:'ما هي هوايتك؟ أحب قراءة الكتب.'},
+        {time:'0:06',de:'Mein Bruder schwimmt jeden Samstag.',ar:'أخي يسبح كل سبت.'},
+        {time:'0:11',de:'Ich höre gern Musik und tanze.',ar:'أحب الاستماع للموسيقى والرقص.'},
+        {time:'0:16',de:'Reist du gern? Ja, ich reise sehr gern.',ar:'هل تحب السفر؟ نعم، أحب السفر كثيراً.'},
+      ],
+      grammar:{title:'gern + الفعل للتعبير عن المتعة',table:{headers:['الجملة','المعنى'],rows:[['Ich lese gern.','أحب القراءة.'],['Ich schwimme gern.','أحب السباحة.'],['Ich tanze nicht gern.','لا أحب الرقص.']]}}
+    },
+    {
+      id:'a1-18', title:'الرياضة', sub:'Sport', types:['audio','text'],
+      vocab:[
+        {de:'Fußball',ar:'كرة القدم',gender:'der'},{de:'Basketball',ar:'كرة السلة',gender:'der'},
+        {de:'Tennis',ar:'تنس',gender:'das'},{de:'laufen',ar:'يجري',gender:null},
+        {de:'Mannschaft',ar:'فريق',gender:'die'},{de:'gewinnen',ar:'يفوز',gender:null},
+        {de:'verlieren',ar:'يخسر',gender:null},{de:'Sportplatz',ar:'ملعب',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Spielst du Fußball? Ja, ich spiele in einer Mannschaft.',ar:'هل تلعب كرة القدم؟ نعم، ألعب في فريق.'},
+        {time:'0:06',de:'Wir laufen jeden Morgen im Park.',ar:'نجري كل صباح في الحديقة.'},
+        {time:'0:11',de:'Welche Mannschaft hat gewonnen? Deutschland hat gewonnen.',ar:'أي فريق فاز؟ ألمانيا فازت.'},
+        {time:'0:17',de:'Ich spiele lieber Tennis als Basketball.',ar:'أفضل التنس على كرة السلة.'},
+      ],
+      grammar:{title:'الفعل spielen مع الرياضات',table:{headers:['الجملة','المعنى'],rows:[['Fußball spielen','يلعب كرة القدم'],['Tennis spielen','يلعب تنس'],['Basketball spielen','يلعب كرة سلة']]}}
+    },
+    {
+      id:'a1-19', title:'أجزاء الجسم', sub:'Körperteile', types:['audio','text'],
+      vocab:[
+        {de:'Kopf',ar:'رأس',gender:'der'},{de:'Hand',ar:'يد',gender:'die'},
+        {de:'Bein',ar:'رجل',gender:'das'},{de:'Auge',ar:'عين',gender:'das'},
+        {de:'Ohr',ar:'أذن',gender:'das'},{de:'Mund',ar:'فم',gender:'der'},
+        {de:'Nase',ar:'أنف',gender:'die'},{de:'Bauch',ar:'بطن',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wo tut es weh? Mein Bauch tut weh.',ar:'أين يؤلمك؟ بطني يؤلمني.'},
+        {time:'0:05',de:'Ich habe zwei Augen und zwei Ohren.',ar:'لدي عينان وأذنان.'},
+        {time:'0:10',de:'Wasch deine Hände vor dem Essen!',ar:'اغسل يديك قبل الأكل!'},
+        {time:'0:14',de:'Sein Kopf ist sehr groß.',ar:'رأسه كبير جداً.'},
+      ],
+      grammar:{title:'جمع أجزاء الجسم',table:{headers:['المفرد','الجمع'],rows:[['das Auge','die Augen'],['das Ohr','die Ohren'],['die Hand','die Hände'],['das Bein','die Beine']]}}
+    },
+    {
+      id:'a1-20', title:'الحيوانات', sub:'Tiere', types:['audio','text'],
+      vocab:[
+        {de:'Hund',ar:'كلب',gender:'der'},{de:'Katze',ar:'قطة',gender:'die'},
+        {de:'Vogel',ar:'طائر',gender:'der'},{de:'Pferd',ar:'حصان',gender:'das'},
+        {de:'Fisch',ar:'سمكة',gender:'der'},{de:'Löwe',ar:'أسد',gender:'der'},
+        {de:'Elefant',ar:'فيل',gender:'der'},{de:'Tier',ar:'حيوان',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Hast du ein Haustier? Ja, ich habe einen Hund.',ar:'هل لديك حيوان أليف؟ نعم، لدي كلب.'},
+        {time:'0:06',de:'Die Katze schläft auf dem Sofa.',ar:'القطة نائمة على الأريكة.'},
+        {time:'0:11',de:'Im Zoo gibt es Löwen und Elefanten.',ar:'في حديقة الحيوان يوجد أسود وأفيال.'},
+        {time:'0:16',de:'Vögel können fliegen, aber Fische können schwimmen.',ar:'الطيور تستطيع الطيران، أما الأسماك تستطيع السباحة.'},
+      ],
+      grammar:{title:'حالة المفعول به مع haben',table:{headers:['أداة التعريف','بعد haben'],rows:[['der Hund','einen Hund'],['die Katze','eine Katze'],['das Pferd','ein Pferd']]}}
+    },
+    {
+      id:'a1-21', title:'الجنسيات والبلدان', sub:'Länder und Nationalitäten', types:['audio','text'],
+      vocab:[
+        {de:'Deutschland',ar:'ألمانيا',gender:null},{de:'Marokko',ar:'المغرب',gender:null},
+        {de:'Frankreich',ar:'فرنسا',gender:null},{de:'deutsch',ar:'ألماني (صفة)',gender:null},
+        {de:'marokkanisch',ar:'مغربي (صفة)',gender:null},{de:'Land',ar:'بلد',gender:'das'},
+        {de:'Sprache',ar:'لغة',gender:'die'},{de:'sprechen',ar:'يتحدث',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Woher kommst du? Ich komme aus Marokko.',ar:'من أين أنت؟ أنا من المغرب.'},
+        {time:'0:05',de:'Welche Sprache sprichst du? Ich spreche Arabisch und Deutsch.',ar:'أي لغة تتحدث؟ أتحدث العربية والألمانية.'},
+        {time:'0:11',de:'Sie ist Französin, aber sie lebt in Deutschland.',ar:'هي فرنسية، لكنها تعيش في ألمانيا.'},
+        {time:'0:17',de:'Marokko liegt in Nordafrika.',ar:'المغرب يقع في شمال أفريقيا.'},
+      ],
+      grammar:{title:'aus + بلد للتعبير عن الأصل',table:{headers:['الجملة','المعنى'],rows:[['aus Marokko','من المغرب'],['aus Deutschland','من ألمانيا'],['aus Frankreich','من فرنسا']]}}
+    },
+    {
+      id:'a1-22', title:'الساعة بالتفصيل', sub:'Die Uhrzeit genau', types:['audio','text'],
+      vocab:[
+        {de:'Uhr',ar:'ساعة',gender:'die'},{de:'Minute',ar:'دقيقة',gender:'die'},
+        {de:'Viertel',ar:'ربع',gender:'das'},{de:'halb',ar:'نصف',gender:null},
+        {de:'Mitternacht',ar:'منتصف الليل',gender:'die'},{de:'Mittag',ar:'الظهر',gender:'der'},
+        {de:'wann',ar:'متى',gender:null},{de:'beginnen',ar:'يبدأ',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie viel Uhr ist es? Es ist Viertel nach drei.',ar:'كم الساعة؟ الساعة الثالثة والربع.'},
+        {time:'0:06',de:'Es ist halb neun.',ar:'الساعة الثامنة والنصف.'},
+        {time:'0:10',de:'Wann beginnt der Film? Um Viertel vor acht.',ar:'متى يبدأ الفيلم؟ الساعة الثامنة إلا ربعاً.'},
+        {time:'0:15',de:'Um Mitternacht schlafen alle.',ar:'في منتصف الليل ينام الجميع.'},
+      ],
+      grammar:{title:'صيغ قول الوقت بالألمانية',table:{headers:['الصيغة','المعنى'],rows:[['Viertel nach','والربع'],['halb','والنصف'],['Viertel vor','إلا ربعاً']]}}
+    },
+    {
+      id:'a1-23', title:'الأرقام الترتيبية والتاريخ', sub:'Ordnungszahlen und Datum', types:['audio','text'],
+      vocab:[
+        {de:'erste',ar:'الأول',gender:null},{de:'zweite',ar:'الثاني',gender:null},
+        {de:'dritte',ar:'الثالث',gender:null},{de:'Datum',ar:'تاريخ',gender:'das'},
+        {de:'heute',ar:'اليوم',gender:null},{de:'Woche',ar:'أسبوع',gender:'die'},
+        {de:'Montag',ar:'الاثنين',gender:'der'},{de:'Tag',ar:'يوم',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Welches Datum ist heute? Heute ist der erste Mai.',ar:'ما التاريخ اليوم؟ اليوم هو الأول من مايو.'},
+        {time:'0:06',de:'Mein Geburtstag ist am dritten Juli.',ar:'عيد ميلادي في الثالث من يوليو.'},
+        {time:'0:11',de:'Die zweite Woche im Monat ist sehr beschäftigt.',ar:'الأسبوع الثاني من الشهر مزدحم جداً.'},
+        {time:'0:17',de:'Welcher Tag ist heute? Heute ist Montag.',ar:'أي يوم اليوم؟ اليوم الاثنين.'},
+      ],
+      grammar:{title:'الأرقام الترتيبية',table:{headers:['الأصلي','الترتيبي'],rows:[['eins','erste'],['zwei','zweite'],['drei','dritte'],['vier','vierte']]}}
+    },
+    {
+      id:'a1-24', title:'الضمائر الملكية', sub:'Possessivpronomen', types:['audio','text'],
+      vocab:[
+        {de:'mein',ar:'ـي (ملكيتي)',gender:null},{de:'dein',ar:'ـك',gender:null},
+        {de:'sein',ar:'ـه',gender:null},{de:'ihr',ar:'ـها',gender:null},
+        {de:'unser',ar:'ـنا',gender:null},{de:'Auto',ar:'سيارة',gender:'das'},
+        {de:'Tasche',ar:'حقيبة',gender:'die'},{de:'Haus',ar:'بيت',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ist das dein Buch? Ja, das ist mein Buch.',ar:'هل هذا كتابك؟ نعم هذا كتابي.'},
+        {time:'0:05',de:'Wo ist sein Auto? Sein Auto steht vor dem Haus.',ar:'أين سيارته؟ سيارته أمام البيت.'},
+        {time:'0:11',de:'Das ist ihre Tasche, nicht meine.',ar:'هذه حقيبتها، ليست حقيبتي.'},
+        {time:'0:16',de:'Unser Haus ist groß.',ar:'بيتنا كبير.'},
+      ],
+      grammar:{title:'ضمائر الملكية الأساسية',table:{headers:['الضمير','الملكية'],rows:[['ich','mein'],['du','dein'],['er','sein'],['sie','ihr'],['wir','unser']]}}
+    },
+    {
+      id:'a1-25', title:'صيغة الجمع', sub:'Plural der Nomen', types:['audio','text'],
+      vocab:[
+        {de:'Kind',ar:'طفل',gender:'das'},{de:'Mann',ar:'رجل',gender:'der'},
+        {de:'Frau',ar:'امرأة',gender:'die'},{de:'Haus',ar:'بيت',gender:'das'},
+        {de:'Stadt',ar:'مدينة',gender:'die'},{de:'Plural',ar:'جمع',gender:'der'},
+        {de:'einfach',ar:'سهل',gender:null},{de:'viele',ar:'كثير',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie viele Kinder hast du? Ich habe zwei Kinder.',ar:'كم طفلاً لديك؟ لدي طفلان.'},
+        {time:'0:06',de:'In dieser Stadt gibt es viele Häuser.',ar:'في هذه المدينة يوجد بيوت كثيرة.'},
+        {time:'0:11',de:'Die Männer arbeiten, die Frauen lernen.',ar:'الرجال يعملون، النساء يتعلمن.'},
+        {time:'0:16',de:'Plural ist im Deutschen nicht immer einfach.',ar:'الجمع في الألمانية ليس دائماً سهلاً.'},
+      ],
+      grammar:{title:'أشكال الجمع المختلفة',table:{headers:['المفرد','الجمع'],rows:[['das Kind','die Kinder'],['der Mann','die Männer'],['die Frau','die Frauen'],['das Haus','die Häuser']]}}
+    },
+    {
+      id:'a1-26', title:'حروف الجر للمكان', sub:'Präpositionen: in, auf, unter', types:['audio','text'],
+      vocab:[
+        {de:'in',ar:'في',gender:null},{de:'auf',ar:'على',gender:null},
+        {de:'unter',ar:'تحت',gender:null},{de:'neben',ar:'بجانب',gender:null},
+        {de:'vor',ar:'أمام',gender:null},{de:'hinter',ar:'خلف',gender:null},
+        {de:'zwischen',ar:'بين',gender:null},{de:'Tisch',ar:'طاولة',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Die Katze ist unter dem Tisch.',ar:'القطة تحت الطاولة.'},
+        {time:'0:05',de:'Das Buch liegt auf dem Tisch.',ar:'الكتاب على الطاولة.'},
+        {time:'0:09',de:'Der Stuhl steht neben dem Bett.',ar:'الكرسي بجانب السرير.'},
+        {time:'0:14',de:'Das Auto ist vor dem Haus.',ar:'السيارة أمام البيت.'},
+      ],
+      grammar:{title:'حروف الجر المكانية',table:{headers:['الحرف','المعنى'],rows:[['in dem (im)','في'],['auf dem','على'],['unter dem','تحت'],['neben dem','بجانب']]}}
+    },
+    {
+      id:'a1-27', title:'الفعل المساعد können و möchten', sub:'Modalverben', types:['audio','text'],
+      vocab:[
+        {de:'können',ar:'يستطيع',gender:null},{de:'möchten',ar:'يريد',gender:null},
+        {de:'dürfen',ar:'يسمح له',gender:null},{de:'Hilfe',ar:'مساعدة',gender:'die'},
+        {de:'ein bisschen',ar:'قليلاً',gender:null},{de:'rauchen',ar:'يدخّن',gender:null},
+        {de:'morgen',ar:'غداً',gender:null},{de:'kommen',ar:'يأتي',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Kannst du Deutsch sprechen? Ja, ich kann ein bisschen.',ar:'هل تستطيع التحدث الألمانية؟ نعم، أستطيع قليلاً.'},
+        {time:'0:06',de:'Ich möchte einen Kaffee, bitte.',ar:'أريد قهوة من فضلك.'},
+        {time:'0:10',de:'Darf ich hier rauchen? Nein, das dürfen Sie nicht.',ar:'هل يسمح لي بالتدخين هنا؟ لا، لا يسمح لك.'},
+        {time:'0:16',de:'Wir können morgen kommen.',ar:'نستطيع القدوم غداً.'},
+      ],
+      grammar:{title:'تصريف können وmöchten',table:{headers:['الضمير','können','möchten'],rows:[['ich','kann','möchte'],['du','kannst','möchtest'],['er/sie','kann','möchte']]}}
+    },
+    {
+      id:'a1-28', title:'صيغة الأمر', sub:'Imperativ', types:['audio','text'],
+      vocab:[
+        {de:'komm!',ar:'تعال!',gender:null},{de:'geh!',ar:'اذهب!',gender:null},
+        {de:'mach!',ar:'افعل!',gender:null},{de:'sei!',ar:'كن!',gender:null},
+        {de:'Tür',ar:'باب',gender:'die'},{de:'Fenster',ar:'نافذة',gender:'das'},
+        {de:'schließen',ar:'يغلق',gender:null},{de:'öffnen',ar:'يفتح',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Komm bitte her!',ar:'تعال من فضلك هنا!'},
+        {time:'0:03',de:'Mach die Tür zu!',ar:'أغلق الباب!'},
+        {time:'0:06',de:'Sei nicht so laut!',ar:'لا تكن صاخباً جداً!'},
+        {time:'0:10',de:'Öffnen Sie das Fenster, bitte.',ar:'افتح النافذة من فضلك.'},
+      ],
+      grammar:{title:'صيغة الأمر du / Sie',table:{headers:['المضارع','الأمر'],rows:[['du machst','Mach!'],['du gehst','Geh!'],['Sie machen','Machen Sie!']]}}
+    },
+    {
+      id:'a1-29', title:'النفي', sub:'Negation: nicht/kein', types:['audio','text'],
+      vocab:[
+        {de:'nicht',ar:'ليس/لا',gender:null},{de:'kein',ar:'لا يوجد (للاسم)',gender:null},
+        {de:'nie',ar:'أبداً',gender:null},{de:'niemand',ar:'لا أحد',gender:null},
+        {de:'nichts',ar:'لا شيء',gender:null},{de:'Geld',ar:'مال',gender:'das'},
+        {de:'trinken',ar:'يشرب',gender:null},{de:'gut',ar:'جيد',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich habe kein Auto.',ar:'لا أملك سيارة.'},
+        {time:'0:04',de:'Das ist nicht mein Buch.',ar:'هذا ليس كتابي.'},
+        {time:'0:08',de:'Ich trinke nie Kaffee.',ar:'لا أشرب القهوة أبداً.'},
+        {time:'0:12',de:'Hier ist niemand.',ar:'لا يوجد أحد هنا.'},
+      ],
+      grammar:{title:'الفرق بين nicht و kein',table:{headers:['الاستخدام','مثال'],rows:[['nicht (ينفي فعل/صفة)','Das ist nicht gut.'],['kein (ينفي اسماً)','Ich habe kein Geld.']]}}
+    },
+    {
+      id:'a1-30', title:'حالة المفعول به — أساسيات', sub:'Akkusativ Grundlagen', types:['audio','text'],
+      vocab:[
+        {de:'Apfel',ar:'تفاحة',gender:'der'},{de:'Brot',ar:'خبز',gender:'das'},
+        {de:'Tasche',ar:'حقيبة',gender:'die'},{de:'kaufen',ar:'يشتري',gender:null},
+        {de:'essen',ar:'يأكل',gender:null},{de:'sehen',ar:'يرى',gender:null},
+        {de:'trinken',ar:'يشرب',gender:null},{de:'Kaffee',ar:'قهوة',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich kaufe einen Apfel.',ar:'أشتري تفاحة.'},
+        {time:'0:04',de:'Er isst das Brot.',ar:'يأكل الخبز.'},
+        {time:'0:07',de:'Siehst du die Tasche?',ar:'هل ترى الحقيبة؟'},
+        {time:'0:10',de:'Wir trinken den Kaffee.',ar:'نشرب القهوة.'},
+      ],
+      grammar:{title:'تغيّر أداة التعريف في حالة Akkusativ',table:{headers:['Nominativ','Akkusativ'],rows:[['der','den'],['die','die'],['das','das']]}}
+    },
+    {
+      id:'a1-31', title:'الصفات والعكس', sub:'Adjektive und Gegenteile', types:['audio','text'],
+      vocab:[
+        {de:'groß',ar:'كبير',gender:null},{de:'klein',ar:'صغير',gender:null},
+        {de:'alt',ar:'قديم/مسن',gender:null},{de:'neu',ar:'جديد',gender:null},
+        {de:'schnell',ar:'سريع',gender:null},{de:'langsam',ar:'بطيء',gender:null},
+        {de:'teuer',ar:'غالي',gender:null},{de:'billig',ar:'رخيص',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Das Auto ist neu, aber teuer.',ar:'السيارة جديدة لكنها غالية.'},
+        {time:'0:05',de:'Mein Haus ist klein, aber schön.',ar:'بيتي صغير لكنه جميل.'},
+        {time:'0:10',de:'Der Zug ist schnell, der Bus ist langsam.',ar:'القطار سريع، الحافلة بطيئة.'},
+        {time:'0:15',de:'Ist das Essen gut oder schlecht?',ar:'هل الطعام جيد أم سيء؟'},
+      ],
+      grammar:{title:'أهم الصفات وعكسها',table:{headers:['الصفة','العكس'],rows:[['groß','klein'],['alt','neu'],['schnell','langsam'],['teuer','billig']]}}
+    },
+    {
+      id:'a1-32', title:'المشاعر', sub:'Gefühle', types:['audio','text'],
+      vocab:[
+        {de:'glücklich',ar:'سعيد',gender:null},{de:'traurig',ar:'حزين',gender:null},
+        {de:'müde',ar:'متعب',gender:null},{de:'hungrig',ar:'جائع',gender:null},
+        {de:'durstig',ar:'عطشان',gender:null},{de:'wütend',ar:'غاضب',gender:null},
+        {de:'nervös',ar:'متوتر',gender:null},{de:'zufrieden',ar:'راضٍ',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie fühlst du dich heute? Ich bin sehr glücklich.',ar:'كيف تشعر اليوم؟ أنا سعيد جداً.'},
+        {time:'0:06',de:'Ich bin müde und hungrig.',ar:'أنا متعب وجائع.'},
+        {time:'0:10',de:'Warum bist du traurig?',ar:'لماذا أنت حزين؟'},
+        {time:'0:13',de:'Sie ist nervös vor der Prüfung.',ar:'هي متوترة قبل الامتحان.'},
+      ],
+      grammar:{title:'sein + الصفة للتعبير عن المشاعر',table:{headers:['الجملة','المعنى'],rows:[['Ich bin glücklich.','أنا سعيد.'],['Er ist müde.','هو متعب.'],['Sie ist nervös.','هي متوترة.']]}}
+    },
+    {
+      id:'a1-33', title:'المكالمة الهاتفية', sub:'Telefonieren', types:['audio','text'],
+      vocab:[
+        {de:'Telefon',ar:'هاتف',gender:'das'},{de:'anrufen',ar:'يتصل',gender:null},
+        {de:'Nummer',ar:'رقم',gender:'die'},{de:'Handy',ar:'هاتف محمول',gender:'das'},
+        {de:'Nachricht',ar:'رسالة',gender:'die'},{de:'zurückrufen',ar:'يعيد الاتصال',gender:null},
+        {de:'Moment',ar:'لحظة',gender:'der'},{de:'später',ar:'لاحقاً',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Hallo, hier ist Sara. Kann ich bitte mit Tom sprechen?',ar:'مرحباً، أنا سارة. هل يمكنني التحدث مع توم؟'},
+        {time:'0:06',de:'Einen Moment, bitte.',ar:'لحظة من فضلك.'},
+        {time:'0:09',de:'Ich rufe dich später zurück.',ar:'سأعيد الاتصال بك لاحقاً.'},
+        {time:'0:13',de:'Wie ist deine Handynummer?',ar:'ما رقم هاتفك المحمول؟'},
+      ],
+      grammar:{title:'عبارات أساسية للمكالمات الهاتفية',table:{headers:['العبارة','المعنى'],rows:[['Hier ist...','أنا (في الهاتف)...'],['Kann ich mit... sprechen?','هل يمكنني التحدث مع...؟'],['Ich rufe zurück.','سأعيد الاتصال.']]}}
+    },
+    {
+      id:'a1-34', title:'في مكتب البريد', sub:'Auf der Post', types:['audio','text'],
+      vocab:[
+        {de:'Post',ar:'بريد',gender:'die'},{de:'Brief',ar:'رسالة',gender:'der'},
+        {de:'Paket',ar:'طرد',gender:'das'},{de:'Briefmarke',ar:'طابع بريدي',gender:'die'},
+        {de:'senden',ar:'يرسل',gender:null},{de:'Adresse',ar:'عنوان',gender:'die'},
+        {de:'kosten',ar:'يكلّف',gender:null},{de:'ankommen',ar:'يصل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte dieses Paket nach Marokko senden.',ar:'أريد إرسال هذا الطرد إلى المغرب.'},
+        {time:'0:06',de:'Wie viel kostet eine Briefmarke?',ar:'كم تكلفة طابع بريدي؟'},
+        {time:'0:10',de:'Wie ist die Adresse?',ar:'ما هو العنوان؟'},
+        {time:'0:13',de:'Der Brief kommt in drei Tagen an.',ar:'الرسالة ستصل في ثلاثة أيام.'},
+      ],
+      grammar:{title:'حرف الجر nach للوجهة',table:{headers:['الجملة','المعنى'],rows:[['nach Marokko senden','يرسل إلى المغرب'],['nach Deutschland fahren','يسافر إلى ألمانيا']]}}
+    },
+    {
+      id:'a1-35', title:'في البنك', sub:'Auf der Bank', types:['audio','text'],
+      vocab:[
+        {de:'Bank',ar:'بنك',gender:'die'},{de:'Geld',ar:'مال',gender:'das'},
+        {de:'Konto',ar:'حساب بنكي',gender:'das'},{de:'Karte',ar:'بطاقة',gender:'die'},
+        {de:'abheben',ar:'يسحب',gender:null},{de:'einzahlen',ar:'يودع',gender:null},
+        {de:'Geldautomat',ar:'صراف آلي',gender:'der'},{de:'funktionieren',ar:'يعمل (يصلح)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte Geld von meinem Konto abheben.',ar:'أريد سحب نقود من حسابي.'},
+        {time:'0:06',de:'Wo ist der Geldautomat?',ar:'أين الصراف الآلي؟'},
+        {time:'0:09',de:'Ich möchte ein Konto öffnen.',ar:'أريد فتح حساب.'},
+        {time:'0:13',de:'Meine Karte funktioniert nicht.',ar:'بطاقتي لا تعمل.'},
+      ],
+      grammar:{title:'أفعال مهمة في البنك',table:{headers:['الفعل','المعنى'],rows:[['abheben','يسحب'],['einzahlen','يودع'],['öffnen','يفتح']]}}
+    },
+    {
+      id:'a1-36', title:'في السوبر ماركت', sub:'Im Supermarkt', types:['audio','text'],
+      vocab:[
+        {de:'Supermarkt',ar:'سوبر ماركت',gender:'der'},{de:'Einkaufswagen',ar:'عربة تسوق',gender:'der'},
+        {de:'Kasse',ar:'صندوق الدفع',gender:'die'},{de:'bezahlen',ar:'يدفع',gender:null},
+        {de:'Tüte',ar:'كيس',gender:'die'},{de:'Regal',ar:'رف',gender:'das'},
+        {de:'Milch',ar:'حليب',gender:'die'},{de:'finden',ar:'يجد',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wo finde ich die Milch? Im zweiten Regal.',ar:'أين أجد الحليب؟ في الرف الثاني.'},
+        {time:'0:05',de:'Ich bezahle an der Kasse.',ar:'أدفع عند الصندوق.'},
+        {time:'0:08',de:'Brauchst du eine Tüte?',ar:'هل تحتاج كيساً؟'},
+        {time:'0:11',de:'Der Einkaufswagen ist kaputt.',ar:'عربة التسوق معطلة.'},
+      ],
+      grammar:{title:'السؤال بـ wo + finden',table:{headers:['السؤال','المعنى'],rows:[['Wo finde ich...?','أين أجد...؟'],['Wo ist...?','أين يوجد...؟']]}}
+    },
+    {
+      id:'a1-37', title:'أدوات المطبخ', sub:'Küchengeräte', types:['audio','text'],
+      vocab:[
+        {de:'Kühlschrank',ar:'ثلاجة',gender:'der'},{de:'Herd',ar:'موقد/فرن',gender:'der'},
+        {de:'Mikrowelle',ar:'ميكروويف',gender:'die'},{de:'Topf',ar:'قدر',gender:'der'},
+        {de:'Messer',ar:'سكين',gender:'das'},{de:'Gabel',ar:'شوكة',gender:'die'},
+        {de:'Löffel',ar:'ملعقة',gender:'der'},{de:'leer',ar:'فارغ',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Der Kühlschrank ist leer.',ar:'الثلاجة فارغة.'},
+        {time:'0:03',de:'Ich brauche ein Messer und eine Gabel.',ar:'أحتاج سكيناً وشوكة.'},
+        {time:'0:07',de:'Die Suppe ist im Topf.',ar:'الحساء في القدر.'},
+        {time:'0:10',de:'Kannst du die Mikrowelle benutzen?',ar:'هل تستطيع استخدام الميكروويف؟'},
+      ],
+      grammar:{title:'أدوات المطبخ والجنس النحوي',table:{headers:['الأداة','الجنس'],rows:[['Kühlschrank','der'],['Mikrowelle','die'],['Messer','das'],['Topf','der']]}}
+    },
+    {
+      id:'a1-38', title:'التكنولوجيا الأساسية', sub:'Handy und Computer', types:['audio','text'],
+      vocab:[
+        {de:'Handy',ar:'هاتف محمول',gender:'das'},{de:'Computer',ar:'حاسوب',gender:'der'},
+        {de:'Internet',ar:'إنترنت',gender:'das'},{de:'E-Mail',ar:'بريد إلكتروني',gender:'die'},
+        {de:'Passwort',ar:'كلمة سر',gender:'das'},{de:'laden',ar:'يشحن',gender:null},
+        {de:'kaputt',ar:'معطل',gender:null},{de:'schreiben',ar:'يكتب',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Mein Handy ist kaputt.',ar:'هاتفي معطل.'},
+        {time:'0:03',de:'Hast du Internet zu Hause?',ar:'هل لديك إنترنت في البيت؟'},
+        {time:'0:06',de:'Ich schreibe eine E-Mail.',ar:'أكتب بريداً إلكترونياً.'},
+        {time:'0:09',de:'Wie lautet das Passwort?',ar:'ما هي كلمة السر؟'},
+      ],
+      grammar:{title:'مفردات التقنية الأساسية',table:{headers:['الكلمة','المعنى'],rows:[['das Handy','الهاتف المحمول'],['das Passwort','كلمة السر'],['laden','يشحن']]}}
+    },
+    {
+      id:'a1-39', title:'الأعياد وعيد الميلاد', sub:'Feste und Geburtstag', types:['audio','text'],
+      vocab:[
+        {de:'Geburtstag',ar:'عيد ميلاد',gender:'der'},{de:'Geschenk',ar:'هدية',gender:'das'},
+        {de:'Party',ar:'حفلة',gender:'die'},{de:'feiern',ar:'يحتفل',gender:null},
+        {de:'Glückwunsch',ar:'تهنئة',gender:'der'},{de:'Kerze',ar:'شمعة',gender:'die'},
+        {de:'Kuchen',ar:'كيكة',gender:'der'},{de:'einladen',ar:'يدعو',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wann ist dein Geburtstag? Mein Geburtstag ist im Mai.',ar:'متى عيد ميلادك؟ عيد ميلادي في مايو.'},
+        {time:'0:06',de:'Herzlichen Glückwunsch zum Geburtstag!',ar:'عيد ميلاد سعيد!'},
+        {time:'0:10',de:'Wir feiern heute Abend eine Party.',ar:'سنحتفل بحفلة هذا المساء.'},
+        {time:'0:14',de:'Ich habe ein Geschenk für dich.',ar:'لدي هدية لك.'},
+      ],
+      grammar:{title:'عبارات التهنئة',table:{headers:['العبارة','المعنى'],rows:[['Herzlichen Glückwunsch!','تهانينا!'],['Alles Gute zum Geburtstag!','عيد ميلاد سعيد!']]}}
+    },
+    {
+      id:'a1-40', title:'وصف الأشخاص', sub:'Personen beschreiben', types:['audio','text'],
+      vocab:[
+        {de:'groß',ar:'طويل القامة',gender:null},{de:'klein',ar:'قصير القامة',gender:null},
+        {de:'dünn',ar:'نحيف',gender:null},{de:'dick',ar:'بدين',gender:null},
+        {de:'lang',ar:'طويل (شعر)',gender:null},{de:'kurz',ar:'قصير',gender:null},
+        {de:'freundlich',ar:'لطيف',gender:null},{de:'lustig',ar:'مضحك',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie sieht dein Bruder aus? Er ist groß und hat kurze Haare.',ar:'كيف يبدو أخوك؟ هو طويل وله شعر قصير.'},
+        {time:'0:06',de:'Meine Freundin ist klein und sehr freundlich.',ar:'صديقتي قصيرة ولطيفة جداً.'},
+        {time:'0:11',de:'Er ist lustig und macht viele Witze.',ar:'هو مضحك ويصنع نكاتاً كثيرة.'},
+        {time:'0:16',de:'Sie hat lange, schwarze Haare.',ar:'لديها شعر طويل وأسود.'},
+      ],
+      grammar:{title:'وصف الشكل والشخصية',table:{headers:['الصفة','المعنى'],rows:[['groß / klein','طويل / قصير'],['dünn / dick','نحيف / بدين'],['freundlich','لطيف'],['lustig','مضحك']]}}
     },
   ],
   A2: [
