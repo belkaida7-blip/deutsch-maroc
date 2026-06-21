@@ -767,7 +767,7 @@ footer .footer-links a:hover { color: var(--gold); }
         <span class="level-tag" style="background:#e6a000">A2</span>
         <h3>أساسي</h3>
         <p>التسوق، الاتجاهات، الطعام، الوقت والمواعيد</p>
-        <div class="level-meta"><span>📚 8 دروس</span><span>⏱️ 2.5 ساعة</span></div>
+        <div class="level-meta"><span>📚 45 درس</span><span>⏱️ 11 ساعة</span></div>
         <div class="level-progress"><div class="level-bar" style="width:0%"></div></div>
       </div>
       <div class="level-card" style="--lc:#CC0000" onclick="showLevelLessons('B1')">
@@ -1973,6 +1973,534 @@ const LESSONS = {
         {time:'0:17',de:'Ja, Donnerstag um 14 Uhr passt mir gut. Bis dann!',ar:'نعم، الخميس الساعة الثانية مناسب لي. إلى ذلك الحين!'},
       ],
       grammar:{title:'الاعتذار والتبرير',table:{headers:['الجملة','المعنى'],rows:[['Es tut mir leid.','أنا آسف.'],['Ich muss leider absagen.','أضطر للأسف للإلغاء.'],['Können wir verschieben?','هل يمكننا التأجيل؟']]}}
+    },
+    {
+      id:'a2-9', title:'في المطار', sub:'Am Flughafen', types:['audio','text'],
+      vocab:[
+        {de:'Flughafen',ar:'مطار',gender:'der'},{de:'Flugzeug',ar:'طائرة',gender:'das'},
+        {de:'Gepäck',ar:'حقائب',gender:'das'},{de:'Pass',ar:'جواز سفر',gender:'der'},
+        {de:'Boarding',ar:'الصعود للطائرة',gender:null},{de:'Verspätung',ar:'تأخير',gender:'die'},
+        {de:'Sicherheitskontrolle',ar:'تفتيش أمني',gender:'die'},{de:'Abflug',ar:'إقلاع',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wo ist der Check-in-Schalter für Lufthansa?',ar:'أين مكتب تسجيل الوصول لخطوط لوفتهانزا؟'},
+        {time:'0:06',de:'Haben Sie Gepäck zum Aufgeben? Ja, einen Koffer.',ar:'هل لديك حقائب للتسليم؟ نعم، حقيبة واحدة.'},
+        {time:'0:13',de:'Der Flug hat zwanzig Minuten Verspätung.',ar:'الطائرة متأخرة عشرين دقيقة.'},
+        {time:'0:19',de:'Bitte halten Sie Ihren Pass bereit.',ar:'يرجى تجهيز جواز سفرك.'},
+      ],
+      grammar:{title:'تعبيرات في المطار',table:{headers:['الجملة','المعنى'],rows:[['Wo ist Gate B12?','أين البوابة B12؟'],['Der Flug ist verspätet.','الطائرة متأخرة.'],['Ich habe nur Handgepäck.','معي فقط حقيبة يد.']]}}
+    },
+    {
+      id:'a2-10', title:'حجز فندق', sub:'Hotel buchen', types:['audio','text'],
+      vocab:[
+        {de:'Einzelzimmer',ar:'غرفة فردية',gender:'das'},{de:'Doppelzimmer',ar:'غرفة مزدوجة',gender:'das'},
+        {de:'Rezeption',ar:'استقبال',gender:'die'},{de:'Frühstück inklusive',ar:'الفطور مشمول',gender:null},
+        {de:'Schlüsselkarte',ar:'بطاقة المفتاح',gender:'die'},{de:'Aufzug',ar:'مصعد',gender:'der'},
+        {de:'Reservierung',ar:'حجز',gender:'die'},{de:'auschecken',ar:'يغادر الفندق',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich habe ein Doppelzimmer für drei Nächte reserviert.',ar:'حجزت غرفة مزدوجة لثلاث ليالٍ.'},
+        {time:'0:07',de:'Ist das Frühstück inklusive? Ja, von sieben bis zehn Uhr.',ar:'هل الفطور مشمول؟ نعم، من السابعة إلى العاشرة.'},
+        {time:'0:14',de:'Wann muss ich auschecken? Bis zwölf Uhr mittags.',ar:'متى يجب أن أغادر؟ حتى الثانية عشرة ظهراً.'},
+      ],
+      grammar:{title:'حجز وإلغاء',table:{headers:['الجملة','المعنى'],rows:[['Ich möchte ein Zimmer reservieren.','أريد حجز غرفة.'],['Kann ich die Reservierung stornieren?','هل يمكنني إلغاء الحجز؟']]}}
+    },
+    {
+      id:'a2-11', title:'في الصيدلية', sub:'In der Apotheke', types:['audio','text'],
+      vocab:[
+        {de:'Apothekerin',ar:'صيدلانية',gender:'die'},{de:'Schmerzmittel',ar:'مسكّن ألم',gender:'das'},
+        {de:'Salbe',ar:'مرهم',gender:'die'},{de:'Pflaster',ar:'لاصق جروح',gender:'das'},
+        {de:'Nebenwirkung',ar:'أثر جانبي',gender:'die'},{de:'Dosierung',ar:'جرعة',gender:'die'},
+        {de:'rezeptfrei',ar:'بدون وصفة',gender:null},{de:'einnehmen',ar:'يتناول (دواء)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Haben Sie etwas gegen Kopfschmerzen?',ar:'هل لديكم شيء لعلاج الصداع؟'},
+        {time:'0:06',de:'Diese Tabletten sind rezeptfrei. Nehmen Sie zwei pro Tag.',ar:'هذه الأقراص بدون وصفة. تناول قرصين يومياً.'},
+        {time:'0:13',de:'Gibt es Nebenwirkungen? Selten, vielleicht leichte Müdigkeit.',ar:'هل توجد أعراض جانبية؟ نادراً، ربما تعب خفيف.'},
+      ],
+      grammar:{title:'السؤال عن الدواء',table:{headers:['الجملة','المعنى'],rows:[['Wie oft soll ich das einnehmen?','كم مرة أتناوله؟'],['Ist das rezeptfrei?','هل هو بدون وصفة؟']]}}
+    },
+    {
+      id:'a2-12', title:'وصف المدينة', sub:'Die Stadt beschreiben', types:['audio','text'],
+      vocab:[
+        {de:'Altstadt',ar:'البلدة القديمة',gender:'die'},{de:'Sehenswürdigkeit',ar:'معلم سياحي',gender:'die'},
+        {de:'Einwohner',ar:'سكان',gender:null},{de:'Verkehr',ar:'حركة المرور',gender:'der'},
+        {de:'ruhig',ar:'هادئ',gender:null},{de:'lebhaft',ar:'نابض بالحياة',gender:null},
+        {de:'Park',ar:'حديقة عامة',gender:'der'},{de:'Marktplatz',ar:'ساحة السوق',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Meine Stadt hat viele Sehenswürdigkeiten und eine schöne Altstadt.',ar:'مدينتي فيها معالم سياحية كثيرة وبلدة قديمة جميلة.'},
+        {time:'0:08',de:'Es gibt ungefähr fünfhunderttausend Einwohner.',ar:'يوجد حوالي خمسمئة ألف ساكن.'},
+        {time:'0:14',de:'Der Verkehr ist morgens sehr stark.',ar:'حركة المرور كثيفة جداً في الصباح.'},
+      ],
+      grammar:{title:'es gibt (يوجد)',table:{headers:['الجملة','المعنى'],rows:[['Es gibt einen Park.','يوجد حديقة (مفرد مذكر/محايد).'],['Es gibt viele Parks.','يوجد حدائق كثيرة (جمع).']]}}
+    },
+    {
+      id:'a2-13', title:'الأعمال المنزلية', sub:'Hausarbeit', types:['audio','text'],
+      vocab:[
+        {de:'putzen',ar:'ينظف',gender:null},{de:'waschen',ar:'يغسل',gender:null},
+        {de:'kochen',ar:'يطبخ',gender:null},{de:'aufräumen',ar:'يرتب',gender:null},
+        {de:'Staubsauger',ar:'مكنسة كهربائية',gender:'der'},{de:'Waschmaschine',ar:'غسالة',gender:'die'},
+        {de:'Müll',ar:'قمامة',gender:'der'},{de:'bügeln',ar:'يكوي',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wer putzt heute die Küche? Ich räume auf, du wäschst ab.',ar:'من ينظف المطبخ اليوم؟ أنا أرتب، أنت تغسل الصحون.'},
+        {time:'0:08',de:'Ich muss noch den Müll rausbringen.',ar:'علي أن أُخرج القمامة بعد.'},
+        {time:'0:13',de:'Kannst du bitte die Wäsche aufhängen?',ar:'هل يمكنك تعليق الغسيل؟'},
+      ],
+      grammar:{title:'الأفعال المنفصلة (trennbare Verben)',table:{headers:['الفعل','الجملة'],rows:[['aufräumen','Ich räume das Zimmer auf.'],['rausbringen','Er bringt den Müll raus.'],['aufhängen','Sie hängt die Wäsche auf.']]}}
+    },
+    {
+      id:'a2-14', title:'في المكتبة', sub:'In der Bibliothek', types:['audio','text'],
+      vocab:[
+        {de:'Bibliothek',ar:'مكتبة',gender:'die'},{de:'ausleihen',ar:'يستعير',gender:null},
+        {de:'zurückgeben',ar:'يُرجع',gender:null},{de:'Leseausweis',ar:'بطاقة القراءة',gender:'der'},
+        {de:'Roman',ar:'رواية',gender:'der'},{de:'Zeitschrift',ar:'مجلة',gender:'die'},
+        {de:'verlängern',ar:'يمدّد',gender:null},{de:'Gebühr',ar:'رسم/غرامة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte dieses Buch ausleihen.',ar:'أريد استعارة هذا الكتاب.'},
+        {time:'0:05',de:'Haben Sie einen Leseausweis? Nein, wie bekomme ich einen?',ar:'هل لديك بطاقة قراءة؟ لا، كيف أحصل على واحدة؟'},
+        {time:'0:12',de:'Kann ich die Leihfrist verlängern?',ar:'هل يمكنني تمديد فترة الاستعارة؟'},
+      ],
+      grammar:{title:'أفعال الاستعارة والإرجاع',table:{headers:['الفعل','المعنى'],rows:[['ausleihen','يستعير'],['zurückgeben','يُرجع'],['verlängern','يمدّد']]}}
+    },
+    {
+      id:'a2-15', title:'أوقات الفراغ والهوايات', sub:'Freizeitaktivitäten', types:['audio','text'],
+      vocab:[
+        {de:'malen',ar:'يرسم',gender:null},{de:'fotografieren',ar:'يصوّر',gender:null},
+        {de:'wandern',ar:'يتنزه/يمشي بالجبال',gender:null},{de:'angeln',ar:'يصطاد',gender:null},
+        {de:'Brettspiel',ar:'لعبة طاولة',gender:'das'},{de:'Garten',ar:'حديقة منزلية',gender:'der'},
+        {de:'Langeweile',ar:'ملل',gender:'die'},{de:'entspannen',ar:'يسترخي',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Was machst du gern in deiner Freizeit?',ar:'ماذا تحب أن تفعل في وقت فراغك؟'},
+        {time:'0:05',de:'Ich gehe gern wandern und fotografiere die Natur.',ar:'أحب التنزه وتصوير الطبيعة.'},
+        {time:'0:11',de:'Am Wochenende spiele ich oft Brettspiele mit Freunden.',ar:'في عطلة الأسبوع ألعب ألعاب طاولة مع الأصدقاء غالباً.'},
+      ],
+      grammar:{title:'gern + الفعل',table:{headers:['الجملة','المعنى'],rows:[['Ich male gern.','أحب الرسم.'],['Er angelt gern.','هو يحب الصيد.'],['Wir wandern gern.','نحب التنزه.']]}}
+    },
+    {
+      id:'a2-16', title:'وصف الشخصية', sub:'Charakter beschreiben', types:['audio','text'],
+      vocab:[
+        {de:'freundlich',ar:'ودود',gender:null},{de:'schüchtern',ar:'خجول',gender:null},
+        {de:'lustig',ar:'مرح',gender:null},{de:'ernst',ar:'جدي',gender:null},
+        {de:'geduldig',ar:'صبور',gender:null},{de:'ehrlich',ar:'صادق',gender:null},
+        {de:'faul',ar:'كسول',gender:null},{de:'fleißig',ar:'مجتهد',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie ist dein bester Freund? Er ist sehr freundlich und lustig.',ar:'كيف هو صديقك المقرّب؟ هو ودود ومرح جداً.'},
+        {time:'0:08',de:'Meine Schwester ist ein bisschen schüchtern, aber sehr ehrlich.',ar:'أختي خجولة قليلاً لكنها صادقة جداً.'},
+        {time:'0:15',de:'Ich bin fleißig, aber manchmal ungeduldig.',ar:'أنا مجتهد لكن أحياناً غير صبور.'},
+      ],
+      grammar:{title:'صفات الشخصية مع sein',table:{headers:['الجملة','المعنى'],rows:[['Er ist geduldig.','هو صبور.'],['Sie ist nicht faul.','هي ليست كسولة.']]}}
+    },
+    {
+      id:'a2-17', title:'السفر بالقطار', sub:'Zugreisen', types:['audio','text'],
+      vocab:[
+        {de:'Fahrplan',ar:'جدول المواعيد',gender:'der'},{de:'umsteigen',ar:'يبدّل القطار',gender:null},
+        {de:'Anschlusszug',ar:'قطار متابعة',gender:'der'},{de:'Reservierung',ar:'حجز المقعد',gender:'die'},
+        {de:'1. Klasse',ar:'الدرجة الأولى',gender:null},{de:'Schaffner',ar:'مفتش التذاكر',gender:'der'},
+        {de:'verpassen',ar:'يفوّت',gender:null},{de:'Verspätung',ar:'تأخير',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Muss ich umsteigen? Ja, in Frankfurt, dann weiter nach Köln.',ar:'هل علي تبديل القطار؟ نعم، في فرانكفورت، ثم نحو كولونيا.'},
+        {time:'0:08',de:'Ich habe meinen Zug verpasst. Wann fährt der nächste?',ar:'فوّت قطاري. متى يأتي القطار التالي؟'},
+        {time:'0:15',de:'Der Schaffner kontrolliert die Tickets.',ar:'مفتش التذاكر يتحقق من التذاكر.'},
+      ],
+      grammar:{title:'السفر والتبديل',table:{headers:['الجملة','المعنى'],rows:[['Ich muss in Köln umsteigen.','علي التبديل في كولونيا.'],['Der Zug hat Verspätung.','القطار متأخر.']]}}
+    },
+    {
+      id:'a2-18', title:'تأجير سيارة', sub:'Auto mieten', types:['audio','text'],
+      vocab:[
+        {de:'Mietwagen',ar:'سيارة مستأجرة',gender:'der'},{de:'Führerschein',ar:'رخصة قيادة',gender:'der'},
+        {de:'Versicherung',ar:'تأمين',gender:'die'},{de:'Tankstelle',ar:'محطة وقود',gender:'die'},
+        {de:'Vollkasko',ar:'تأمين شامل',gender:null},{de:'Kaution',ar:'تأمين مسبق/عربون',gender:'die'},
+        {de:'Kilometerstand',ar:'عداد الكيلومترات',gender:'der'},{de:'zurückbringen',ar:'يُرجع (السيارة)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte ein Auto für drei Tage mieten.',ar:'أريد تأجير سيارة لثلاثة أيام.'},
+        {time:'0:06',de:'Haben Sie Ihren Führerschein dabei? Ja, hier bitte.',ar:'هل معك رخصة القيادة؟ نعم، هذه من فضلك.'},
+        {time:'0:13',de:'Möchten Sie eine Vollkaskoversicherung? Ja, gerne.',ar:'تريد تأميناً شاملاً؟ نعم، من فضلك.'},
+      ],
+      grammar:{title:'تعبيرات الاستئجار',table:{headers:['الجملة','المعنى'],rows:[['Ich möchte ein Auto mieten.','أريد تأجير سيارة.'],['Wann muss ich es zurückbringen?','متى يجب أن أُرجعها؟']]}}
+    },
+    {
+      id:'a2-19', title:'في الجامعة', sub:'An der Universität', types:['audio','text'],
+      vocab:[
+        {de:'Vorlesung',ar:'محاضرة',gender:'die'},{de:'Seminar',ar:'حلقة درس',gender:'das'},
+        {de:'Professor',ar:'بروفيسور',gender:'der'},{de:'Prüfung',ar:'امتحان',gender:'die'},
+        {de:'Hausaufgabe',ar:'واجب منزلي',gender:'die'},{de:'Studiengang',ar:'تخصص دراسي',gender:'der'},
+        {de:'Semester',ar:'فصل دراسي',gender:'das'},{de:'bestehen',ar:'ينجح (في امتحان)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Welchen Studiengang studierst du? Informatik, im fünften Semester.',ar:'أي تخصص تدرس؟ المعلوماتية، في الفصل الخامس.'},
+        {time:'0:08',de:'Hast du die Prüfung bestanden? Ja, mit guter Note.',ar:'هل نجحت في الامتحان؟ نعم، بدرجة جيدة.'},
+        {time:'0:14',de:'Die Vorlesung beginnt um acht Uhr morgens.',ar:'المحاضرة تبدأ الساعة الثامنة صباحاً.'},
+      ],
+      grammar:{title:'الفعل bestehen (ينجح)',table:{headers:['الضمير','التصريف'],rows:[['ich','bestehe'],['du','bestehst'],['er/sie','besteht'],['wir','bestehen']]}}
+    },
+    {
+      id:'a2-20', title:'كتابة بريد إلكتروني رسمي', sub:'Eine E-Mail schreiben', types:['text'],
+      vocab:[
+        {de:'Sehr geehrte/r',ar:'عزيزي/عزيزتي (رسمي)',gender:null},{de:'Betreff',ar:'الموضوع',gender:'der'},
+        {de:'Anhang',ar:'مرفق',gender:'der'},{de:'mit freundlichen Grüßen',ar:'مع أطيب التحيات',gender:null},
+        {de:'beantragen',ar:'يطلب رسمياً',gender:null},{de:'mitteilen',ar:'يُخبر',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Sehr geehrte Frau Müller, ich schreibe Ihnen wegen meiner Bewerbung.',ar:'السيدة مولر الفاضلة، أكتب لكِ بخصوص طلبي للتوظيف.'},
+        {time:'0:08',de:'Im Anhang finden Sie meinen Lebenslauf.',ar:'ستجدين سيرتي الذاتية في المرفق.'},
+        {time:'0:14',de:'Mit freundlichen Grüßen, Ahmed Belkaid.',ar:'مع أطيب التحيات، أحمد بلقايد.'},
+      ],
+      grammar:{title:'صيغة البريد الرسمي',table:{headers:['الجزء','المثال'],rows:[['التحية','Sehr geehrte/r ...'],['الخاتمة','Mit freundlichen Grüßen'],['الموضوع','Betreff: ...']]}}
+    },
+    {
+      id:'a2-21', title:'الماضي التام مع haben', sub:'Perfekt mit haben', types:['audio','text'],
+      vocab:[
+        {de:'gemacht',ar:'فعل (تصريف ماضٍ)',gender:null},{de:'gespielt',ar:'لعب',gender:null},
+        {de:'gekauft',ar:'اشترى',gender:null},{de:'gelernt',ar:'تعلّم',gender:null},
+        {de:'gegessen',ar:'أكل',gender:null},{de:'getrunken',ar:'شرب',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Was hast du gestern gemacht? Ich habe Fußball gespielt.',ar:'ماذا فعلت بالأمس؟ لعبت كرة القدم.'},
+        {time:'0:06',de:'Hast du schon gegessen? Ja, ich habe Pizza gegessen.',ar:'هل أكلت بعد؟ نعم، أكلت بيتزا.'},
+        {time:'0:12',de:'Wir haben Deutsch zwei Stunden gelernt.',ar:'تعلمنا الألمانية لمدة ساعتين.'},
+      ],
+      grammar:{title:'تكوين الماضي التام (haben + Partizip II)',table:{headers:['المضارع','الماضي التام'],rows:[['machen','habe gemacht'],['kaufen','habe gekauft'],['spielen','habe gespielt'],['lernen','habe gelernt']]}}
+    },
+    {
+      id:'a2-22', title:'الماضي التام مع sein', sub:'Perfekt mit sein', types:['audio','text'],
+      vocab:[
+        {de:'gegangen',ar:'ذهب',gender:null},{de:'gefahren',ar:'قاد/ركب',gender:null},
+        {de:'gekommen',ar:'أتى',gender:null},{de:'geblieben',ar:'بقي',gender:null},
+        {de:'aufgestanden',ar:'استيقظ',gender:null},{de:'gewesen',ar:'كان',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wo bist du gestern gewesen? Ich bin im Park gewesen.',ar:'أين كنت بالأمس؟ كنت في الحديقة.'},
+        {time:'0:06',de:'Ich bin um sieben Uhr aufgestanden.',ar:'استيقظت الساعة السابعة.'},
+        {time:'0:11',de:'Wir sind mit dem Zug nach Berlin gefahren.',ar:'سافرنا بالقطار إلى برلين.'},
+      ],
+      grammar:{title:'أفعال الحركة مع sein',table:{headers:['المضارع','الماضي التام'],rows:[['gehen','bin gegangen'],['fahren','bin gefahren'],['kommen','bin gekommen'],['bleiben','bin geblieben']]}}
+    },
+    {
+      id:'a2-23', title:'المقارنة', sub:'Komparativ', types:['audio','text'],
+      vocab:[
+        {de:'größer',ar:'أكبر',gender:null},{de:'kleiner',ar:'أصغر',gender:null},
+        {de:'schneller',ar:'أسرع',gender:null},{de:'billiger',ar:'أرخص',gender:null},
+        {de:'als',ar:'من (في المقارنة)',gender:null},{de:'genauso wie',ar:'تماماً مثل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Berlin ist größer als München.',ar:'برلين أكبر من ميونيخ.'},
+        {time:'0:05',de:'Der Zug ist schneller als der Bus.',ar:'القطار أسرع من الحافلة.'},
+        {time:'0:10',de:'Dieses Hemd ist billiger als das andere.',ar:'هذا القميص أرخص من الآخر.'},
+      ],
+      grammar:{title:'تكوين الصفة المقارنة',table:{headers:['الصفة','المقارنة'],rows:[['groß','größer als'],['klein','kleiner als'],['schnell','schneller als'],['gut','besser als']]}}
+    },
+    {
+      id:'a2-24', title:'صيغة التفوق', sub:'Superlativ', types:['audio','text'],
+      vocab:[
+        {de:'am größten',ar:'الأكبر',gender:null},{de:'am schönsten',ar:'الأجمل',gender:null},
+        {de:'am besten',ar:'الأفضل',gender:null},{de:'am billigsten',ar:'الأرخص',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Welche Stadt ist am schönsten? Für mich ist Marrakesch am schönsten.',ar:'أي مدينة أجمل؟ بالنسبة لي مراكش أجملها.'},
+        {time:'0:08',de:'Dieses Restaurant hat das beste Essen.',ar:'هذا المطعم فيه أفضل أكل.'},
+        {time:'0:13',de:'Der Winter ist am kältesten.',ar:'الشتاء هو الأبرد.'},
+      ],
+      grammar:{title:'تكوين صيغة التفوق',table:{headers:['الصفة','التفوق'],rows:[['groß','am größten'],['schön','am schönsten'],['gut','am besten'],['billig','am billigsten']]}}
+    },
+    {
+      id:'a2-25', title:'جملة السبب weil', sub:'Nebensätze mit weil', types:['audio','text'],
+      vocab:[
+        {de:'weil',ar:'لأن',gender:null},{de:'der Grund',ar:'السبب',gender:'der'},
+        {de:'deshalb',ar:'لذلك',gender:null},{de:'müde',ar:'متعب',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich bleibe heute zu Hause, weil ich krank bin.',ar:'سأبقى في البيت اليوم لأني مريض.'},
+        {time:'0:06',de:'Sie lernt viel, weil sie die Prüfung bestehen will.',ar:'هي تتعلم كثيراً لأنها تريد النجاح في الامتحان.'},
+        {time:'0:13',de:'Wir gehen nicht raus, weil es regnet.',ar:'لن نخرج لأنها تمطر.'},
+      ],
+      grammar:{title:'ترتيب الفعل بعد weil',table:{headers:['الجملة','ملاحظة'],rows:[['..., weil ich krank bin.','الفعل في آخر الجملة'],['..., weil es regnet.','الفعل في آخر الجملة']]}}
+    },
+    {
+      id:'a2-26', title:'جملة dass', sub:'Nebensätze mit dass', types:['audio','text'],
+      vocab:[
+        {de:'dass',ar:'أنّ',gender:null},{de:'glauben',ar:'يعتقد',gender:null},
+        {de:'denken',ar:'يفكر',gender:null},{de:'hoffen',ar:'يأمل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich glaube, dass das Wetter morgen besser wird.',ar:'أعتقد أن الطقس سيكون أفضل غداً.'},
+        {time:'0:07',de:'Er hofft, dass er die Stelle bekommt.',ar:'هو يأمل أن يحصل على الوظيفة.'},
+        {time:'0:13',de:'Wir denken, dass es eine gute Idee ist.',ar:'نظن أنها فكرة جيدة.'},
+      ],
+      grammar:{title:'استخدام dass',table:{headers:['الجملة','المعنى'],rows:[['Ich weiß, dass...','أعرف أن...'],['Ich glaube, dass...','أعتقد أن...']]}}
+    },
+    {
+      id:'a2-27', title:'الأفعال الانعكاسية', sub:'Reflexive Verben', types:['audio','text'],
+      vocab:[
+        {de:'sich freuen',ar:'يفرح',gender:null},{de:'sich erinnern',ar:'يتذكر',gender:null},
+        {de:'sich beeilen',ar:'يستعجل',gender:null},{de:'sich fühlen',ar:'يشعر',gender:null},
+        {de:'sich ärgern',ar:'يغضب',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich freue mich sehr auf die Reise.',ar:'أنا متحمس جداً للرحلة.'},
+        {time:'0:05',de:'Beeil dich, wir kommen spät!',ar:'استعجل، سنتأخر!'},
+        {time:'0:09',de:'Wie fühlst du dich heute? Ich fühle mich gut.',ar:'كيف تشعر اليوم؟ أشعر بحال جيدة.'},
+      ],
+      grammar:{title:'ضمائر الانعكاس',table:{headers:['الضمير','الانعكاسي'],rows:[['ich','mich'],['du','dich'],['er/sie','sich'],['wir','uns'],['ihr','euch']]}}
+    },
+    {
+      id:'a2-28', title:'حروف الجر ثنائية الحالة', sub:'Wechselpräpositionen', types:['audio','text'],
+      vocab:[
+        {de:'in',ar:'في/داخل',gender:null},{de:'auf',ar:'على',gender:null},
+        {de:'unter',ar:'تحت',gender:null},{de:'neben',ar:'بجانب',gender:null},
+        {de:'zwischen',ar:'بين',gender:null},{de:'hinter',ar:'خلف',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Die Katze sitzt auf dem Tisch.',ar:'القطة تجلس على الطاولة.'},
+        {time:'0:05',de:'Das Buch liegt unter dem Stuhl.',ar:'الكتاب موضوع تحت الكرسي.'},
+        {time:'0:10',de:'Ich gehe ins Kino. (Akkusativ: حركة)',ar:'أذهب إلى السينما (حركة).'},
+        {time:'0:16',de:'Ich bin im Kino. (Dativ: مكان ثابت)',ar:'أنا في السينما (مكان ثابت).'},
+      ],
+      grammar:{title:'in/auf مع Akkusativ أو Dativ',table:{headers:['الحالة','مثال'],rows:[['حركة (Akkusativ)','Ich gehe ins Haus.'],['ثابت (Dativ)','Ich bin im Haus.']]}}
+    },
+    {
+      id:'a2-29', title:'في المسبح والنادي الرياضي', sub:'Schwimmbad und Fitnessstudio', types:['audio','text'],
+      vocab:[
+        {de:'schwimmen',ar:'يسبح',gender:null},{de:'Umkleidekabine',ar:'غرفة تبديل الملابس',gender:'die'},
+        {de:'Mitgliedschaft',ar:'عضوية',gender:'die'},{de:'Trainer',ar:'مدرّب',gender:'der'},
+        {de:'Hantel',ar:'دمبل',gender:'die'},{de:'Laufband',ar:'جهاز الجري',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte eine Mitgliedschaft im Fitnessstudio.',ar:'أريد عضوية في النادي الرياضي.'},
+        {time:'0:06',de:'Gibt es einen Personal Trainer? Ja, er kostet extra.',ar:'هل يوجد مدرّب شخصي؟ نعم، يكلف إضافياً.'},
+        {time:'0:13',de:'Ich schwimme jeden Morgen dreißig Minuten.',ar:'أسبح كل صباح ثلاثين دقيقة.'},
+      ],
+      grammar:{title:'الرياضة بـ Sport treiben',table:{headers:['الجملة','المعنى'],rows:[['Ich treibe Sport.','أمارس الرياضة.'],['Er geht ins Fitnessstudio.','هو يذهب للنادي الرياضي.']]}}
+    },
+    {
+      id:'a2-30', title:'الموسيقى والحفلات', sub:'Musik und Konzerte', types:['audio','text'],
+      vocab:[
+        {de:'Konzert',ar:'حفل موسيقي',gender:'das'},{de:'Sänger',ar:'مغني',gender:'der'},
+        {de:'Band',ar:'فرقة موسيقية',gender:'die'},{de:'Karte',ar:'تذكرة',gender:'die'},
+        {de:'Bühne',ar:'مسرح/خشبة',gender:'die'},{de:'Lied',ar:'أغنية',gender:'das'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich habe Karten für das Konzert am Samstag gekauft.',ar:'اشتريت تذاكر للحفل يوم السبت.'},
+        {time:'0:07',de:'Welche Musik hörst du gern? Ich höre gern Pop und Jazz.',ar:'أي موسيقى تحب؟ أحب البوب والجاز.'},
+        {time:'0:14',de:'Die Band war wirklich fantastisch!',ar:'كانت الفرقة رائعة فعلاً!'},
+      ],
+      grammar:{title:'الفعل hören (يسمع)',table:{headers:['الضمير','التصريف'],rows:[['ich','höre'],['du','hörst'],['er/sie','hört'],['wir','hören']]}}
+    },
+    {
+      id:'a2-31', title:'السينما والمسرح', sub:'Kino und Theater', types:['audio','text'],
+      vocab:[
+        {de:'Film',ar:'فيلم',gender:'der'},{de:'Schauspieler',ar:'ممثل',gender:'der'},
+        {de:'Untertitel',ar:'ترجمة مكتوبة',gender:null},{de:'Vorstellung',ar:'عرض',gender:'die'},
+        {de:'Komödie',ar:'كوميديا',gender:'die'},{de:'spannend',ar:'مشوّق',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Welchen Film möchtest du sehen? Eine Komödie, bitte.',ar:'أي فيلم تريد أن تشاهد؟ كوميديا من فضلك.'},
+        {time:'0:06',de:'Hat der Film deutsche Untertitel? Nein, nur englische.',ar:'هل الفيلم فيه ترجمة ألمانية؟ لا، فقط إنجليزية.'},
+        {time:'0:13',de:'Die Vorstellung beginnt um zwanzig Uhr.',ar:'العرض يبدأ الساعة الثامنة مساءً.'},
+      ],
+      grammar:{title:'الصفات الوصفية للأفلام',table:{headers:['الصفة','المعنى'],rows:[['spannend','مشوّق'],['langweilig','مملّ'],['lustig','مضحك']]}}
+    },
+    {
+      id:'a2-32', title:'الطبخ والوصفات', sub:'Kochen und Rezepte', types:['audio','text'],
+      vocab:[
+        {de:'Rezept',ar:'وصفة طبخ',gender:'das'},{de:'Zutat',ar:'مكوّن',gender:'die'},
+        {de:'schneiden',ar:'يقطّع',gender:null},{de:'braten',ar:'يقلي',gender:null},
+        {de:'backen',ar:'يخبز',gender:null},{de:'Pfanne',ar:'مقلاة',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Zuerst schneiden wir die Zwiebeln klein.',ar:'أولاً نقطّع البصل صغيراً.'},
+        {time:'0:06',de:'Dann braten wir das Fleisch in der Pfanne.',ar:'ثم نقلي اللحم في المقلاة.'},
+        {time:'0:12',de:'Zum Schluss backen wir den Kuchen zwanzig Minuten.',ar:'في النهاية نخبز الكيك عشرين دقيقة.'},
+      ],
+      grammar:{title:'ترتيب خطوات الوصفة',table:{headers:['الكلمة','المعنى'],rows:[['zuerst','أولاً'],['dann','ثم'],['zum Schluss','في النهاية']]}}
+    },
+    {
+      id:'a2-33', title:'في صالون الحلاقة', sub:'Beim Friseur', types:['audio','text'],
+      vocab:[
+        {de:'Friseur',ar:'حلاق',gender:'der'},{de:'Haare schneiden',ar:'يقص الشعر',gender:null},
+        {de:'färben',ar:'يصبغ',gender:null},{de:'kurz',ar:'قصير',gender:null},
+        {de:'Termin',ar:'موعد',gender:'der'},{de:'Bart',ar:'لحية',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte einen Termin für morgen, bitte.',ar:'أريد موعداً ليوم غد، من فضلك.'},
+        {time:'0:06',de:'Wie kurz möchten Sie die Haare? Nicht zu kurz, bitte.',ar:'كيف تريد الشعر قصيراً؟ ليس قصيراً جداً، من فضلك.'},
+        {time:'0:13',de:'Möchten Sie auch den Bart schneiden? Ja, gerne.',ar:'تريد قص اللحية أيضاً؟ نعم، من فضلك.'},
+      ],
+      grammar:{title:'طلب الخدمة عند الحلاق',table:{headers:['الجملة','المعنى'],rows:[['Ich möchte einen Termin.','أريد موعداً.'],['Nicht zu kurz, bitte.','ليس قصيراً جداً.']]}}
+    },
+    {
+      id:'a2-34', title:'التأمين الصحي', sub:'Krankenversicherung', types:['audio','text'],
+      vocab:[
+        {de:'Krankenversicherung',ar:'تأمين صحي',gender:'die'},{de:'Versicherungskarte',ar:'بطاقة التأمين',gender:'die'},
+        {de:'übernehmen',ar:'يتحمّل (التكاليف)',gender:null},{de:'Zuzahlung',ar:'دفعة إضافية',gender:'die'},
+        {de:'Krankenkasse',ar:'صندوق التأمين الصحي',gender:'die'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Bei welcher Krankenkasse sind Sie versichert?',ar:'في أي صندوق تأمين صحي أنت مؤمَّن؟'},
+        {time:'0:06',de:'Übernimmt die Versicherung diese Behandlung?',ar:'هل التأمين يتحمل تكلفة هذا العلاج؟'},
+        {time:'0:12',de:'Sie müssen eine kleine Zuzahlung leisten.',ar:'عليك دفع مبلغ إضافي صغير.'},
+      ],
+      grammar:{title:'تعبيرات التأمين الصحي',table:{headers:['الجملة','المعنى'],rows:[['Ich bin versichert.','أنا مؤمَّن.'],['Was kostet die Behandlung?','كم تكلفة العلاج؟']]}}
+    },
+    {
+      id:'a2-35', title:'عقد الإيجار', sub:'Mietvertrag', types:['audio','text'],
+      vocab:[
+        {de:'Mietvertrag',ar:'عقد إيجار',gender:'der'},{de:'Kaution',ar:'تأمين/عربون',gender:'die'},
+        {de:'Nebenkosten',ar:'تكاليف إضافية',gender:null},{de:'kündigen',ar:'يُنهي العقد',gender:null},
+        {de:'Vermieter',ar:'مالك العقار',gender:'der'},{de:'Mieter',ar:'المستأجر',gender:'der'},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich möchte den Mietvertrag unterschreiben.',ar:'أريد توقيع عقد الإيجار.'},
+        {time:'0:06',de:'Wie hoch ist die Kaution? Zwei Monatsmieten.',ar:'كم قيمة التأمين؟ إيجار شهرين.'},
+        {time:'0:12',de:'Sind die Nebenkosten im Preis inklusive?',ar:'هل التكاليف الإضافية مشمولة في السعر؟'},
+      ],
+      grammar:{title:'مفردات الإيجار',table:{headers:['الكلمة','المعنى'],rows:[['Vermieter','مالك العقار'],['Mieter','المستأجر'],['Kaution','التأمين']]}}
+    },
+    {
+      id:'a2-36', title:'في الجمارك والحدود', sub:'Am Zoll', types:['audio','text'],
+      vocab:[
+        {de:'Zoll',ar:'جمارك',gender:'der'},{de:'Zollerklärung',ar:'تصريح جمركي',gender:'die'},
+        {de:'Visum',ar:'تأشيرة',gender:'das'},{de:'Grenze',ar:'حدود',gender:'die'},
+        {de:'nichts zu verzollen',ar:'لا شيء للتصريح به',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Haben Sie etwas zu verzollen? Nein, nichts.',ar:'هل لديك شيء للتصريح به؟ لا، لا شيء.'},
+        {time:'0:06',de:'Bitte zeigen Sie Ihren Pass und Ihr Visum.',ar:'أرني جواز سفرك وتأشيرتك من فضلك.'},
+        {time:'0:13',de:'Wie lange bleiben Sie in Deutschland?',ar:'كم ستبقى في ألمانيا؟'},
+      ],
+      grammar:{title:'تعبيرات الجمارك',table:{headers:['الجملة','المعنى'],rows:[['Ich habe nichts zu verzollen.','لا شيء للتصريح به.'],['Wie lange bleiben Sie?','كم ستبقى؟']]}}
+    },
+    {
+      id:'a2-37', title:'وصف رحلة سابقة', sub:'Reiseerfahrungen erzählen', types:['audio','text'],
+      vocab:[
+        {de:'Reise',ar:'رحلة',gender:'die'},{de:'Erinnerung',ar:'ذكرى',gender:'die'},
+        {de:'unvergesslich',ar:'لا يُنسى',gender:null},{de:'Sehenswürdigkeit',ar:'معلم سياحي',gender:'die'},
+        {de:'genießen',ar:'يستمتع',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Letztes Jahr bin ich nach Berlin gereist.',ar:'في السنة الماضية سافرت إلى برلين.'},
+        {time:'0:06',de:'Ich habe viele Sehenswürdigkeiten besucht und das Essen genossen.',ar:'زرت معالم سياحية كثيرة واستمتعت بالأكل.'},
+        {time:'0:13',de:'Es war eine unvergessliche Reise.',ar:'كانت رحلة لا تُنسى.'},
+      ],
+      grammar:{title:'سرد الماضي بـ letztes Jahr/letzte Woche',table:{headers:['التعبير','المعنى'],rows:[['letztes Jahr','السنة الماضية'],['letzte Woche','الأسبوع الماضي'],['vor zwei Tagen','قبل يومين']]}}
+    },
+    {
+      id:'a2-38', title:'الإجازة والعطلة', sub:'Urlaub und Ferien', types:['audio','text'],
+      vocab:[
+        {de:'Urlaub',ar:'إجازة',gender:'der'},{de:'Strand',ar:'شاطئ',gender:'der'},
+        {de:'Sonnenbrand',ar:'حروق شمس',gender:'der'},{de:'Koffer packen',ar:'يحزم الحقيبة',gender:null},
+        {de:'sich erholen',ar:'يستجم/يستريح',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wohin fährst du dieses Jahr in den Urlaub?',ar:'إلى أين ستذهب هذه السنة في عطلتك؟'},
+        {time:'0:06',de:'Ich fahre an den Strand, um mich zu erholen.',ar:'سأذهب للشاطئ لأستريح.'},
+        {time:'0:12',de:'Ich muss noch meinen Koffer packen.',ar:'علي أن أحزم حقيبتي بعد.'},
+      ],
+      grammar:{title:'جملة um...zu (لأجل أن)',table:{headers:['الجملة','المعنى'],rows:[['..., um mich zu erholen.','لأجل أن أستريح.'],['..., um Deutsch zu lernen.','لأجل تعلّم الألمانية.']]}}
+    },
+    {
+      id:'a2-39', title:'الصداقة والعلاقات', sub:'Freundschaft und Beziehungen', types:['audio','text'],
+      vocab:[
+        {de:'Freundschaft',ar:'صداقة',gender:'die'},{de:'vertrauen',ar:'يثق',gender:null},
+        {de:'Streit',ar:'شجار',gender:'der'},{de:'sich versöhnen',ar:'يتصالح',gender:null},
+        {de:'unterstützen',ar:'يدعم',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Eine gute Freundschaft basiert auf Vertrauen.',ar:'الصداقة الجيدة تقوم على الثقة.'},
+        {time:'0:06',de:'Wir hatten einen Streit, aber wir haben uns versöhnt.',ar:'تشاجرنا، لكننا تصالحنا.'},
+        {time:'0:13',de:'Meine Freunde unterstützen mich immer.',ar:'أصدقائي يدعمونني دائماً.'},
+      ],
+      grammar:{title:'تعبيرات عن العلاقات',table:{headers:['الجملة','المعنى'],rows:[['Ich vertraue dir.','أنا أثق بك.'],['Wir haben uns versöhnt.','تصالحنا.']]}}
+    },
+    {
+      id:'a2-40', title:'حادث وتقرير للشرطة', sub:'Unfall und Polizei', types:['audio','text'],
+      vocab:[
+        {de:'Unfall',ar:'حادث',gender:'der'},{de:'Polizei',ar:'شرطة',gender:'die'},
+        {de:'Zeuge',ar:'شاهد',gender:'der'},{de:'verletzt',ar:'مصاب',gender:null},
+        {de:'Anzeige erstatten',ar:'يقدم شكوى/بلاغاً',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Es gab einen Unfall auf der Hauptstraße.',ar:'حدث حادث على الشارع الرئيسي.'},
+        {time:'0:06',de:'Ist jemand verletzt? Nein, zum Glück nicht.',ar:'هل أُصيب أحد؟ لا، لحسن الحظ.'},
+        {time:'0:12',de:'Ich möchte eine Anzeige erstatten.',ar:'أريد تقديم بلاغ.'},
+      ],
+      grammar:{title:'es gab (كان يوجد - ماضٍ)',table:{headers:['الجملة','المعنى'],rows:[['Es gab einen Unfall.','حدث حادث.'],['Es gab viele Leute.','كان هناك أشخاص كثيرون.']]}}
+    },
+    {
+      id:'a2-41', title:'البيئة وإعادة التصنيع', sub:'Umwelt und Recycling', types:['audio','text'],
+      vocab:[
+        {de:'Umwelt',ar:'بيئة',gender:'die'},{de:'Recycling',ar:'إعادة تصنيع',gender:'das'},
+        {de:'Mülltrennung',ar:'فصل النفايات',gender:'die'},{de:'Plastik',ar:'بلاستيك',gender:'das'},
+        {de:'sparen',ar:'يوفّر',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'In Deutschland ist die Mülltrennung sehr wichtig.',ar:'فصل النفايات مهم جداً في ألمانيا.'},
+        {time:'0:06',de:'Wir sollten weniger Plastik benutzen.',ar:'يجب أن نستخدم بلاستيكاً أقل.'},
+        {time:'0:11',de:'Ich spare Wasser und Strom zu Hause.',ar:'أوفّر الماء والكهرباء في البيت.'},
+      ],
+      grammar:{title:'sollten (يجب/ينبغي)',table:{headers:['الضمير','التصريف'],rows:[['ich','sollte'],['du','solltest'],['wir','sollten']]}}
+    },
+    {
+      id:'a2-42', title:'وسائل التواصل الاجتماعي', sub:'Soziale Medien', types:['audio','text'],
+      vocab:[
+        {de:'posten',ar:'ينشر',gender:null},{de:'teilen',ar:'يشارك',gender:null},
+        {de:'Follower',ar:'متابع',gender:null},{de:'Kommentar',ar:'تعليق',gender:'der'},
+        {de:'süchtig',ar:'مدمن (على شيء)',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wie viele Follower hast du auf Instagram?',ar:'كم متابع لديك على إنستغرام؟'},
+        {time:'0:06',de:'Ich poste selten, aber ich lese viele Kommentare.',ar:'أنشر نادراً، لكني أقرأ تعليقات كثيرة.'},
+        {time:'0:12',de:'Manche Leute sind süchtig nach sozialen Medien.',ar:'بعض الناس مدمنون على وسائل التواصل.'},
+      ],
+      grammar:{title:'تعبيرات وسائل التواصل',table:{headers:['الفعل','المعنى'],rows:[['posten','ينشر'],['teilen','يشارك'],['kommentieren','يعلّق']]}}
+    },
+    {
+      id:'a2-43', title:'التسوق عبر الإنترنت', sub:'Online einkaufen', types:['audio','text'],
+      vocab:[
+        {de:'bestellen',ar:'يطلب (شراء)',gender:null},{de:'Lieferung',ar:'توصيل',gender:'die'},
+        {de:'zurückschicken',ar:'يُرجع (طرداً)',gender:null},{de:'Warenkorb',ar:'سلة المشتريات',gender:'der'},
+        {de:'bezahlen',ar:'يدفع',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Ich habe neue Schuhe online bestellt.',ar:'طلبت حذاءً جديداً عبر الإنترنت.'},
+        {time:'0:06',de:'Wann kommt die Lieferung? Morgen, vielleicht.',ar:'متى يصل التوصيل؟ غداً ربما.'},
+        {time:'0:12',de:'Die Schuhe waren zu klein, ich schicke sie zurück.',ar:'كان الحذاء صغيراً، سأرجعه.'},
+      ],
+      grammar:{title:'تعبيرات التسوق عبر الإنترنت',table:{headers:['الفعل','المعنى'],rows:[['bestellen','يطلب'],['zurückschicken','يُرجع'],['bezahlen','يدفع']]}}
+    },
+    {
+      id:'a2-44', title:'الأخبار اليومية', sub:'Tagesnachrichten', types:['audio','text'],
+      vocab:[
+        {de:'Nachrichten',ar:'أخبار',gender:null},{de:'Zeitung',ar:'جريدة',gender:'die'},
+        {de:'Bericht',ar:'تقرير',gender:'der'},{de:'Ereignis',ar:'حدث',gender:'das'},
+        {de:'aktuell',ar:'حالي/راهن',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Liest du die Zeitung jeden Tag? Nein, ich schaue die Nachrichten online.',ar:'تقرأ الجريدة كل يوم؟ لا، أتابع الأخبار عبر الإنترنت.'},
+        {time:'0:08',de:'Was ist heute in den Nachrichten wichtig?',ar:'ما المهم في الأخبار اليوم؟'},
+        {time:'0:13',de:'Dieses Ereignis war sehr aktuell.',ar:'كان هذا الحدث راهناً جداً.'},
+      ],
+      grammar:{title:'تعبيرات الأخبار',table:{headers:['الكلمة','المعنى'],rows:[['Nachrichten','أخبار'],['Bericht','تقرير'],['aktuell','راهن']]}}
+    },
+    {
+      id:'a2-45', title:'تخطيط حفلة عيد ميلاد', sub:'Eine Party planen', types:['audio','text'],
+      vocab:[
+        {de:'Party',ar:'حفلة',gender:'die'},{de:'einladen',ar:'يدعو',gender:null},
+        {de:'Geschenk',ar:'هدية',gender:'das'},{de:'Dekoration',ar:'تزيين',gender:'die'},
+        {de:'feiern',ar:'يحتفل',gender:null},
+      ],
+      transcript:[
+        {time:'0:00',de:'Wir planen eine Party für Saras Geburtstag.',ar:'نخطط لحفلة لعيد ميلاد سارة.'},
+        {time:'0:06',de:'Wen sollen wir einladen? Alle unsere Freunde.',ar:'من ندعو؟ كل أصدقائنا.'},
+        {time:'0:12',de:'Hast du schon ein Geschenk gekauft?',ar:'هل اشتريت الهدية بعد؟'},
+      ],
+      grammar:{title:'الفعل einladen (يدعو)',table:{headers:['الضمير','التصريف'],rows:[['ich','lade ein'],['du','lädst ein'],['er/sie','lädt ein'],['wir','laden ein']]}}
     },
   ],
   B1: [
