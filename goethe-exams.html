@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>فروض ألمانية — Goethe Style | دويتش مغرب</title>
+<style>
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gold: #c9a84c;
+  --gold-light: #f0d890;
+  --red: #cc2222;
+  --green: #2d7a3a;
+  --blue: #1a3a6e;
+  --gray-bg: #f5f5f0;
+  --gray-dark: #333;
+  --gray-mid: #777;
+  --border: #ddd;
+  --a1-color: #2d7a3a;
+  --a2-color: #1a3a6e;
+  --b1-color: #b8860b;
+  --b2-color: #cc2222;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--white); color: var(--black); line-height: 1.7; }
+
+/* NAVBAR */
+nav {
+  background: var(--black);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 3px solid var(--gold);
+  height: 60px;
+}
+.logo { color: var(--gold); font-size: 1.2rem; font-weight: 800; text-decoration: none; }
+.logo span { color: var(--white); }
+.nav-back { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+.nav-back:hover { background: var(--gold); color: var(--black); }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--black) 0%, #1a1a2e 60%, #0d3b1e 100%);
+  padding: 64px 24px 48px;
+  text-align: center;
+}
+.hero h1 { color: var(--white); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; }
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p { color: #aaa; margin: 12px auto 24px; max-width: 560px; font-size: 0.97rem; }
+.hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 8px; }
+.hbadge { background: rgba(201,168,76,0.15); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); padding: 5px 12px; border-radius: 20px; font-size: 0.82rem; }
+
+/* SCREENS */
+#home-screen, #exam-screen, #results-screen { }
+#exam-screen, #results-screen { display: none; }
+
+/* EXAM CARDS GRID */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+section { padding: 52px 24px; }
+section:nth-child(even) { background: var(--gray-bg); }
+.section-title { text-align: center; font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
+.section-sub { text-align: center; color: var(--gray-mid); margin-bottom: 36px; font-size: 0.92rem; }
+
+.exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.exam-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.exam-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+}
+.exam-card.a1::after { background: var(--a1-color); }
+.exam-card.a2::after { background: var(--a2-color); }
+.exam-card.b1::after { background: var(--b1-color); }
+.exam-card.b2::after { background: var(--b2-color); }
+.exam-card.full::after { background: linear-gradient(90deg, var(--a1-color), var(--a2-color), var(--b1-color), var(--b2-color)); }
+.exam-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.12); border-color: var(--gold); }
+.exam-level-badge { font-size: 2.2rem; font-weight: 900; display: block; margin-bottom: 10px; }
+.a1 .exam-level-badge { color: var(--a1-color); }
+.a2 .exam-level-badge { color: var(--a2-color); }
+.b1 .exam-level-badge { color: var(--b1-color); }
+.b2 .exam-level-badge { color: var(--b2-color); }
+.full .exam-level-badge { background: linear-gradient(135deg, var(--a1-color), var(--b2-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.exam-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.exam-card p { color: var(--gray-mid); font-size: 0.8rem; margin-bottom: 12px; }
+.exam-meta { display: flex; justify-content: center; gap: 14px; font-size: 0.75rem; color: var(--gray-mid); }
+.start-btn {
+  margin-top: 16px;
+  display: inline-block;
+  background: var(--black);
+  color: var(--gold);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.start-btn:hover { background: var(--gold); color: var(--black); }
+
+/* EXAM SCREEN */
+.exam-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.exam-header h2 { font-size: 1.1rem; color: var(--gold); }
+.exam-header .exam-info { font-size: 0.82rem; color: #aaa; }
+.progress-wrap { padding: 12px 24px 0; background: var(--gray-bg); }
+.progress-bar { height: 6px; background: var(--border); border-radius: 3px; }
+.progress-fill { height: 100%; background: var(--gold); border-radius: 3px; transition: width 0.4s; }
+.progress-label { font-size: 0.78rem; color: var(--gray-mid); text-align: left; margin-top: 4px; padding-bottom: 12px; }
+
+/* SECTION TABS */
+.section-tabs {
+  display: flex;
+  background: var(--gray-bg);
+  padding: 0 24px;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 2px solid var(--border);
+}
+.tab-btn {
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-mid);
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-bottom: -2px;
+}
+.tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+.tab-btn:hover { color: var(--gold); }
+
+/* SECTION CONTENT */
+.section-panel { display: none; padding: 28px 24px; max-width: 860px; margin: 0 auto; }
+.section-panel.active { display: block; }
+
+.section-intro {
+  background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
+  border: 1px solid #c5d3f0;
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 24px;
+}
+.section-intro h3 { color: var(--blue); font-size: 1rem; margin-bottom: 6px; }
+.section-intro p { color: var(--gray-dark); font-size: 0.87rem; }
+
+/* TEXT PASSAGE */
+.passage-box {
+  background: #fafaf8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 24px;
+  direction: ltr;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--gray-dark);
+}
+.passage-box h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 8px; display: inline-block; }
+
+/* LISTENING */
+.audio-sim {
+  background: #0a0a0a;
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 24px;
+  color: var(--white);
+  text-align: center;
+}
+.audio-sim .track-title { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; font-weight: 600; }
+.audio-player-sim {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.play-sim { width: 42px; height: 42px; border-radius: 50%; background: var(--gold); border: none; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+.play-sim:hover { background: var(--gold-light); }
+.audio-bar { flex: 1; height: 4px; background: #333; border-radius: 2px; position: relative; cursor: pointer; }
+.audio-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; width: 0%; transition: width 0.3s; }
+.audio-time { font-size: 0.78rem; color: #888; white-space: nowrap; }
+.transcript-hint { font-size: 0.78rem; color: #888; margin-top: 6px; }
+
+/* WRITING */
+.writing-prompt {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.writing-prompt h4 { color: #b8860b; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; }
+.writing-prompt .prompt-de { direction: ltr; color: var(--blue); font-style: italic; font-size: 0.95rem; margin-bottom: 6px; }
+.writing-prompt .prompt-ar { color: var(--gray-mid); font-size: 0.83rem; }
+.writing-points { margin-top: 10px; }
+.writing-points li { font-size: 0.85rem; color: var(--gray-dark); margin-bottom: 4px; padding-right: 8px; }
+.writing-area {
+  width: 100%;
+  min-height: 160px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 0.92rem;
+  direction: ltr;
+  resize: vertical;
+  transition: border-color 0.2s;
+  font-family: 'Segoe UI', sans-serif;
+}
+.writing-area:focus { outline: none; border-color: var(--blue); }
+.word-count { font-size: 0.78rem; color: var(--gray-mid); text-align: left; margin-top: 4px; }
+
+/* SPEAKING */
+.speaking-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+.speaking-card h4 { color: var(--blue); font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; }
+.speaking-de { direction: ltr; color: var(--black); font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+.speaking-ar { color: var(--gray-mid); font-size: 0.85rem; margin-bottom: 12px; }
+.speaking-hints { background: var(--gray-bg); border-radius: 6px; padding: 10px 14px; }
+.speaking-hints li { font-size: 0.82rem; color: var(--gray-dark); margin-bottom: 3px; direction: ltr; text-align: left; }
+
+/* QUESTIONS */
+.question-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 18px;
+  transition: border-color 0.2s;
+}
+.question-block.answered { border-color: #ccc; }
+.q-num { font-size: 0.75rem; color: var(--gray-mid); font-weight: 700; margin-bottom: 8px; }
+.q-text { font-size: 0.97rem; font-weight: 600; margin-bottom: 14px; }
+.q-text .de { direction: ltr; display: block; color: var(--blue); font-style: italic; font-size: 0.95rem; margin-top: 4px; }
+.q-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.q-opt {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  text-align: right;
+  background: var(--white);
+}
+.q-opt:hover:not(.correct):not(.wrong) { border-color: var(--gold); background: #fffdf5; }
+.q-opt.selected { border-color: var(--blue); background: #e3eaf7; }
+.q-opt.correct { border-color: var(--green); background: #e8f5e9; color: var(--green); font-weight: 700; }
+.q-opt.wrong { border-color: var(--red); background: #fdecea; color: var(--red); }
+
+/* FILL IN THE BLANK */
+.fill-blank {
+  direction: ltr;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--gray-dark);
+  line-height: 2.2;
+  margin-bottom: 12px;
+}
+.blank-input {
+  border: none;
+  border-bottom: 2px solid var(--blue);
+  padding: 2px 8px;
+  font-size: 0.95rem;
+  width: 120px;
+  text-align: center;
+  color: var(--blue);
+  background: transparent;
+  direction: ltr;
+  transition: border-color 0.2s;
+}
+.blank-input:focus { outline: none; border-bottom-color: var(--gold); }
+.blank-input.correct-fill { border-bottom-color: var(--green); color: var(--green); }
+.blank-input.wrong-fill { border-bottom-color: var(--red); color: var(--red); }
+
+/* MATCHING */
+.matching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.match-item {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.88rem;
+}
+.match-item.left { direction: ltr; text-align: left; color: var(--blue); font-weight: 600; }
+.match-item.right { text-align: right; }
+.match-item.selected { border-color: var(--gold); background: #fffdf0; }
+.match-item.matched { border-color: var(--green); background: #e8f5e9; color: var(--green); }
+
+/* NAVIGATION BUTTONS */
+.section-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn { padding: 10px 22px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; }
+.btn-primary { background: var(--gold); color: var(--black); }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary { background: none; border: 2px solid var(--border); color: var(--gray-dark); }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.btn-submit { background: var(--green); color: var(--white); }
+.btn-submit:hover { background: #245e2d; }
+.btn-finish { background: var(--blue); color: var(--white); }
+.btn-finish:hover { background: #122b55; }
+
+/* RESULTS SCREEN */
+.results-container { max-width: 820px; margin: 0 auto; padding: 40px 24px; }
+.score-hero { background: var(--black); border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 28px; }
+.score-number { font-size: 4.5rem; font-weight: 900; color: var(--gold); line-height: 1; }
+.score-denom { font-size: 1.5rem; color: #888; }
+.score-pct { font-size: 1.1rem; color: var(--gold-light); margin-top: 8px; }
+.score-verdict { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 16px; }
+.score-verdictde { font-size: 0.9rem; color: #aaa; direction: ltr; }
+
+.section-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.sec-score-card { background: var(--white); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+.sec-score-card h4 { font-size: 0.8rem; color: var(--gray-mid); margin-bottom: 8px; }
+.sec-score-num { font-size: 1.6rem; font-weight: 800; color: var(--blue); }
+.sec-score-bar { height: 5px; background: var(--border); border-radius: 3px; margin-top: 8px; }
+.sec-score-fill { height: 100%; border-radius: 3px; transition: width 0.6s; }
+
+.answers-review { }
+.review-section { margin-bottom: 28px; }
+.review-section h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); display: inline-block; }
+.review-q { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 10px; }
+.review-q .q { font-size: 0.87rem; color: var(--gray-dark); margin-bottom: 6px; }
+.review-q .your-ans { font-size: 0.85rem; font-weight: 600; }
+.review-q .correct-ans { font-size: 0.82rem; color: var(--green); }
+.correct-icon { color: var(--green); }
+.wrong-icon { color: var(--red); }
+
+.action-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+.btn-retry { background: var(--gold); color: var(--black); padding: 13px 28px; border-radius: 8px; border: none; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.btn-retry:hover { background: var(--gold-light); }
+.btn-home-res { background: none; border: 2px solid var(--border); color: var(--gray-dark); padding: 13px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.btn-home-res:hover { border-color: var(--gold); color: var(--gold); }
+
+/* FOOTER */
+footer { background: var(--black); color: #888; padding: 32px 24px; text-align: center; border-top: 3px solid var(--gold); }
+footer .footer-logo { color: var(--gold); font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+footer p { font-size: 0.82rem; }
+
+@media (max-width: 600px) {
+  .q-options, .matching-grid { grid-template-columns: 1fr; }
+  .section-nav { flex-direction: column; }
+  .section-tabs { padding: 0 12px; }
+  .tab-btn { padding: 10px 12px; font-size: 0.8rem; }
+  .section-panel { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="logo" onclick="showHome()">دويتش<span> مغرب 🇩🇪</span></a>
+  <button class="nav-back" id="navBack" style="display:none" onclick="showHome()">← العودة للفروض</button>
+</nav>
+
+<!-- HOME SCREEN -->
+<div id="home-screen">
+
+  <div class="hero">
+    <h1>فروض <em>Goethe</em> التجريبية</h1>
+    <p>5 فروض حقيقية مطابقة لأسلوب Goethe-Institut — قراءة، استماع، كتابة، ومحادثة</p>
+    <div class="hero-badges">
+      <span class="hbadge">📖 Lesen</span>
+      <span class="hbadge">🎧 Hören</span>
+      <span class="hbadge">✍️ Schreiben</span>
+      <span class="hbadge">🗣️ Sprechen</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">اختر الفرض</h2>
+      <p class="section-sub">كل فرض مقسم لأربعة أجزاء تماماً كامتحان Goethe الرسمي</p>
+      <div class="exam-grid">
+        <div class="exam-card a1" onclick="startExam('a1')">
+          <span class="exam-level-badge">A1</span>
+          <h3>فرض A1 — Anfänger</h3>
+          <p>مبتدئ — التعارف، العائلة، الأرقام</p>
+          <div class="exam-meta"><span>⏱️ 65 دقيقة</span><span>📝 30 سؤال</span></div>
+          <button class="start-btn">ابدأ الفرض ←</button>
+        </div>
+        <div class="exam-card a2" onclick="startExam('a2')">
+          <span class="exam-level-badge">A2</span>
+          <h3>فرض A2 — Grundstufe</h3>
+          <p>أساسي — التسوق، الوقت، الطعام</p>
+          <div class="exam-meta"><span>⏱️ 75 دقيقة</span><span>📝 32 سؤال</span></div>
+          <button class="start-btn">ابدأ الفرض ←</button>
+        </div>
+        <div class="exam-card b1" onclick="startExam('b1')">
+          <span class="exam-level-badge">B1</span>
+          <h3>فرض B1 — Mittelstufe</h3>
+          <p>متوسط — العمل، الصحة، الرأي</p>
+          <div class="exam-meta"><span>⏱️ 90 دقيقة</span><span>📝 34 سؤال</span></div>
+          <button class="start-btn">ابدأ الفرض ←</button>
+        </div>
+        <div class="exam-card b2" onclick="startExam('b2')">
+          <span class="exam-level-badge">B2</span>
+          <h3>فرض B2 — Fortgeschritten</h3>
+          <p>متقدم — نقاشات، أكاديمي، مهني</p>
+          <div class="exam-meta"><span>⏱️ 105 دقيقة</span><span>📝 36 سؤال</span></div>
+          <button class="start-btn">ابدأ الفرض ←</button>
+        </div>
+        <div class="exam-card full" onclick="startExam('full')">
+          <span class="exam-level-badge">★</span>
+          <h3>الفرض الشامل A1→B2</h3>
+          <p>يشمل جميع المستويات — اختبر نفسك</p>
+          <div class="exam-meta"><span>⏱️ 120 دقيقة</span><span>📝 40 سؤال</span></div>
+          <button class="start-btn">ابدأ الفرض ←</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">كيف تعمل الفروض؟</h2>
+      <p class="section-sub">نفس البنية المستعملة في امتحانات Goethe الرسمية</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto;">
+        <div style="text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--border);border-radius:12px;">
+          <div style="font-size:2rem;margin-bottom:12px;">📖</div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:6px;">Lesen — القراءة</h3>
+          <p style="color:var(--gray-mid);font-size:0.82rem;">نصوص حقيقية بالألمانية مع أسئلة فهم وأسئلة اختيارية</p>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--border);border-radius:12px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🎧</div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:6px;">Hören — الاستماع</h3>
+          <p style="color:var(--gray-mid);font-size:0.82rem;">محادثات ونصوص مسموعة مع أسئلة بناءً على المحتوى</p>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--border);border-radius:12px;">
+          <div style="font-size:2rem;margin-bottom:12px;">✍️</div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:6px;">Schreiben — الكتابة</h3>
+          <p style="color:var(--gray-mid);font-size:0.82rem;">كتابة رسائل وإيميلات ونصوص حسب التعليمات</p>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--white);border:1px solid var(--border);border-radius:12px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🗣️</div>
+          <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:6px;">Sprechen — المحادثة</h3>
+          <p style="color:var(--gray-mid);font-size:0.82rem;">توجيهات للمحادثة وأسئلة للتدرب على التعبير الشفهي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">دويتش مغرب 🇩🇪</div>
+    <p>فروض تجريبية مجانية لامتحانات اللغة الألمانية — Deutsch Maroc</p>
+  </footer>
+</div>
+
+<!-- EXAM SCREEN -->
+<div id="exam-screen">
+  <div class="exam-header">
+    <div>
+      <h2 id="examTitle">فرض A1</h2>
+      <div class="exam-info" id="examInfo">65 دقيقة | 30 سؤال</div>
+    </div>
+    <div id="examTimer" style="color:var(--gold);font-size:1.1rem;font-weight:700;"></div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
+    <div class="progress-label" id="progressLabel">الجزء 1 من 4</div>
+  </div>
+  <div class="section-tabs" id="sectionTabs">
+    <button class="tab-btn active" onclick="switchTab(0)" id="tab0">📖 Lesen</button>
+    <button class="tab-btn" onclick="switchTab(1)" id="tab1">🎧 Hören</button>
+    <button class="tab-btn" onclick="switchTab(2)" id="tab2">✍️ Schreiben</button>
+    <button class="tab-btn" onclick="switchTab(3)" id="tab3">🗣️ Sprechen</button>
+  </div>
+  <div id="panelsContainer"></div>
+</div>
+
+<!-- RESULTS SCREEN -->
+<div id="results-screen">
+  <div class="results-container">
+    <div class="score-hero">
+      <div><span class="score-number" id="resScore">0</span><span class="score-denom" id="resDenom">/20</span></div>
+      <div class="score-pct" id="resPct">0%</div>
+      <div class="score-verdict" id="resVerdict">—</div>
+      <div class="score-verdictde" id="resVerdictDe">—</div>
+    </div>
+    <div class="section-scores" id="sectionScoresDisplay"></div>
+    <div class="answers-review" id="answersReview"></div>
+    <div class="action-btns">
+      <button class="btn-retry" onclick="retryExam()">🔄 إعادة الفرض</button>
+      <button class="btn-home-res" onclick="showHome()">🏠 اختر فرضاً آخر</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================== EXAM DATA =====================
+
+const EXAMS = {
+
+a1: {
+  title: "فرض A1 — Anfänger",
+  info: "65 دقيقة | 30 سؤال",
+  minutes: 65,
+  lesen: {
+    intro: { title: "القراءة — Lesen", desc: "اقرأ النص التالي وأجب على الأسئلة. مدة هذا الجزء: 20 دقيقة." },
+    passage: `<h4>Hallo! Mein Name ist Youssef.</h4>
+Ich heiße Youssef und ich komme aus Marokko. Ich wohne in Berlin. Ich bin 28 Jahre alt. Ich bin Ingenieur von Beruf. Ich lerne Deutsch seit sechs Monaten. Deutsch ist nicht einfach, aber es macht Spaß!<br><br>
+Meine Familie wohnt in Casablanca. Mein Vater heißt Hassan und meine Mutter heißt Fatima. Ich habe eine Schwester — sie heißt Nadia. Sie ist Lehrerin.<br><br>
+Mein Hobby ist Fußball. Am Wochenende spiele ich Fußball mit meinen Freunden im Park.`,
+    questions: [
+      { type: "mcq", num: "السؤال 1", text: "Woher kommt Youssef?", de: "من أين يأتي يوسف؟", options: ["aus Deutschland", "aus Marokko", "aus Frankreich", "aus Spanien"], answer: 1 },
+      { type: "mcq", num: "السؤال 2", text: "Was ist Youssef von Beruf?", de: "ما هي مهنة يوسف؟", options: ["Lehrer", "Arzt", "Ingenieur", "Koch"], answer: 2 },
+      { type: "mcq", num: "السؤال 3", text: "Wie lange lernt Youssef Deutsch?", de: "منذ متى يتعلم يوسف الألمانية؟", options: ["drei Monate", "ein Jahr", "sechs Monate", "zwei Jahre"], answer: 2 },
+      { type: "mcq", num: "السؤال 4", text: "Was ist Youssefs Hobby?", de: "ما هواية يوسف؟", options: ["Schwimmen", "Fußball", "Tennis", "Lesen"], answer: 1 },
+      { type: "tf", num: "السؤال 5", text: "Youssefs Schwester ist Ärztin.", de: "أخت يوسف طبيبة.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 }
+    ]
+  },
+  hoeren: {
+    intro: { title: "الاستماع — Hören", desc: "استمع للمحادثة التالية، ثم أجب على الأسئلة. يمكنك الاستماع مرتين." },
+    tracks: [
+      {
+        title: "محادثة: في المكتبة — In der Bibliothek",
+        transcript: `A: Guten Tag! Ich möchte einen Ausweis beantragen.\nB: Natürlich! Wie heißen Sie bitte?\nA: Ich heiße Sara Alaoui.\nB: Wie schreibt man das? A-l-a-o-u-i?\nA: Ja, genau. Alaoui.\nB: Und wo wohnen Sie?\nA: Ich wohne in der Goethestraße 12, in München.\nB: Sind Sie Student oder arbeiten Sie?\nA: Ich studiere. Ich bin im zweiten Semester.\nB: Gut. Ihr Ausweis ist in einer Woche fertig.`,
+        hint: "انقر لتشغيل المقطع الصوتي المحاكى — في تطبيق حقيقي سيكون ملف صوتي"
+      }
+    ],
+    questions: [
+      { type: "mcq", num: "السؤال 6", text: "Was möchte Sara in der Bibliothek?", de: "ماذا تريد سارة في المكتبة؟", options: ["ein Buch ausleihen", "einen Ausweis beantragen", "ein Formular abholen", "arbeiten"], answer: 1 },
+      { type: "mcq", num: "السؤال 7", text: "Wo wohnt Sara?", de: "أين تسكن سارة؟", options: ["Berlin", "Frankfurt", "München", "Hamburg"], answer: 2 },
+      { type: "mcq", num: "السؤال 8", text: "Was macht Sara?", de: "ماذا تفعل سارة؟", options: ["Sie arbeitet.", "Sie studiert.", "Sie ist Lehrerin.", "Sie sucht Arbeit."], answer: 1 },
+      { type: "tf", num: "السؤال 9", text: "Der Ausweis ist sofort fertig.", de: "البطاقة جاهزة فوراً.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 }
+    ]
+  },
+  schreiben: {
+    intro: { title: "الكتابة — Schreiben", desc: "اكتب رسالة قصيرة أو بطاقة تعريفية حسب التعليمات أدناه. مدة هذا الجزء: 20 دقيقة." },
+    tasks: [
+      {
+        title: "المهمة 1: بطاقة تعريفية",
+        promptDe: "Schreiben Sie eine kurze Vorstellung. Schreiben Sie mindestens 30 Wörter.",
+        promptAr: "اكتب تعريفاً مختصراً بنفسك. اكتب على الأقل 30 كلمة.",
+        points: ["اسمك ومن أين أنت", "أين تسكن وعمرك", "مهنتك أو دراستك", "هواياتك"],
+        minWords: 30
+      },
+      {
+        title: "المهمة 2: بطاقة معايدة",
+        promptDe: "Ihr Freund hat Geburtstag. Schreiben Sie ihm eine kurze Nachricht (20–30 Wörter).",
+        promptAr: "صديقك له عيد ميلاد. اكتب له رسالة قصيرة (20-30 كلمة).",
+        points: ["تهنئة بعيد الميلاد", "رغبة جيدة", "توقيعك"],
+        minWords: 20
+      }
+    ]
+  },
+  sprechen: {
+    intro: { title: "المحادثة — Sprechen", desc: "هذا الجزء يُقيَّم مع ممتحن. فيما يلي التعليمات والأسئلة للتدرب." },
+    cards: [
+      {
+        title: "الجزء الأول: التعريف بالنفس",
+        de: "Stellen Sie sich vor: Name, Herkunft, Alter, Beruf/Studium, Hobby.",
+        ar: "عرّف بنفسك: الاسم، الأصل، العمر، المهنة/الدراسة، الهواية.",
+        hints: ["Ich heiße... und ich komme aus...", "Ich bin ... Jahre alt.", "Ich bin ... von Beruf / Ich studiere ...", "Mein Hobby ist ..."]
+      },
+      {
+        title: "الجزء الثاني: حوار قصير",
+        de: "Fragen Sie Ihren Partner: Wie heißen Sie? Woher kommen Sie? Was machen Sie?",
+        ar: "اسأل شريكك: ما اسمك؟ من أين أنت؟ ماذا تفعل؟",
+        hints: ["Wie heißen Sie? / Wie heißt du?", "Woher kommen Sie? / Woher kommst du?", "Was machen Sie beruflich?", "Haben Sie Hobbys?"]
+      },
+      {
+        title: "الجزء الثالث: وصف صورة",
+        de: "Beschreiben Sie das Bild: Was sehen Sie? Wo sind die Personen? Was machen sie?",
+        ar: "صف الصورة: ماذا ترى؟ أين الأشخاص؟ ماذا يفعلون؟",
+        hints: ["Ich sehe... / Man sieht...", "Im Vordergrund / Im Hintergrund...", "Die Person links / rechts...", "Ich denke, sie sind in ..."]
+      }
+    ]
+  }
+},
+
+a2: {
+  title: "فرض A2 — Grundstufe",
+  info: "75 دقيقة | 32 سؤال",
+  minutes: 75,
+  lesen: {
+    intro: { title: "القراءة — Lesen", desc: "اقرأ النصوص التالية وأجب على الأسئلة. مدة هذا الجزء: 25 دقيقة." },
+    passage: `<h4>Im Supermarkt — في السوبرماركت</h4>
+Jeden Samstag geht Karima in den Supermarkt. Sie kauft Brot, Milch, Käse und Obst. Heute kauft sie auch Hähnchen für das Abendessen.<br><br>
+An der Käsetheke fragt sie: "Was kostet der Gouda?" Die Verkäuferin sagt: "Drei Euro fünfzig das Stück." Karima nimmt zwei Stücke.<br><br>
+An der Kasse wartet sie fünf Minuten. Ihre Einkäufe kosten insgesamt 28,90 Euro. Sie bezahlt mit Karte. Die Kassiererin sagt: "Haben Sie eine Kundenkarte?" — "Nein, leider nicht", antwortet Karima.<br><br>
+Auf dem Weg nach Hause trifft sie ihre Nachbarin Ingrid. Ingrid fragt: "Haben Sie heute auch frischen Fisch bekommen?" — "Ja! Er ist sehr günstig heute."`,
+    questions: [
+      { type: "mcq", num: "السؤال 1", text: "Wann geht Karima einkaufen?", de: "متى تذهب كريمة للتسوق؟", options: ["jeden Montag", "jeden Freitag", "jeden Samstag", "jeden Sonntag"], answer: 2 },
+      { type: "mcq", num: "السؤال 2", text: "Was kauft Karima heute extra?", de: "ماذا تشتري كريمة اليوم إضافةً؟", options: ["Fisch", "Hähnchen", "Wurst", "Joghurt"], answer: 1 },
+      { type: "mcq", num: "السؤال 3", text: "Wie viel kostet ein Stück Gouda?", de: "كم يكلف قطعة واحدة من الجودا؟", options: ["2,50 Euro", "3,50 Euro", "4,00 Euro", "5,00 Euro"], answer: 1 },
+      { type: "mcq", num: "السؤال 4", text: "Wie bezahlt Karima?", de: "كيف تدفع كريمة؟", options: ["bar", "mit Karte", "mit Scheck", "mit Gutschein"], answer: 1 },
+      { type: "tf", num: "السؤال 5", text: "Karima hat eine Kundenkarte.", de: "لدى كريمة بطاقة عملاء.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 },
+      { type: "mcq", num: "السؤال 6", text: "Wen trifft Karima auf dem Weg nach Hause?", de: "من تقابل كريمة في الطريق إلى البيت؟", options: ["ihre Mutter", "ihre Nachbarin", "ihre Kollegin", "ihren Bruder"], answer: 1 }
+    ]
+  },
+  hoeren: {
+    intro: { title: "الاستماع — Hören", desc: "استمع للمقاطع الصوتية وأجب على الأسئلة. يمكنك الاستماع مرتين لكل مقطع." },
+    tracks: [
+      {
+        title: "مقطع 1: في المطعم — Im Restaurant",
+        transcript: `Kellner: Guten Abend! Haben Sie reserviert?\nGast: Ja, auf den Namen Bouzid. Für zwei Personen.\nKellner: Einen Moment... Ja, Tisch Nummer 7. Hier bitte!\nGast: Danke. Was können Sie empfehlen?\nKellner: Das Tagesgericht ist heute Rindfleisch mit Kartoffeln. Es kostet 12,50 Euro.\nGast: Das klingt gut. Und für meine Frau... gibt es etwas Vegetarisches?\nKellner: Ja, wir haben eine sehr gute Gemüsepizza für 9,80 Euro.\nGast: Gut, wir nehmen das. Und zwei Gläser Mineralwasser bitte.\nKellner: Kommt sofort!`,
+        hint: "انقر لتشغيل المقطع — محادثة في مطعم ألماني"
+      }
+    ],
+    questions: [
+      { type: "mcq", num: "السؤال 7", text: "Hat der Gast reserviert?", de: "هل حجز الضيف؟", options: ["Ja, für 3 Personen", "Nein", "Ja, für 2 Personen", "Ja, für 4 Personen"], answer: 2 },
+      { type: "mcq", num: "السؤال 8", text: "Was ist das Tagesgericht?", de: "ما هو طبق اليوم؟", options: ["Fisch mit Reis", "Rindfleisch mit Kartoffeln", "Hähnchen mit Gemüse", "Pizza"], answer: 1 },
+      { type: "mcq", num: "السؤال 9", text: "Was bestellt die Frau des Gastes?", de: "ماذا تطلب زوجة الضيف؟", options: ["Rindfleisch", "Salat", "Gemüsepizza", "Suppe"], answer: 2 },
+      { type: "tf", num: "السؤال 10", text: "Sie bestellen Bier zum Trinken.", de: "يطلبون بيرة للشرب.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 }
+    ]
+  },
+  schreiben: {
+    intro: { title: "الكتابة — Schreiben", desc: "أكمل المهام الكتابية التالية. اتبع التعليمات بدقة." },
+    tasks: [
+      {
+        title: "المهمة 1: رسالة إلى صديق",
+        promptDe: "Schreiben Sie eine E-Mail an Ihren Freund Ahmed. Sie laden ihn zu Ihrer Geburtstagsparty ein. (40–60 Wörter)",
+        promptAr: "اكتب إيميلاً لصديقك أحمد. تدعوه لحفلة عيد ميلادك. (40-60 كلمة)",
+        points: ["التحية والمناسبة", "التاريخ والمكان", "ما ستفعلانه", "الإغلاق والتوقيع"],
+        minWords: 40
+      },
+      {
+        title: "المهمة 2: إكمال نموذج",
+        promptDe: "Füllen Sie das Formular aus: Name, Adresse, Telefon, E-Mail, Hobby.",
+        promptAr: "اكتب الإجابات كما لو كنت تملأ نموذجاً: اسم، عنوان، هاتف، إيميل، هواية.",
+        points: ["Name:", "Adresse:", "Telefon:", "E-Mail:", "Hobby:"],
+        minWords: 15
+      }
+    ]
+  },
+  sprechen: {
+    intro: { title: "المحادثة — Sprechen", desc: "توجيهات للتدرب على المحادثة — يُقيَّم مع ممتحن في الامتحان الرسمي." },
+    cards: [
+      {
+        title: "الجزء الأول: اقتراحات",
+        de: "Machen Sie einen Vorschlag für das Wochenende und reagieren Sie auf Vorschläge.",
+        ar: "اقترح برنامجاً لنهاية الأسبوع وارد على اقتراحات شريكك.",
+        hints: ["Wie wäre es mit... ?", "Gute Idee! Ich bin dabei.", "Hm, ich weiß nicht... Lieber...", "Was machen wir zuerst?"]
+      },
+      {
+        title: "الجزء الثاني: وصف يوم عادي",
+        de: "Beschreiben Sie Ihren typischen Tagesablauf. Was machen Sie morgens, mittags, abends?",
+        ar: "صف يومك العادي. ماذا تفعل صباحاً، ظهراً، مساءً؟",
+        hints: ["Ich stehe um ... Uhr auf.", "Um ... Uhr frühstücke ich.", "Mittags esse ich in der Kantine / zu Hause.", "Abends lese ich / schaue ich fern."]
+      },
+      {
+        title: "الجزء الثالث: التسوق",
+        de: "Spielen Sie eine Szene im Geschäft: Fragen Sie nach Preisen, Größen, Farben.",
+        ar: "العب دور المشتري في محل: اسأل عن الأسعار، المقاسات، الألوان.",
+        hints: ["Was kostet das / Wie viel kostet...?", "Haben Sie das in Größe ...?", "Gibt es das auch in Blau / Rot?", "Ich nehme es. / Das ist mir zu teuer."]
+      }
+    ]
+  }
+},
+
+b1: {
+  title: "فرض B1 — Mittelstufe",
+  info: "90 دقيقة | 34 سؤال",
+  minutes: 90,
+  lesen: {
+    intro: { title: "القراءة — Lesen", desc: "اقرأ النص وأجب على الأسئلة بدقة. مدة هذا الجزء: 30 دقيقة." },
+    passage: `<h4>Homeoffice: Vor- und Nachteile — العمل من المنزل: مميزات وعيوب</h4>
+Seit der Corona-Pandemie hat sich die Arbeitswelt stark verändert. Viele Unternehmen ermöglichen ihren Mitarbeitern, von zu Hause aus zu arbeiten — das sogenannte Homeoffice. Aber ist das wirklich besser als im Büro zu arbeiten?<br><br>
+<strong>Die Vorteile:</strong> Wer von zu Hause arbeitet, spart täglich viel Zeit und Geld für den Weg zur Arbeit. Man kann flexibler arbeiten und Familie und Beruf besser miteinander verbinden. Außerdem ist die Konzentration oft höher, weil es weniger Ablenkungen gibt.<br><br>
+<strong>Die Nachteile:</strong> Allerdings fehlt vielen der soziale Kontakt zu Kollegen. Manchmal ist die Grenze zwischen Arbeit und Freizeit schwer zu ziehen. Außerdem braucht man zu Hause einen ruhigen Arbeitsplatz, was nicht alle haben.<br><br>
+Eine Studie der Universität München zeigt: 65% der Befragten möchten mindestens zwei Tage pro Woche im Homeoffice bleiben. Aber nur 40% sagen, sie sind dabei genauso produktiv wie im Büro.`,
+    questions: [
+      { type: "mcq", num: "السؤال 1", text: "Was hat sich laut Text seit der Pandemie verändert?", de: "ما الذي تغير حسب النص منذ الجائحة؟", options: ["Die Schulen", "Die Arbeitswelt", "Die Preise", "Die Politik"], answer: 1 },
+      { type: "mcq", num: "السؤال 2", text: "Welcher Vorteil vom Homeoffice wird NICHT genannt?", de: "أي ميزة للعمل من المنزل لم تُذكر؟", options: ["Zeit sparen", "mehr Konzentration", "höheres Gehalt", "flexible Arbeitszeiten"], answer: 2 },
+      { type: "mcq", num: "السؤال 3", text: "Was ist ein Nachteil laut Text?", de: "ما هو عيب حسب النص؟", options: ["Man verdient weniger.", "Man hat weniger Urlaub.", "Der soziale Kontakt fehlt.", "Es ist langweiliger."], answer: 2 },
+      { type: "mcq", num: "السؤال 4", text: "Was zeigt die Studie der Uni München?", de: "ماذا تُظهر دراسة جامعة ميونيخ؟", options: ["100% arbeiten produktiver zuhause", "65% wollen mindestens 2 Tage Homeoffice", "Niemand mag Homeoffice", "40% wollen täglich ins Büro"], answer: 1 },
+      { type: "tf", num: "السؤال 5", text: "Alle Befragten sind im Homeoffice produktiver.", de: "جميع المستطلعين أكثر إنتاجية في العمل من المنزل.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 },
+      { type: "mcq", num: "السؤال 6", text: "Was bedeutet 'die Grenze ziehen' im Kontext?", de: "ما معنى 'رسم الحدود' في هذا السياق؟", options: ["Eine Linie auf Papier malen", "Zwischen Arbeit und Freizeit unterscheiden", "Den Chef fragen", "Nach Hause fahren"], answer: 1 }
+    ]
+  },
+  hoeren: {
+    intro: { title: "الاستماع — Hören", desc: "استمع للمقاطع وأجب على الأسئلة." },
+    tracks: [
+      {
+        title: "مقطع: مقابلة عمل — Vorstellungsgespräch",
+        transcript: `Interviewer: Guten Morgen, Herr Benali. Bitte setzen Sie sich. Können Sie sich kurz vorstellen?\nBewerber: Ja gerne. Mein Name ist Karim Benali. Ich habe Informatik studiert und sechs Jahre Erfahrung in der Softwareentwicklung.\nInterviewer: Warum möchten Sie bei uns arbeiten?\nBewerber: Ihr Unternehmen ist sehr innovativ. Ich schätze besonders, dass Sie auf nachhaltige Technologie setzen. Das passt gut zu meinen Werten.\nInterviewer: Welche Schwächen haben Sie?\nBewerber: Manchmal arbeite ich zu perfektionistisch. Das kostet Zeit, aber ich lerne, besser zu priorisieren.\nInterviewer: Was sind Ihre Gehaltsvorstellungen?\nBewerber: Ich stelle mir ein Gehalt zwischen 55.000 und 62.000 Euro vor.\nInterviewer: Das ist realistisch. Wann könnten Sie anfangen?\nBewerber: In vier Wochen, nach meiner Kündigungsfrist.`,
+        hint: "انقر لمحاكاة مقطع مقابلة عمل باللغة الألمانية"
+      }
+    ],
+    questions: [
+      { type: "mcq", num: "السؤال 7", text: "Was hat Herr Benali studiert?", de: "ماذا درس السيد بنعلي؟", options: ["Wirtschaft", "Informatik", "Medizin", "Jura"], answer: 1 },
+      { type: "mcq", num: "السؤال 8", text: "Warum will er in diesem Unternehmen arbeiten?", de: "لماذا يريد العمل في هذه الشركة؟", options: ["hohes Gehalt", "gute Lage", "nachhaltige Technologie", "kurze Arbeitszeit"], answer: 2 },
+      { type: "mcq", num: "السؤال 9", text: "Was ist seine Schwäche laut Gespräch?", de: "ما ضعفه حسب المقابلة؟", options: ["Er ist zu faul.", "Er ist zu perfektionistisch.", "Er spricht schlecht Deutsch.", "Er kommt immer zu spät."], answer: 1 },
+      { type: "mcq", num: "السؤال 10", text: "Wann kann er anfangen?", de: "متى يمكنه البدء؟", options: ["sofort", "in zwei Wochen", "in vier Wochen", "in zwei Monaten"], answer: 2 },
+      { type: "tf", num: "السؤال 11", text: "Sein Gehaltsvorschlag ist zu hoch laut Interviewer.", de: "اقتراح الراتب مرتفع جداً حسب المحاور.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 }
+    ]
+  },
+  schreiben: {
+    intro: { title: "الكتابة — Schreiben", desc: "أكمل المهام التالية بأسلوب واضح ومنظم." },
+    tasks: [
+      {
+        title: "المهمة 1: رسالة رسمية",
+        promptDe: "Schreiben Sie eine formelle E-Mail an Ihren Chef. Sie möchten nächste Woche Urlaub nehmen. Begründen Sie Ihren Wunsch. (60–80 Wörter)",
+        promptAr: "اكتب إيميلاً رسمياً لمديرك. تريد أخذ إجازة الأسبوع القادم. اشرح سبب طلبك. (60-80 كلمة)",
+        points: ["التحية الرسمية", "طلب الإجازة مع التاريخ", "سبب الإجازة", "التأكيد على إنجاز العمل", "الإغلاق الرسمي"],
+        minWords: 60
+      },
+      {
+        title: "المهمة 2: رأيك في موضوع",
+        promptDe: "Sind Sie für oder gegen Homeoffice? Schreiben Sie Ihre Meinung mit mindestens 2 Argumenten. (50–70 Wörter)",
+        promptAr: "هل أنت مع أم ضد العمل من المنزل؟ اكتب رأيك مع على الأقل حجتين. (50-70 كلمة)",
+        points: ["موقفك بوضوح (مع/ضد)", "الحجة الأولى", "الحجة الثانية", "خلاصة"],
+        minWords: 50
+      }
+    ]
+  },
+  sprechen: {
+    intro: { title: "المحادثة — Sprechen", desc: "تدرب على هذه المواضيع للمحادثة مع ممتحن." },
+    cards: [
+      {
+        title: "الجزء الأول: عرض موضوع",
+        de: "Präsentieren Sie das Thema 'Gesunde Ernährung' in 2–3 Minuten.",
+        ar: "قدّم موضوع 'التغذية الصحية' في 2-3 دقائق.",
+        hints: ["Ich möchte heute über ... sprechen.", "Erstens / Zweitens / Schließlich...", "Studien zeigen, dass...", "Meiner Meinung nach ist es wichtig, weil..."]
+      },
+      {
+        title: "الجزء الثاني: نقاش",
+        de: "Diskutieren Sie mit Ihrem Partner: Ist es besser, in der Stadt oder auf dem Land zu leben?",
+        ar: "ناقش مع شريكك: هل من الأفضل العيش في المدينة أم الريف؟",
+        hints: ["Das stimmt zwar, aber...", "Ich sehe das etwas anders.", "Ein wichtiger Punkt ist...", "Was denken Sie darüber?"]
+      },
+      {
+        title: "الجزء الثالث: حل مشكلة",
+        de: "Sie und Ihr Partner müssen ein Geschenk für einen Kollegen kaufen. Budget: 30 Euro. Einigen Sie sich!",
+        ar: "أنت وشريكك تريدان شراء هدية لزميل. الميزانية: 30 يورو. اتفقا!",
+        hints: ["Wie wäre es mit ...?", "Das kostet leider zu viel.", "Einverstanden! Gute Idee.", "Und wenn wir ... kaufen würden?"]
+      }
+    ]
+  }
+},
+
+b2: {
+  title: "فرض B2 — Fortgeschritten",
+  info: "105 دقيقة | 36 سؤال",
+  minutes: 105,
+  lesen: {
+    intro: { title: "القراءة — Lesen", desc: "اقرأ النص الأكاديمي وأجب على الأسئلة. مدة هذا الجزء: 35 دقيقة." },
+    passage: `<h4>Künstliche Intelligenz in der Medizin — الذكاء الاصطناعي في الطب</h4>
+Die künstliche Intelligenz (KI) revolutioniert die Medizin in einem bisher unerreichten Tempo. Algorithmen, die auf Millionen von Patientendaten trainiert wurden, sind heute in der Lage, Krankheiten wie Krebs oder Herzerkrankungen früher und genauer zu diagnostizieren als erfahrene Ärzte.<br><br>
+<strong>Potenzial und Möglichkeiten:</strong> Besonders im Bereich der Bildgebung — etwa bei Röntgenaufnahmen oder MRT-Scans — zeigen KI-Systeme beeindruckende Ergebnisse. Eine Studie des Deutschen Krebsforschungszentrums ergab, dass ein KI-Algorithmus Hautkrebs in 95% der Fälle korrekt identifizierte, während erfahrene Dermatologen auf 86,6% kamen.<br><br>
+<strong>Ethische Fragen:</strong> Trotzdem bleiben erhebliche Fragen offen: Wer haftet, wenn ein KI-System einen Fehler macht? Wie werden Patientendaten geschützt? Und gefährdet KI die Arbeitsplätze von Ärzten und Pflegepersonal?<br><br>
+<strong>Zukunftsaussichten:</strong> Experten sind sich einig, dass KI den Arzt nicht ersetzen, sondern ergänzen wird. Die menschliche Empathie, das Gespräch mit dem Patienten, das ganzheitliche Verständnis der Person — das bleibt der Domäne des Menschen vorbehalten. KI ist ein Werkzeug, kein Ersatz.`,
+    questions: [
+      { type: "mcq", num: "السؤال 1", text: "Was kann KI laut Text besser als Ärzte?", de: "ما الذي يمكن للذكاء الاصطناعي فعله أفضل من الأطباء حسب النص؟", options: ["Operationen durchführen", "Krankheiten früher diagnostizieren", "Medikamente verschreiben", "Patienten beraten"], answer: 1 },
+      { type: "mcq", num: "السؤال 2", text: "Wie hoch war die Genauigkeit des KI-Algorithmus bei Hautkrebs?", de: "ما دقة خوارزمية الذكاء الاصطناعي في سرطان الجلد؟", options: ["86,6%", "90%", "95%", "100%"], answer: 2 },
+      { type: "mcq", num: "السؤال 3", text: "Welche ethische Frage wird NICHT im Text erwähnt?", de: "أي سؤال أخلاقي لم يُذكر في النص؟", options: ["Wer haftet bei Fehlern?", "Wie werden Daten geschützt?", "Wie teuer ist KI?", "Gefährdet KI Arbeitsplätze?"], answer: 2 },
+      { type: "mcq", num: "السؤال 4", text: "Was meinen Experten über die Zukunft von KI in der Medizin?", de: "ما رأي الخبراء في مستقبل الذكاء الاصطناعي في الطب؟", options: ["KI wird Ärzte vollständig ersetzen.", "KI wird den Arzt ergänzen, nicht ersetzen.", "KI ist nutzlos in der Medizin.", "KI ist zu teuer für die Medizin."], answer: 1 },
+      { type: "tf", num: "السؤال 5", text: "Menschliche Empathie kann vollständig durch KI ersetzt werden.", de: "يمكن للذكاء الاصطناعي استبدال التعاطف البشري كلياً.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 },
+      { type: "mcq", num: "السؤال 6", text: "Was bedeutet 'ergänzen' im letzten Abschnitt?", de: "ماذا يعني 'يكمّل' في الفقرة الأخيرة؟", options: ["ersetzen", "verbessern", "hinzufügen/vervollständigen", "löschen"], answer: 2 }
+    ]
+  },
+  hoeren: {
+    intro: { title: "الاستماع — Hören", desc: "استمع للمقطع الأكاديمي وأجب على الأسئلة." },
+    tracks: [
+      {
+        title: "مقطع: مؤتمر علمي — Wissenschaftskonferenz",
+        transcript: `Moderatorin: Herzlich willkommen zu unserem Panel über 'Die Zukunft der Arbeit'. Unser Gastreferent, Professor Vogel, forscht seit zwanzig Jahren zu diesem Thema.\n\nProfessor Vogel: Vielen Dank. Ich möchte drei zentrale Thesen vorstellen:\n\nErstens: Etwa 40% der heutigen Berufe werden bis 2040 durch Automatisierung verändert oder wegfallen. Das ist keine Katastrophe, sondern ein Wandel.\n\nZweitens: Neue Berufe entstehen gleichzeitig. Vor zwanzig Jahren gab es keinen 'Social Media Manager' oder 'Data Scientist'. Heute sind das gefragte Berufe.\n\nDrittens: Lebenslanges Lernen wird keine Option mehr sein, sondern eine Notwendigkeit. Wer sich nicht weiterbildet, riskiert, den Anschluss zu verlieren.\n\nModeratorin: Haben Sie eine Empfehlung für junge Menschen?\n\nProfessor Vogel: Ja. Wählen Sie Berufe, die Kreativität, soziale Kompetenz und kritisches Denken erfordern. Diese Fähigkeiten kann kein Algorithmus ersetzen.`,
+        hint: "انقر لمحاكاة مقطع مؤتمر علمي بمستوى B2"
+      }
+    ],
+    questions: [
+      { type: "mcq", num: "السؤال 7", text: "Wie lange forscht Professor Vogel zu diesem Thema?", de: "منذ متى يبحث البروفيسور فوغل في هذا الموضوع؟", options: ["10 Jahre", "15 Jahre", "20 Jahre", "30 Jahre"], answer: 2 },
+      { type: "mcq", num: "السؤال 8", text: "Wie viel Prozent der Berufe werden laut Vogel verändert?", de: "كم بالمئة من المهن ستتغير حسب فوغل؟", options: ["20%", "30%", "40%", "60%"], answer: 2 },
+      { type: "mcq", num: "السؤال 9", text: "Was war vor 20 Jahren noch kein Beruf?", de: "ما الذي لم يكن مهنة قبل 20 عاماً؟", options: ["Arzt", "Lehrer", "Data Scientist", "Ingenieur"], answer: 2 },
+      { type: "mcq", num: "السؤال 10", text: "Was empfiehlt Vogel jungen Menschen?", de: "ماذا يوصي فوغل الشباب؟", options: ["Technik studieren", "Berufe mit Kreativität und sozialem Denken wählen", "Im Ausland arbeiten", "Frühzeitig pensionieren"], answer: 1 },
+      { type: "tf", num: "السؤال 11", text: "Lebenslanges Lernen ist laut Vogel optional.", de: "التعلم المستمر اختياري حسب فوغل.", options: ["Richtig ✓", "Falsch ✗"], answer: 1 }
+    ]
+  },
+  schreiben: {
+    intro: { title: "الكتابة — Schreiben", desc: "أكمل المهام الكتابية التالية بمستوى رسمي وأكاديمي." },
+    tasks: [
+      {
+        title: "المهمة 1: مقال أكاديمي",
+        promptDe: "Schreiben Sie einen strukturierten Aufsatz zum Thema: 'Soziale Medien — Fluch oder Segen?' (100–130 Wörter)",
+        promptAr: "اكتب مقالاً منظماً حول: 'وسائل التواصل الاجتماعي — نعمة أم نقمة؟' (100-130 كلمة)",
+        points: ["مقدمة تعرّف الموضوع", "حجج مع (على الأقل 2)", "حجج ضد (على الأقل 2)", "خاتمة برأيك الشخصي المبرر"],
+        minWords: 100
+      },
+      {
+        title: "المهمة 2: رسالة إلى جريدة",
+        promptDe: "Schreiben Sie einen Leserbrief an eine Zeitung über das Thema 'KI in der Schule'. Nehmen Sie klar Stellung. (80–100 Wörter)",
+        promptAr: "اكتب رسالة قارئ إلى جريدة حول 'الذكاء الاصطناعي في المدرسة'. خذ موقفاً واضحاً. (80-100 كلمة)",
+        points: ["العنوان الرسمي للجريدة", "موقفك بوضوح", "حججك (على الأقل 3)", "دعوة للعمل أو خاتمة"],
+        minWords: 80
+      }
+    ]
+  },
+  sprechen: {
+    intro: { title: "المحادثة — Sprechen", desc: "تدرب على هذه المواضيع المعقدة للمحادثة مع ممتحن." },
+    cards: [
+      {
+        title: "الجزء الأول: نقاش معمق",
+        de: "Diskutieren Sie: 'Sollte das Studium in Deutschland weiterhin kostenlos sein?'",
+        ar: "ناقش: 'هل يجب أن تبقى الجامعة في ألمانيا مجانية؟'",
+        hints: ["Einerseits... Andererseits...", "Das lässt sich nicht so einfach beantworten.", "Wenn man bedenkt, dass...", "Im Vergleich zu anderen Ländern..."]
+      },
+      {
+        title: "الجزء الثاني: عرض بيانات",
+        de: "Kommentieren Sie eine Statistik: 'Junge Deutsche: 78% nutzen täglich Social Media, aber nur 32% lesen täglich Zeitung.'",
+        ar: "علّق على إحصائية: '78% من الشباب الألماني يستخدم وسائل التواصل يومياً، لكن 32% فقط يقرأ الجريدة يومياً.'",
+        hints: ["Diese Statistik zeigt deutlich, dass...", "Besonders auffällig ist...", "Das lässt sich dadurch erklären, dass...", "Man könnte daraus schließen, dass..."]
+      },
+      {
+        title: "الجزء الثالث: موقف من قضية",
+        de: "Nehmen Sie Stellung zu: 'Sollte das Handy in der Schule verboten sein?'",
+        ar: "خذ موقفاً من: 'هل يجب حظر الهاتف في المدرسة؟'",
+        hints: ["Ich bin der Meinung / Ansicht, dass...", "Aus pädagogischer Sicht...", "Die Forschung belegt, dass...", "Letztendlich kommt es darauf an, ob..."]
+      }
+    ]
+  }
+},
+
+full: {
+  title: "الفرض الشامل A1→B2",
+  info: "120 دقيقة | 40 سؤال",
+  minutes: 120,
+  lesen: {
+    intro: { title: "القراءة — Lesen (شامل)", desc: "نصوص من جميع المستويات. اقرأ بعناية وأجب على الأسئلة." },
+    passage: `<h4>Text 1 (A1/A2): Familie und Arbeit</h4>
+Maria wohnt in Wien. Sie ist 32 Jahre alt und arbeitet als Ärztin. Ihre Familie wohnt in Graz. Am Wochenende besucht sie ihre Eltern. Ihr Vater kocht gerne, ihre Mutter liebt Bücher. Maria mag Sport: Sie läuft jeden Morgen 5 Kilometer.
+<br><br>
+<h4>Text 2 (B1): Digitales Lernen</h4>
+Online-Lernen hat in den letzten Jahren stark zugenommen. Besonders nach der Pandemie haben viele Schüler und Studenten digitale Plattformen entdeckt. Diese ermöglichen flexibles Lernen, haben aber auch Nachteile: Das Fehlen von sozialen Kontakten und die nötige Selbstdisziplin sind Herausforderungen.
+<br><br>
+<h4>Text 3 (B2): Klimawandel und Wirtschaft</h4>
+Der Klimawandel stellt die globale Wirtschaft vor erhebliche Herausforderungen. Unternehmen müssen ihre Produktionsprozesse umdenken, in erneuerbare Energien investieren und gleichzeitig wettbewerbsfähig bleiben. Ökonomen streiten über die Kosten des Übergangs zu einer grünen Wirtschaft versus die Kosten der Klimafolgen.`,
+    questions: [
+      { type: "mcq", num: "A1 — السؤال 1", text: "Wo wohnen Marias Eltern?", de: "أين يسكن والدا ماريا؟", options: ["Wien", "Berlin", "Graz", "Salzburg"], answer: 2 },
+      { type: "mcq", num: "A1 — السؤال 2", text: "Was macht Maria jeden Morgen?", de: "ماذا تفعل ماريا كل صباح؟", options: ["Sie schwimmt.", "Sie läuft 5 km.", "Sie kocht.", "Sie liest."], answer: 1 },
+      { type: "mcq", num: "A2 — السؤال 3", text: "Was ist ein Nachteil von Online-Lernen?", de: "ما هو عيب التعلم الإلكتروني؟", options: ["Es ist zu teuer.", "Fehlender sozialer Kontakt", "Es gibt keine Kurse.", "Es dauert zu lang."], answer: 1 },
+      { type: "tf", num: "B1 — السؤال 4", text: "Online-Lernen erfordert viel Selbstdisziplin.", de: "التعلم الإلكتروني يتطلب الكثير من الانضباط الذاتي.", options: ["Richtig ✓", "Falsch ✗"], answer: 0 },
+      { type: "mcq", num: "B2 — السؤال 5", text: "Was müssen Unternehmen beim Klimawandel tun?", de: "ماذا يجب على الشركات فعله في ظل تغير المناخ؟", options: ["Nichts", "Produktion stoppen", "In erneuerbare Energien investieren", "Preise erhöhen"], answer: 2 },
+      { type: "mcq", num: "B2 — السؤال 6", text: "Worüber streiten Ökonomen?", de: "على ماذا يتجادل علماء الاقتصاد؟", options: ["Ob Klimawandel existiert", "Über die Kosten des Übergangs zur grünen Wirtschaft", "Über Steuerpolitik", "Über Arbeitslosigkeit"], answer: 1 }
+    ]
+  },
+  hoeren: {
+    intro: { title: "الاستماع — Hören (شامل)", desc: "ثلاثة مقاطع بمستويات مختلفة." },
+    tracks: [
+      {
+        title: "مقطع شامل: من A1 إلى B2",
+        transcript: `[A1] Dialog: Guten Morgen! — Guten Morgen! Wie geht es Ihnen? — Danke, gut! Und Ihnen? — Auch gut, danke!\n\n[A2] Im Supermarkt: Was kostet der Apfelsaft? — Zwei Euro neunzig die Flasche. — Gut, ich nehme zwei Flaschen.\n\n[B1] Radiobericht: Die Arbeitslosigkeit in Deutschland ist auf 5,2% gestiegen. Experten sehen den Hauptgrund in der wirtschaftlichen Verlangsamung.\n\n[B2] Vortrag: Die philosophische Frage, ob Technologie den Menschen befreit oder versklavt, beschäftigt Denker seit der industriellen Revolution. Heidegger argumentierte, dass Technik uns in ein 'Gestell' einzwängt, das unsere Beziehung zur Welt verändert.`,
+        hint: "انقر لمحاكاة المقطع الشامل من A1 إلى B2"
+      }
+    ],
+    questions: [
+      { type: "mcq", num: "A1 — السؤال 7", text: "Was sagt Person A am Anfang?", de: "ماذا يقول الشخص أ في البداية؟", options: ["Auf Wiedersehen!", "Guten Morgen!", "Gute Nacht!", "Hallo!"], answer: 1 },
+      { type: "mcq", num: "A2 — السؤال 8", text: "Wie viel kostet der Apfelsaft?", de: "كم يكلف عصير التفاح؟", options: ["1,90€", "2,90€", "3,50€", "4,00€"], answer: 1 },
+      { type: "mcq", num: "B1 — السؤال 9", text: "Wie hoch ist die Arbeitslosigkeit laut Bericht?", de: "كم تبلغ نسبة البطالة حسب التقرير؟", options: ["3,2%", "4,5%", "5,2%", "6,1%"], answer: 2 },
+      { type: "mcq", num: "B2 — السؤال 10", text: "Was ist Heideggers These zur Technik?", de: "ما أطروحة هايدغر حول التكنولوجيا؟", options: ["Technik befreit uns.", "Technik schafft Arbeit.", "Technik zwingt uns in ein 'Gestell'.", "Technik ist neutral."], answer: 2 }
+    ]
+  },
+  schreiben: {
+    intro: { title: "الكتابة — Schreiben (شامل)", desc: "ثلاث مهام بمستويات متنوعة." },
+    tasks: [
+      {
+        title: "المهمة A1/A2: تعريف قصير",
+        promptDe: "Schreiben Sie 5 Sätze über sich selbst auf Deutsch.",
+        promptAr: "اكتب 5 جمل عن نفسك بالألمانية.",
+        points: ["اسمك وجنسيتك", "عمرك ومكان سكنك", "مهنتك", "أسرتك", "هوايتك"],
+        minWords: 25
+      },
+      {
+        title: "المهمة B1: رسالة غير رسمية",
+        promptDe: "Schreiben Sie Ihrem deutschen Freund eine Nachricht: Empfehlen Sie ihm ein Buch oder einen Film. Begründen Sie. (50–70 Wörter)",
+        promptAr: "اكتب لصديقك الألماني: انصحه بكتاب أو فيلم. علّل اختيارك. (50-70 كلمة)",
+        points: ["ذكر الكتاب/الفيلم", "موضوعه باختصار", "لماذا تنصح به", "الخاتمة"],
+        minWords: 50
+      },
+      {
+        title: "المهمة B2: تحليل",
+        promptDe: "Analysieren Sie: Welche Kompetenzen braucht man für den Beruf der Zukunft? (80–100 Wörter)",
+        promptAr: "حلّل: ما المهارات التي يحتاجها مهنة المستقبل؟ (80-100 كلمة)",
+        points: ["مهارات تقنية", "مهارات اجتماعية", "التعلم المستمر", "التفكير النقدي", "خاتمة مستقبلية"],
+        minWords: 80
+      }
+    ]
+  },
+  sprechen: {
+    intro: { title: "المحادثة — Sprechen (شامل)", desc: "تدرب على محادثات من جميع المستويات." },
+    cards: [
+      {
+        title: "A1: التعريف الأساسي",
+        de: "Stellen Sie sich kurz vor: Name, Nationalität, Wohnort, Beruf.",
+        ar: "قدّم نفسك: الاسم، الجنسية، مكان السكن، المهنة.",
+        hints: ["Ich heiße...", "Ich komme aus...", "Ich wohne in...", "Ich bin ... von Beruf."]
+      },
+      {
+        title: "B1: رأيك في موضوع",
+        de: "Was denken Sie: Sollte man jeden Tag Sport machen? Warum (nicht)?",
+        ar: "ما رأيك: هل يجب ممارسة الرياضة كل يوم؟ لماذا (لا)؟",
+        hints: ["Ich finde, dass...", "Einerseits ist es wichtig...", "Andererseits...", "Deshalb denke ich, dass..."]
+      },
+      {
+        title: "B2: نقاش فلسفي",
+        de: "Diskutieren Sie: 'Kann Glück definiert werden?' — Was bedeutet Glück für Sie?",
+        ar: "ناقش: 'هل يمكن تعريف السعادة؟' — ما معنى السعادة بالنسبة لك؟",
+        hints: ["Der Begriff 'Glück' ist vielschichtig...", "Aus philosophischer Sicht...", "Für mich persönlich bedeutet Glück...", "Man könnte argumentieren, dass..."]
+      }
+    ]
+  }
+}
+
+}; // end EXAMS
+
+// ===================== STATE =====================
+let currentExam = null;
+let currentTab = 0;
+let userAnswers = {};
+let writingTexts = {};
+let timerInterval = null;
+let timeLeft = 0;
+let audioPlaying = {};
+
+// ===================== NAVIGATION =====================
+function showHome() {
+  document.getElementById('home-screen').style.display = '';
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('navBack').style.display = 'none';
+  if (timerInterval) clearInterval(timerInterval);
+}
+
+function startExam(level) {
+  currentExam = level;
+  currentTab = 0;
+  userAnswers = {};
+  writingTexts = {};
+  audioPlaying = {};
+
+  const exam = EXAMS[level];
+  document.getElementById('examTitle').textContent = exam.title;
+  document.getElementById('examInfo').textContent = exam.info;
+  document.getElementById('navBack').style.display = '';
+
+  document.getElementById('home-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = '';
+
+  renderAllPanels(exam);
+  switchTab(0);
+  startTimer(exam.minutes);
+}
+
+function renderAllPanels(exam) {
+  const container = document.getElementById('panelsContainer');
+  container.innerHTML = '';
+
+  ['lesen','hoeren','schreiben','sprechen'].forEach((sec, idx) => {
+    const panel = document.createElement('div');
+    panel.className = 'section-panel' + (idx === 0 ? ' active' : '');
+    panel.id = 'panel' + idx;
+    panel.innerHTML = renderSection(sec, exam[sec], idx);
+    container.appendChild(panel);
+  });
+
+  // Add word count listeners
+  document.querySelectorAll('.writing-area').forEach(ta => {
+    ta.addEventListener('input', function() {
+      const countEl = this.nextElementSibling;
+      if (countEl && countEl.classList.contains('word-count')) {
+        const words = this.value.trim().split(/\s+/).filter(w => w).length;
+        countEl.textContent = `عدد الكلمات: ${words}`;
+      }
+    });
+  });
+}
+
+function renderSection(sec, data, tabIdx) {
+  let html = `<div class="section-panel-inner">`;
+
+  // Intro
+  html += `<div class="section-intro"><h3>${data.intro.title}</h3><p>${data.intro.desc}</p></div>`;
+
+  if (sec === 'lesen') {
+    html += `<div class="passage-box">${data.passage}</div>`;
+    data.questions.forEach((q, qi) => {
+      html += renderQuestion(q, qi, 'lesen');
+    });
+    html += renderSectionNav(tabIdx);
+  }
+
+  else if (sec === 'hoeren') {
+    data.tracks.forEach((track, ti) => {
+      html += `
+      <div class="audio-sim">
+        <div class="track-title">🎧 ${track.title}</div>
+        <div class="audio-player-sim">
+          <button class="play-sim" onclick="simulateAudio(${ti}, this)">▶</button>
+          <div class="audio-bar"><div class="audio-bar-fill" id="bar${ti}"></div></div>
+          <span class="audio-time" id="time${ti}">0:00</span>
+        </div>
+        <div class="transcript-hint">💡 ${track.hint}</div>
+        <details style="margin-top:12px;direction:ltr;text-align:left;">
+          <summary style="color:var(--gold-light);cursor:pointer;font-size:0.82rem;padding:6px;">📋 النص المكتوب (transcript) — للمراجعة</summary>
+          <pre style="margin-top:8px;font-size:0.8rem;color:#ccc;white-space:pre-wrap;">${track.transcript}</pre>
+        </details>
+      </div>`;
+    });
+    data.questions.forEach((q, qi) => {
+      html += renderQuestion(q, qi, 'hoeren');
+    });
+    html += renderSectionNav(tabIdx);
+  }
+
+  else if (sec === 'schreiben') {
+    data.tasks.forEach((task, ti) => {
+      html += `
+      <div class="writing-prompt">
+        <h4>✍️ ${task.title}</h4>
+        <div class="prompt-de">${task.promptDe}</div>
+        <div class="prompt-ar">${task.promptAr}</div>
+        <ul class="writing-points">${task.points.map(p=>`<li>• ${p}</li>`).join('')}</ul>
+      </div>
+      <textarea class="writing-area" placeholder="اكتب إجابتك هنا بالألمانية..." id="writing_${tabIdx}_${ti}" onchange="saveWriting('${tabIdx}_${ti}', this.value)"></textarea>
+      <div class="word-count">عدد الكلمات: 0 (الحد الأدنى: ${task.minWords})</div>
+      <div style="height:20px;"></div>`;
+    });
+    html += renderSectionNav(tabIdx);
+  }
+
+  else if (sec === 'sprechen') {
+    data.cards.forEach((card, ci) => {
+      html += `
+      <div class="speaking-card">
+        <h4>🗣️ ${card.title}</h4>
+        <div class="speaking-de">${card.de}</div>
+        <div class="speaking-ar">${card.ar}</div>
+        <div class="speaking-hints">
+          <ul>${card.hints.map(h=>`<li>${h}</li>`).join('')}</ul>
+        </div>
+      </div>`;
+    });
+    html += `
+    <div style="background:#e8f5e9;border-radius:10px;padding:18px;margin-top:8px;border-right:3px solid var(--green);">
+      <strong style="color:var(--green);">💡 ملاحظة:</strong>
+      <p style="font-size:0.87rem;color:var(--gray-dark);margin-top:6px;">جزء المحادثة يُقيَّم مع ممتحن حقيقي في الامتحان الرسمي. استخدم هذه التوجيهات للتدرب وحدك أو مع شريك.</p>
+    </div>`;
+    html += `
+    <div class="section-nav">
+      <button class="btn btn-secondary" onclick="switchTab(${tabIdx-1})" ${tabIdx===0?'disabled':''}>← السابق</button>
+      <button class="btn btn-finish" onclick="submitExam()">🏁 إنهاء الفرض وعرض النتائج</button>
+    </div>`;
+  }
+
+  html += `</div>`;
+  return html;
+}
+
+function renderQuestion(q, qi, sec) {
+  const key = sec + '_' + qi;
+  if (q.type === 'mcq' || q.type === 'tf') {
+    return `
+    <div class="question-block" id="qblock_${key}">
+      <div class="q-num">${q.num}</div>
+      <div class="q-text">${q.text}<span class="de">${q.de}</span></div>
+      <div class="q-options">
+        ${q.options.map((opt, oi) => `
+          <div class="q-opt" id="opt_${key}_${oi}" onclick="selectAnswer('${key}', ${oi}, ${q.answer})">${opt}</div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+  return '';
+}
+
+function renderSectionNav(tabIdx) {
+  const isLast = tabIdx === 3;
+  return `
+  <div class="section-nav">
+    <button class="btn btn-secondary" onclick="switchTab(${tabIdx-1})" ${tabIdx===0?'style="visibility:hidden"':''}>← السابق</button>
+    <button class="btn btn-primary" onclick="switchTab(${tabIdx+1})" ${isLast?'style="display:none"':''}>التالي ←</button>
+  </div>`;
+}
+
+function switchTab(idx) {
+  if (idx < 0 || idx > 3) return;
+  currentTab = idx;
+
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.section-panel').forEach((panel, i) => {
+    panel.classList.toggle('active', i === idx);
+  });
+
+  const pct = ((idx + 1) / 4 * 100).toFixed(0);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `الجزء ${idx+1} من 4`;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===================== ANSWERS =====================
+function selectAnswer(key, optIdx, correctIdx) {
+  const block = document.getElementById('qblock_' + key);
+  if (block.classList.contains('answered')) return;
+
+  block.classList.add('answered');
+  userAnswers[key] = { chosen: optIdx, correct: correctIdx };
+
+  const opts = block.querySelectorAll('.q-opt');
+  opts[optIdx].classList.add(optIdx === correctIdx ? 'correct' : 'wrong');
+  if (optIdx !== correctIdx) {
+    opts[correctIdx].classList.add('correct');
+  }
+}
+
+function saveWriting(key, value) {
+  writingTexts[key] = value;
+}
+
+// ===================== AUDIO SIMULATION =====================
+function simulateAudio(trackIdx, btn) {
+  if (audioPlaying[trackIdx]) return;
+  audioPlaying[trackIdx] = true;
+  btn.textContent = '⏸';
+  btn.style.background = '#888';
+
+  const bar = document.getElementById('bar' + trackIdx);
+  const timeEl = document.getElementById('time' + trackIdx);
+  const duration = 45; // 45 seconds simulation
+  let elapsed = 0;
+
+  const interval = setInterval(() => {
+    elapsed++;
+    const pct = (elapsed / duration * 100);
+    bar.style.width = pct + '%';
+    const mins = Math.floor(elapsed / 60);
+    const secs = elapsed % 60;
+    timeEl.textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+
+    if (elapsed >= duration) {
+      clearInterval(interval);
+      btn.textContent = '▶';
+      btn.style.background = 'var(--gold)';
+      audioPlaying[trackIdx] = false;
+    }
+  }, 1000);
+}
+
+// ===================== TIMER =====================
+function startTimer(minutes) {
+  timeLeft = minutes * 60;
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    const timerEl = document.getElementById('examTimer');
+    if (timerEl) {
+      timerEl.textContent = `⏱️ ${m}:${s.toString().padStart(2,'0')}`;
+      if (timeLeft < 300) timerEl.style.color = '#ff6b6b';
+    }
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      submitExam();
+    }
+  }, 1000);
+}
+
+// ===================== SUBMIT & RESULTS =====================
+function submitExam() {
+  if (timerInterval) clearInterval(timerInterval);
+
+  // Calculate scores
+  const sections = ['lesen','hoeren'];
+  const sectionData = {};
+
+  sections.forEach(sec => {
+    const exam = EXAMS[currentExam];
+    const questions = exam[sec].questions;
+    let correct = 0;
+    let total = questions.length;
+
+    questions.forEach((q, qi) => {
+      const key = sec + '_' + qi;
+      if (userAnswers[key] && userAnswers[key].chosen === userAnswers[key].correct) {
+        correct++;
+      }
+    });
+
+    sectionData[sec] = { correct, total };
+  });
+
+  // Writing & Speaking: based on completion
+  const exam = EXAMS[currentExam];
+  const writingTasks = exam.schreiben.tasks.length;
+  let writingScore = 0;
+  for (let i = 0; i < writingTasks; i++) {
+    const text = (writingTexts[`2_${i}`] || '').trim();
+    const words = text.split(/\s+/).filter(w=>w).length;
+    if (words >= exam.schreiben.tasks[i].minWords) writingScore++;
+    else if (words > 5) writingScore += 0.5;
+  }
+  sectionData['schreiben'] = { correct: writingScore, total: writingTasks };
+  sectionData['sprechen'] = { correct: exam.sprechen.cards.length, total: exam.sprechen.cards.length, note: true };
+
+  // Total score
+  const totalCorrect = Object.values(sectionData).reduce((sum, s) => sum + s.correct, 0);
+  const totalPossible = Object.values(sectionData).reduce((sum, s) => sum + s.total, 0);
+  const pct = Math.round(totalCorrect / totalPossible * 100);
+
+  let verdict, verdictDe, scoreColor;
+  if (pct >= 80) { verdict = 'ممتاز! أحسنت 🎉'; verdictDe = 'Sehr gut bestanden!'; scoreColor = '#2d7a3a'; }
+  else if (pct >= 60) { verdict = 'جيد — بإمكانك أفضل 💪'; verdictDe = 'Bestanden!'; scoreColor = '#b8860b'; }
+  else if (pct >= 50) { verdict = 'مقبول — تحتاج مراجعة 📖'; verdictDe = 'Knapp bestanden'; scoreColor = '#c9a84c'; }
+  else { verdict = 'لم تنجح هذه المرة — استمر في التعلم! 📚'; verdictDe = 'Nicht bestanden'; scoreColor = '#cc2222'; }
+
+  // Show results
+  document.getElementById('home-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = '';
+
+  document.getElementById('resScore').textContent = Math.round(totalCorrect);
+  document.getElementById('resDenom').textContent = '/' + Math.round(totalPossible);
+  document.getElementById('resPct').textContent = pct + '%';
+  document.getElementById('resVerdict').textContent = verdict;
+  document.getElementById('resVerdictDe').textContent = verdictDe;
+  document.getElementById('resScore').style.color = scoreColor;
+
+  // Section scores
+  const secNames = { lesen: '📖 القراءة', hoeren: '🎧 الاستماع', schreiben: '✍️ الكتابة', sprechen: '🗣️ المحادثة' };
+  const secColors = { lesen: '#1a3a6e', hoeren: '#2d7a3a', schreiben: '#b8860b', sprechen: '#cc2222' };
+  let secHtml = '';
+  Object.entries(sectionData).forEach(([sec, data]) => {
+    const p = Math.round(data.correct / data.total * 100);
+    secHtml += `
+    <div class="sec-score-card">
+      <h4>${secNames[sec]}</h4>
+      <div class="sec-score-num" style="color:${secColors[sec]}">${Math.round(data.correct)}/${data.total}</div>
+      <div class="sec-score-bar"><div class="sec-score-fill" style="width:${p}%;background:${secColors[sec]}"></div></div>
+      ${data.note ? '<div style="font-size:0.7rem;color:var(--gray-mid);margin-top:4px;">تم الإنجاز</div>' : ''}
+    </div>`;
+  });
+  document.getElementById('sectionScoresDisplay').innerHTML = secHtml;
+
+  // Review answers
+  const secs = ['lesen','hoeren'];
+  let reviewHtml = '<h3 style="margin-bottom:16px;">مراجعة الإجابات</h3>';
+  secs.forEach(sec => {
+    const questions = EXAMS[currentExam][sec].questions;
+    reviewHtml += `<div class="review-section"><h3>${secNames[sec]}</h3>`;
+    questions.forEach((q, qi) => {
+      const key = sec + '_' + qi;
+      const ua = userAnswers[key];
+      const isCorrect = ua && ua.chosen === ua.correct;
+      const icon = ua ? (isCorrect ? '✅' : '❌') : '⬜';
+      reviewHtml += `
+      <div class="review-q">
+        <div class="q">${icon} ${q.text}</div>
+        ${ua ? `<div class="your-ans" style="color:${isCorrect?'var(--green)':'var(--red)'}">إجابتك: ${q.options[ua.chosen]}</div>` : '<div class="your-ans" style="color:var(--gray-mid)">لم تجب</div>'}
+        ${!isCorrect ? `<div class="correct-ans">✓ الإجابة الصحيحة: ${q.options[q.answer]}</div>` : ''}
+      </div>`;
+    });
+    reviewHtml += '</div>';
+  });
+  document.getElementById('answersReview').innerHTML = reviewHtml;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function retryExam() {
+  startExam(currentExam);
+}
+</script>
+</body>
+</html>
